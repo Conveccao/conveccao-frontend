@@ -5,8 +5,8 @@ export const Container = styled.div``;
 
 export const Main = styled.main`
   max-width: 440px;
-  height: calc(70vh - 95px);
-  margin: 50px auto;
+  height: 550px;
+  margin: 100px auto;
   padding: 24px;
 
   display: flex;
@@ -17,6 +17,10 @@ export const Main = styled.main`
   border-radius: 16px;
  
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
+  
+   @media (max-height: 900px) {
+    margin: 50px auto;
+  }
 `;
 
 export const Footer = styled.footer`
@@ -28,4 +32,8 @@ export const ContentFooter = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  
+   @media (max-width: 900px) {
+    justify-content: center;
+  }
 `;
