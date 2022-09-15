@@ -1,5 +1,7 @@
-import { SensorList } from "./pages/SensorList";
 import { ThemeProvider } from 'styled-components';
+import { BrowserRouter } from "react-router-dom";
+
+import Routes from './routes/routes';
 
 import THEME from "./styles/theme";
 

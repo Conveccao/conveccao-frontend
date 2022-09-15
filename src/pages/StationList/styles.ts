@@ -10,9 +10,9 @@ export const Main = styled.main`
   padding: 24px;
 
   border-radius: 8px;
-  background: ${THEME.colors.secondary_white};
+  background: ${THEME.colors.white_100};
 
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
 
   overflow-y: scroll;
   
@@ -27,7 +27,7 @@ export const Main = styled.main`
   }
 
   ::-webkit-scrollbar-thumb {
-    background: ${THEME.colors.blue};
+    background: ${THEME.colors.blue_100};
     border-radius: 8px;
   }
 `;

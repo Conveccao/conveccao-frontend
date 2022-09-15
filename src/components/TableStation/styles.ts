@@ -9,9 +9,9 @@ export const Table = styled.table`
 `;
 
 export const STHead = styled.thead`
-    color: ${THEME.colors.blue};
+    color: ${THEME.colors.blue_100};
     font-weight: ${THEME.fontWeights.bold};
-    background: ${THEME.colors.secondary_white};
+    background: ${THEME.colors.white_100};
 `;
 
 export const STHeadTR = styled.tr``;
@@ -29,7 +29,7 @@ export const STBodyTR = styled.tr``;
 
 export const STd = styled.td`
     padding: 8px;
-    border-bottom: 1px solid ${THEME.colors.primary_green};
+    border-bottom: 1px solid ${THEME.colors.green_100};
     padding-bottom: 8px;
 `;
 

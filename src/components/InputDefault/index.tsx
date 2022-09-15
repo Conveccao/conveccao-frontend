@@ -8,7 +8,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
     backgroundInput?: string;
 }
 
-export default function CustomInput({
+export function CustomInput({
     placeholder,
     widthInput,
     heightInput,

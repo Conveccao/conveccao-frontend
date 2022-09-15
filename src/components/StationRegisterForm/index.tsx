@@ -1,7 +1,7 @@
-import CustomInput from '../InputDefault';
+import {CustomInput} from '../InputDefault';
 import {SForm, SFieldset, SLabel} from './styles'
 
-export default function StationForm() {
+export function StationForm() {
     return (
         <SForm>
             <SFieldset>

@@ -12,7 +12,7 @@ export const Main = styled.main`
   display: flex;
   align-items: center;
 
-  background: ${THEME.colors.secondary_white};
+  background: ${THEME.colors.white_100};
 
   border-radius: 16px;
  
