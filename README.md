@@ -2,11 +2,15 @@
 
 > Aplicação desenvolvida por alunos do 4º semestre do tecnólogo em Desenvolvimento de Software Multiplataforma, na FATEC Profº Jessen Vidal - São José dos Campos, SP :rocket:
 
-### :hammer_and_wrench: Tecnologias
+</br>
+
+## :hammer_and_wrench: Tecnologias
 
 As seguintes tecnologias e ferramentas foram utilizadas neste projeto: `Typescript, ReactJS, Styled Components, HTML5, CSS3`
 
-### :gear: Como utilizar
+</br>
+
+## :gear: Como utilizar
 
 - Tutorial para rodar o projeto
 
@@ -27,7 +31,9 @@ $ npm start
 ```
 O servidor iniciará localmente na porta 3000. Use o navegador de sua escolha no endereço localhost:3000 para executar as funcionalidades da aplicação (acesse o repositório backend da aplicação por [este link](https://github.com/Conveccao/conveccao-backend)).
 
-### Explicação da estrutura das pastas
+</br>
+
+## 📁 Explicação da estrutura das pastas
 
 | Pasta                                                       | Definição                                                                       |
 | ----------------------------------------------------------- | ------------------------------------------------------------------------------- |
@@ -37,8 +43,21 @@ O servidor iniciará localmente na porta 3000. Use o navegador de sua escolha no
 | :open_file_folder: src/pages | Telas da minha aplicação |
 | :open_file_folder: src/styles | Estilização global da minha aplicação |
 
+</br>
 
+## 📷 Screenshots
 
+#### Tela de listagem de estações:
+<img width="2500px" height="600px" src="https://github.com/Conveccao/conveccao-frontend/blob/develop/docs/tela-lista-sensores.png">
+</br>
+
+#### Tela de cadastro de estações:
+<img width="2500px" height="600px" src="https://github.com/Conveccao/conveccao-frontend/blob/develop/docs/tela-cadastro-estacao.png">
+</br>
+
+#### Tela de cadastro de parâmetros:
+<img width="2500px" height="600px" src="https://github.com/Conveccao/conveccao-frontend/blob/develop/docs/tela-cadastro-parametros.png">
+</br>
 
 ## [Documentação oficial do projeto](https://github.com/Conveccao/conveccao-documentacao)
 
