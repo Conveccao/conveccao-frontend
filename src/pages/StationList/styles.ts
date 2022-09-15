@@ -12,7 +12,7 @@ export const Main = styled.main`
   border-radius: 8px;
   background: ${THEME.colors.white_100};
 
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: ${THEME.boxShadow.shadowDefault};
 
   overflow-y: scroll;
   

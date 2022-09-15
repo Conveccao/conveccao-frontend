@@ -14,9 +14,9 @@ export const Main = styled.main`
 
   background: ${THEME.colors.white_100};
 
-  border-radius: 16px;
+  border-radius: 8px;
  
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: ${THEME.boxShadow.shadowDefault};
   
    @media (max-height: 900px) {
     margin: 50px auto;

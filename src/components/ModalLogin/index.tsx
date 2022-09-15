@@ -39,7 +39,7 @@ export function ModalLogin() {
               Bem vindo ao Convecção
             </Title>
             : 
-            <Skeleton animation="wave" variant="text" width="100%" height={50} /> 
+            <Skeleton animation="wave" variant="text" width="300px" height={50} /> 
             }
 
           {isLoading ? 
@@ -47,7 +47,7 @@ export function ModalLogin() {
              Logue com sua rede social
             </Subtitle>
             : 
-            <Skeleton animation="wave" variant="text" width="60%" height={25} /> 
+            <Skeleton animation="wave" variant="text" width="200px" height={25} /> 
             }
           
         </Header>

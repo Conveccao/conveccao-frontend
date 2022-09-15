@@ -47,5 +47,5 @@ export const Divider = styled.hr`
   background: ${THEME.colors.gray};
 
   border-radius: 2px;
-  border: 2px solid ${THEME.colors.gray};
+  border: 1px solid ${THEME.colors.gray};
 `;

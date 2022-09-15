@@ -31,7 +31,10 @@ const THEME = {
         sm: '2.5rem',
         md: '3.125rem',
         xl: '3.5rem',
-    }
+    },
+    boxShadow: {
+      shadowDefault: '0px 2px 12px rgba(0, 0, 0, 0.2)',
+    },
   };
   
   export default THEME;
