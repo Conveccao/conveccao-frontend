@@ -100,7 +100,7 @@ export function ModalLogin() {
           widthButton={'310px'}
           backgroundButton={THEME.colors.green_100}
           hoverBackgroundButton={THEME.colors.green_50}
-          onClick={() => navigate('/home')}
+          onClick={() => navigate('/dashboard')}
           />
             : 
             <Skeleton 

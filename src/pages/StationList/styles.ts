@@ -6,7 +6,7 @@ export const Container = styled.div``;
 export const Main = styled.main`
   max-width: 1200px;
   height: calc(80vh - 95px);
-  margin: 50px auto;
+  margin: 2rem auto 2rem 30rem;
   padding: 24px;
 
   border-radius: 8px;
@@ -33,9 +33,10 @@ export const Main = styled.main`
 `;
 
 export const Footer = styled.footer`
-  width: 60%;
+  width: 100%;
+  max-width: 1200px;
 
-  margin: auto;
+  margin: 4.5rem 2rem 0rem 30rem;
 `;
 
 export const ContentFooter = styled.div`

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { ButtonDefault } from '../../components/ButtonDefault';
 import { HeaderDefault } from '../../components/HeaderDefault';
+import { Sidebar } from '../../components/Sidebar';
 import { StationForm } from '../../components/StationRegisterForm';
 
 
@@ -13,7 +14,9 @@ export function StationRegister(){
     
     return(
         <Container>
+
             <HeaderDefault title='Cadastro de estação'/>
+            <Sidebar/>
             <Main>
                 <StationForm />
             </Main>

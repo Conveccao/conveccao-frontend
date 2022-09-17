@@ -2,8 +2,15 @@ import styled from 'styled-components';
 import THEME from '../../styles/theme';
 
 export const Header = styled.header`
+    margin-left: 18rem;
     padding: 24px;
     border-bottom: 2px solid ${THEME.colors.gray};
+
+    transition: 0.25s ease-in-out;
+
+    @media (max-width: 768px) {
+        margin-left: 0;
+    }
 `;
 
 export const Content = styled.div`

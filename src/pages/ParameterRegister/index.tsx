@@ -1,5 +1,5 @@
-import ButtonDefault from '../../components/ButtonDefault';
-import HeaderDefault from '../../components/HeaderDefault';
+import {ButtonDefault} from '../../components/ButtonDefault';
+import {HeaderDefault} from '../../components/HeaderDefault';
 import ParameterForm from '../../components/ParameterRegisterForm';
 
 
@@ -18,7 +18,7 @@ export function ParameterRegister(){
                 <ContentFooter>
                      <ButtonDefault 
                      title='Cadastrar' 
-                     backgroundButton={THEME.colors.primary_green} 
+                     backgroundButton={THEME.colors.green_100} 
                      widthButton={'184px'} 
                      heightButton={'56px'}
                      />

@@ -19,9 +19,12 @@ export function Sidebar() {
       <Header>
         <ContainerLogo>
           <Logo src={logo} alt="logo" />
-          <Title>Convecção</Title>
+          <Title>Menu</Title>
         </ContainerLogo>
         <Navbar>
+          <NavbarLink to="/dashboard">
+            Dashboard
+          </NavbarLink>
           <NavbarLink to="/stationlist">
             Visualizar estações
           </NavbarLink>

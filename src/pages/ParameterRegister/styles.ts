@@ -11,11 +11,11 @@ export const Main = styled.main`
   display: flex;
   align-items: center;
 
-  background: ${THEME.colors.secondary_white};
+  background: ${THEME.colors.white_100};
 
   border-radius: 16px;
  
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: ${THEME.boxShadow.shadowDefault};
 `;
 
 export const Footer = styled.footer`
