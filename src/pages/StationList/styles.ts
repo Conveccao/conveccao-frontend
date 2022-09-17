@@ -41,6 +41,6 @@ export const Footer = styled.footer`
 
 export const ContentFooter = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 `;

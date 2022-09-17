@@ -36,21 +36,13 @@ export function StationList(){
             </Main>
             <Footer>
                 <ContentFooter>
-                    
-                    <ButtonDefault 
-                     title='Voltar' 
-                     backgroundButton={THEME.colors.green_100} 
-                     widthButton={'184px'} 
-                     heightButton={'56px'}
-                     hoverBackgroundButton={THEME.colors.green_50}
-                     onClick={() => {navigate(`/home`)}}
-                     />
                     <ButtonDefault 
                      title='Cadastrar estação' 
                      backgroundButton={THEME.colors.green_100} 
                      widthButton={'184px'} 
                      heightButton={'56px'}
                      hoverBackgroundButton={THEME.colors.green_50}
+                     onClick={() => navigate('/stationregister')}
                      />
                 </ContentFooter>
             </Footer>
