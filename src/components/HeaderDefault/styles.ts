@@ -1,8 +1,16 @@
 import styled from 'styled-components';
+import THEME from '../../styles/theme';
 
 export const Header = styled.header`
+    margin-left: 18rem;
     padding: 24px;
-    border-bottom: 2px solid #e2e2e2;
+    border-bottom: 2px solid ${THEME.colors.gray};
+
+    transition: 0.25s ease-in-out;
+
+    @media (max-width: 768px) {
+        margin-left: 0;
+    }
 `;
 
 export const Content = styled.div`
@@ -19,7 +27,7 @@ export const Image = styled.img`
 `;
 
 export const Title = styled.span`
-    color: #0A94ED;
+    color: ${THEME.colors.blue_100};
     font-size: 24px;
     font-weight: bold;
 `;

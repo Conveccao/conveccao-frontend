@@ -11,7 +11,7 @@ type HeaderProps = {
     title: string;
 }
 
-export default function HeaderDefault({title}: HeaderProps) {
+export function HeaderDefault({title}: HeaderProps) {
     return(
         <Header>
             <Content>

@@ -1,5 +1,5 @@
 import THEME from "../../styles/theme";
-import ButtonDefault from "../ButtonDefault";
+import {ButtonDefault} from "../ButtonDefault";
 
 import {
   Table,
@@ -29,10 +29,26 @@ export function TableStation() {
           <STd>Teste</STd>
           <ButtonContainer>
             <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
+            title="Detalhes"
+            backgroundButton={THEME.colors.green_50}
+            widthButton={"184px"}
+            heightButton={"40px"}
+            hoverBackgroundButton={THEME.colors.green_100}
+            />
+          </ButtonContainer>
+        </STBodyTR>
+
+        <STBodyTR>
+          <STd>0001</STd>
+          <STd>Teste</STd>
+          <STd>Teste</STd>
+          <ButtonContainer>
+            <ButtonDefault
+             title="Detalhes"
+             backgroundButton={THEME.colors.green_50}
+             widthButton={"184px"}
+             heightButton={"40px"}
+             hoverBackgroundButton={THEME.colors.green_100}
             />
           </ButtonContainer>
         </STBodyTR>
@@ -44,9 +60,10 @@ export function TableStation() {
           <ButtonContainer>
             <ButtonDefault
               title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
+              backgroundButton={THEME.colors.green_50}
               widthButton={"184px"}
               heightButton={"40px"}
+              hoverBackgroundButton={THEME.colors.green_100}
             />
           </ButtonContainer>
         </STBodyTR>
@@ -58,206 +75,10 @@ export function TableStation() {
           <ButtonContainer>
             <ButtonDefault
               title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
+              backgroundButton={THEME.colors.green_50}
               widthButton={"184px"}
               heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
-            />
-          </ButtonContainer>
-        </STBodyTR>
-
-        <STBodyTR>
-          <STd>0001</STd>
-          <STd>Teste</STd>
-          <STd>Teste</STd>
-          <ButtonContainer>
-            <ButtonDefault
-              title="Detalhes"
-              backgroundButton={THEME.colors.secondary_green}
-              widthButton={"184px"}
-              heightButton={"40px"}
+              hoverBackgroundButton={THEME.colors.green_100}
             />
           </ButtonContainer>
         </STBodyTR>

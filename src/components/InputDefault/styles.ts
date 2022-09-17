@@ -16,12 +16,12 @@ export const SInput = styled.input<InputProps>`
     
     color: ${THEME.colors.black};
     
-    border: 1px solid ${THEME.colors.primary_green};
+    border: 1px solid ${THEME.colors.green_100};
     border-radius: 8px;
 
     :focus {
         outline: none;
-        border: 1px solid ${THEME.colors.secondary_green};
+        border: 1px solid ${THEME.colors.green_50};
     }
 
     ::placeholder {

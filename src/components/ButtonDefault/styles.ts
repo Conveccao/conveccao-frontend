@@ -5,6 +5,7 @@ type ButtonProps = {
     widthButton?: string;
     heightButton?: string;
     backgroundButton?: string;
+    hoverBackgroundButton?: string;
 }   
 
 export const ButtonCustom =  styled.button<ButtonProps>`
@@ -17,19 +18,19 @@ export const ButtonCustom =  styled.button<ButtonProps>`
 
     padding: 16px;
 
-    background: ${props => props.backgroundButton ? props.backgroundButton : THEME.colors.primary_green};
+    background: ${props => props.backgroundButton};
 
     border: none;
     border-radius: 8px;
 
-    color: ${THEME.colors.primary_white};
+    color: ${THEME.colors.white_100};
 
     transition: background 0.2s;
     cursor: pointer;
 
-    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.2);
 
     &:hover {
-        background: ${props => props.backgroundButton === THEME.colors.primary_green ? THEME.colors.secondary_green : THEME.colors.primary_green};
+        background: ${props => props.hoverBackgroundButton};
     }
 `;

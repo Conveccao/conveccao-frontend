@@ -18,6 +18,6 @@ export const SLabel = styled.label`
     display: block;
     margin-bottom: 12px;
 
-    color: ${THEME.colors.blue};
+    color: ${THEME.colors.blue_100};
     font-weight: ${THEME.fontWeights.bold};
 `;
