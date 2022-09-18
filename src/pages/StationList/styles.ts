@@ -44,3 +44,12 @@ export const ContentFooter = styled.div`
   justify-content: flex-end;
   align-items: center;
 `;
+
+export const FormFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  bottom: 59px;
+  right: 385px;
+`;

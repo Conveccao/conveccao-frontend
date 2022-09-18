@@ -12,7 +12,8 @@ export function CustomInput({
     placeholder,
     widthInput,
     heightInput,
-    backgroundInput
+    backgroundInput,
+    onChange
 }: InputProps){
     return(
         <SInput 
@@ -20,6 +21,7 @@ export function CustomInput({
         widthInput={widthInput} 
         heightInput={heightInput} 
         backgroundInput={backgroundInput}
+        onChange={onChange}
         />
     )
 }
