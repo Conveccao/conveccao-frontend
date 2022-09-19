@@ -4,6 +4,7 @@ import { StationList } from '../pages/StationList';
 import { StationRegister } from '../pages/StationRegister';
 import { Login } from '../pages/Login';
 import { Dashboard } from '../pages/Dashboard';
+import { ParameterRegister } from '../pages/ParameterRegister';
 
 export default function AppRoutes() {
   return (
@@ -13,6 +14,7 @@ export default function AppRoutes() {
       <Route path="/stationregister" element={<StationRegister />} />
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/parameterregister" element={<ParameterRegister />} />
     </Routes>
   );
 }

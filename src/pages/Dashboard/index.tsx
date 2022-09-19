@@ -51,6 +51,36 @@ export function Dashboard() {
           </Box>
         )}
       </Main>
+      <Main>
+        {isLoading ? (
+          <ChartDefault/> 
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+            }}
+          >
+            <CircularProgress color="success" />
+          </Box>
+        )}
+        {isLoading ? (
+          <ChartDefault/> 
+        ) : (
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+            }}
+          >
+            <CircularProgress color="success" />
+          </Box>
+        )}
+      </Main>
     </Container>
   );
 }

@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import THEME from '../../styles/theme';
 
 export const SForm = styled.form`
-    width: 100%;
+    width: 70%;
     height: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content:space-evenly;
 `;
 

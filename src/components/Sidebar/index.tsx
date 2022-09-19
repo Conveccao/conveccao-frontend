@@ -31,6 +31,9 @@ export function Sidebar() {
           <NavbarLink to="/stationregister">
             Cadastrar estações
           </NavbarLink>
+          <NavbarLink to="/parameterregister">
+            Cadastrar Parâmetros
+          </NavbarLink>
         </Navbar>
       </Header>
       <Footer>

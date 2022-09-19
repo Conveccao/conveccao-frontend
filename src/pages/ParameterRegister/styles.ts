@@ -4,11 +4,12 @@ import THEME from "../../styles/theme";
 export const Container = styled.div``;
 
 export const Main = styled.main`
-  max-width: 1400px;
-  height: 400px;
+  max-width: 800px;
+  height: 600px;
   margin: 50px auto;
   padding: 24px;
   display: flex;
+  justify-content: center;
   align-items: center;
 
   background: ${THEME.colors.white_100};
