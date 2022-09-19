@@ -22,10 +22,10 @@ $ git clone https://github.com/Conveccao/conveccao-frontend.git
 $ cd conveccao-frontend
 
 # Instale as dependências
-$ npm install
+$ yarn install
 
 # Iniciar o projeto
-$ npm start
+$ yarn start
 
 
 ```
