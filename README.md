@@ -37,8 +37,21 @@ O servidor iniciará localmente na porta 3000. Use o navegador de sua escolha no
 | :open_file_folder: src/pages | Telas da minha aplicação |
 | :open_file_folder: src/styles | Estilização global da minha aplicação |
 
+</br>
 
+## 📷 Screenshots
 
+#### Tela de listagem de estações:
+<img width="2500px" height="600px" src="https://github.com/Conveccao/conveccao-frontend/blob/develop/docs/tela-lista-sensores.png">
+</br>
+
+#### Tela de cadastro de estações:
+<img width="2500px" height="600px" src="https://github.com/Conveccao/conveccao-frontend/blob/develop/docs/tela-cadastro-estacao.png">
+</br>
+
+#### Tela de cadastro de parâmetros:
+<img width="2500px" height="600px" src="https://github.com/Conveccao/conveccao-frontend/blob/develop/docs/tela-cadastro-parametros.png">
+</br>
 
 ## [Documentação oficial do projeto](https://github.com/Conveccao/conveccao-documentacao)
 
