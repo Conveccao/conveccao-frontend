@@ -1,116 +1,100 @@
 import { useState, useEffect } from "react";
-
-import {ButtonIcon} from "../ButtonIcon";
-import {ButtonDefault} from "../ButtonDefault";
-import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { Skeleton } from '@mui/material';
+import { Skeleton } from "@mui/material";
 
-import { 
+import { ButtonDefault } from "../ButtonDefault";
+
+import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
+
+import {
   Container,
-  Header,
+  TitleContainer,
+  SubtitleContainer,
   Title,
   Subtitle,
-  MainContent,
-  DividerContainer,
-  Divider,
-  Footer } from "./styles";
+  ButtonContainer,
+  ButtonGoogle,
+  ButtonFacebook,
+} from "./styles";
 
-import THEME from '../../styles/theme';
+import THEME from "../../styles/theme";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-
-export function ModalLogin() {
+export default function ModalLogin() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(true);
     }, 2000);
     return () => clearTimeout(timer);
-  } , []);
+  }, []);
 
   return (
     <Container>
-        <Header>
-          {isLoading ? 
-            <Title>
-              Bem vindo ao Convecção
-            </Title>
-            : 
-            <Skeleton animation="wave" variant="text" width="300px" height={50} /> 
-            }
+      <TitleContainer>
+        {isLoading ? (
+          <Title>Bem vindo</Title>
+        ) : (
+          <Skeleton animation="wave" variant="text" width={125} height={50} />
+        )}
+      </TitleContainer>
 
-          {isLoading ? 
-            <Subtitle>
-             Logue com sua rede social
-            </Subtitle>
-            : 
-            <Skeleton animation="wave" variant="text" width="200px" height={25} /> 
-            }
-          
-        </Header>
-        <MainContent>
-          {isLoading ? 
-          <ButtonIcon 
-            title="Google"
-            icon={faGoogle}
-            backgroundButton={THEME.colors.red_google}
-            heightButton={'3.125rem'}
-            widthButton={'19.375rem'}
-            marginBottom={'1.75rem'}
-            /> 
-            : 
-            <Skeleton 
-              variant="rounded"
-              animation="wave"
-              width={310} 
-              height={50} 
-              style={{marginBottom: '28px'}}
-              />
-            }
+      <SubtitleContainer>
+        {isLoading ? (
+          <Subtitle>Acesse com sua rede social favorita</Subtitle>
+        ) : (
+          <Skeleton animation="wave" variant="text" width="200px" height={25} />
+        )}
+      </SubtitleContainer>
 
-        {isLoading ? 
-          <ButtonIcon 
-          title="Facebook" 
-          icon={faFacebookF}
-          backgroundButton={THEME.colors.blue_facebook}
-          heightButton={'3.125rem'}
-          widthButton={'19.375rem'}
-          />
-            : 
-            <Skeleton 
+      <ButtonContainer>
+        {isLoading ? (
+            <ButtonGoogle>
+                <FontAwesomeIcon icon={faGoogle} />
+                Google
+            </ButtonGoogle>
+        ) : (
+          <Skeleton
             variant="rounded"
-              animation="wave"
-              width={310} 
-              height={50} 
-              />
-            }
-            
-        </MainContent>
-        <DividerContainer>
-          <Divider />
-        </DividerContainer>
-        <Footer>
-        {isLoading ? 
+            animation="wave"
+            width={272}
+            height={40}
+            style={{ marginBottom: "16px" }}
+          />
+        )}
+
+        {isLoading ? (
+          <ButtonFacebook>
+            <FontAwesomeIcon icon={faFacebook} />
+            Facebook
+          </ButtonFacebook>
+        ) : (
+          <Skeleton
+            variant="rounded"
+            animation="wave"
+            width={272}
+            height={40}
+            style={{ marginBottom: "16px" }}
+          />
+        )}
+
+        {isLoading ? (
           <ButtonDefault
-          title="Acesse"  
-          heightButton={'50px'}
-          widthButton={'310px'}
-          backgroundButton={THEME.colors.green_100}
-          hoverBackgroundButton={THEME.colors.green_50}
-          onClick={() => navigate('/dashboard')}
+            title="Acesse"
+            backgroundButton={THEME.colors.green_100}
+            onClick={() => navigate('/dashboard')}
           />
-            : 
-            <Skeleton 
+        ) : (
+          <Skeleton
             variant="rounded"
-              animation="wave"
-              width={310} 
-              height={50} 
-              />
-        }
-        </Footer>
+            animation="wave"
+            width={272}
+            height={40}
+          />
+        )}
+      </ButtonContainer>
     </Container>
   );
 }

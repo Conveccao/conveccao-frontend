@@ -6,6 +6,7 @@ type ButtonProps = {
     widthButton?: string;
     heightButton?: string;
     backgroundButton?: string;
+    colorButton?: string;
 }   
 
 export const SButton =  styled.button<ButtonProps>`
@@ -23,9 +24,9 @@ export const SButton =  styled.button<ButtonProps>`
     border: none;
     border-radius: 8px;
 
-    color: ${THEME.colors.white_100};
+    color: ${props => props.colorButton};
 
-    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: ${THEME.boxShadow.ShadowSecondary};
 
     cursor: pointer;
 `;
