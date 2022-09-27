@@ -1,4 +1,4 @@
-import { ModalLogin } from "../../components/ModalLogin";
+import ModalLogin from "../../components/ModalLogin";
 import { Container } from "./styles";
 
 export function Login() {

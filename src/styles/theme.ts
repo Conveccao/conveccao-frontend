@@ -3,7 +3,7 @@ const THEME = {
       green_100: '#00C667',
       green_50: '#007A3F',
 
-      red_google: '#DD4B39',
+      red_google: '#de5246',
       blue_facebook: '#3b5998',
 
       blue_100: '#0A94ED',
@@ -33,7 +33,8 @@ const THEME = {
         xl: '3.5rem',
     },
     boxShadow: {
-      shadowDefault: '0px 2px 12px rgba(0, 0, 0, 0.2)',
+      shadowDefault: '0px 2px 12px rgba(0, 0, 0, 0.25)',
+      ShadowSecondary: '0px 4px 4px rgba(0, 0, 0, 0.25)'
     },
   };
   

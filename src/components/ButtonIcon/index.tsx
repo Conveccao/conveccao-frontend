@@ -9,6 +9,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     widthButton?: string;
     heightButton?: string;
     backgroundButton?: string;
+    colorButton?: string;
     icon?: IconDefinition;
 }   
 
@@ -18,7 +19,8 @@ export function ButtonIcon({
     marginBottom,
     widthButton,
     heightButton,
-    backgroundButton
+    backgroundButton,
+    colorButton
 }: ButtonProps){
     return(
         <SButton  
@@ -26,6 +28,7 @@ export function ButtonIcon({
         heightButton={heightButton} 
         backgroundButton={backgroundButton}
         marginBottom={marginBottom}
+        colorButton={colorButton}
         > 
             {icon && <FontAwesomeIcon icon={icon} />}
             {title}
