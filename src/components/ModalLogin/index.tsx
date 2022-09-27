@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Skeleton } from "@mui/material";
-
-import { ButtonDefault } from "../ButtonDefault";
 
 import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
 
@@ -15,13 +12,13 @@ import {
   ButtonContainer,
   ButtonGoogle,
   ButtonFacebook,
+  Header,
 } from "./styles";
 
-import THEME from "../../styles/theme";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
 export default function ModalLogin() {
-  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -33,25 +30,27 @@ export default function ModalLogin() {
 
   return (
     <Container>
-      <TitleContainer>
-        {isLoading ? (
-          <Title>Bem vindo</Title>
-        ) : (
-          <Skeleton animation="wave" variant="text" width={125} height={50} />
-        )}
-      </TitleContainer>
+      <Header>
+        <TitleContainer>
+          {isLoading ? (
+            <Title>Bem vindo</Title>
+          ) : (
+            <Skeleton animation="wave" variant="text" width={125} height={50} />
+          )}
+        </TitleContainer>
 
-      <SubtitleContainer>
-        {isLoading ? (
-          <Subtitle>Acesse com sua rede social favorita</Subtitle>
-        ) : (
-          <Skeleton animation="wave" variant="text" width="200px" height={25} />
-        )}
+        <SubtitleContainer>
+          {isLoading ? (
+            <Subtitle>Acesse com sua rede social favorita</Subtitle>
+          ) : (
+            <Skeleton animation="wave" variant="text" width="200px" height={25} />
+          )}
       </SubtitleContainer>
-
+      </Header>
+      
       <ButtonContainer>
         {isLoading ? (
-            <ButtonGoogle>
+            <ButtonGoogle >
                 <FontAwesomeIcon icon={faGoogle} />
                 Google
             </ButtonGoogle>
@@ -77,21 +76,6 @@ export default function ModalLogin() {
             width={272}
             height={40}
             style={{ marginBottom: "16px" }}
-          />
-        )}
-
-        {isLoading ? (
-          <ButtonDefault
-            title="Acesse"
-            backgroundButton={THEME.colors.green_100}
-            onClick={() => navigate('/dashboard')}
-          />
-        ) : (
-          <Skeleton
-            variant="rounded"
-            animation="wave"
-            width={272}
-            height={40}
           />
         )}
       </ButtonContainer>

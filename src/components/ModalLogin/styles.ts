@@ -4,7 +4,7 @@ import THEME from "../../styles/theme";
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: column;
 
   width: 20rem;
@@ -19,6 +19,8 @@ export const Container = styled.div`
 
   box-shadow: ${THEME.boxShadow.shadowDefault};
 `;
+
+export const Header = styled.div``;
 
 export const TitleContainer = styled.div`
   display: flex;
