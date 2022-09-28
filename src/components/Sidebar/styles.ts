@@ -9,7 +9,7 @@ export const Container = styled.aside`
   align-items: center;
   justify-content: space-between;
 
-  width: 18rem;
+  width: 15.625rem;
   height: 100vh;
   padding: 1rem;
 
@@ -32,24 +32,18 @@ export const Container = styled.aside`
 export const Header = styled.header``;
 
 export const Logo = styled.img`
-  width: 4.0625rem;
-  height: 4.0625rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0rem 2rem 0rem -1.5rem;
 `;
 
 export const ContainerLogo = styled.div`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-
   margin-bottom: 1.5rem;
-  padding: 0rem 0rem 0.75rem 0rem;
-  border-bottom: 2px solid ${THEME.colors.gray};
-
-  text-align: right;
 `;
 
 export const Title = styled.h1`
-  margin-left: 1.5rem;
   color: ${THEME.colors.green_100};
   font-weight: ${THEME.fontWeights.bold};
   font-size: ${THEME.fontSizes.title};
@@ -58,21 +52,17 @@ export const Title = styled.h1`
 export const Navbar = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const NavbarLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: 1rem 0rem;
 
-  width: 250px;
-  height: 50px;
-  margin-bottom: 1.5rem;
   font-weight: ${THEME.fontWeights.regular};
   font-size: ${THEME.fontSizes.subtitle};
   color: ${THEME.colors.black};
+
   text-decoration: none;
 
   transition: color 0.2s;
@@ -85,10 +75,7 @@ export const NavbarLink = styled(Link)`
 
 //Footer for the sidebar
 export const Footer = styled.footer`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
 `;
 
 export const NavbarLinkButton = styled(Link)`
@@ -96,9 +83,7 @@ export const NavbarLinkButton = styled(Link)`
   align-items: center;
   justify-content: center;
 
-  width: 250px;
-  height: 50px;
-  margin-bottom: 1.5rem;
+  height: 40px;
 
   background: ${THEME.colors.blue_100};
   border-radius: 8px;

@@ -9,7 +9,7 @@ const THEME = {
       blue_100: '#0A94ED',
       blue_50: '#1D629D',
 
-      white_100: '#f8f8f8',
+      white_100: '#f8f8ff',
       gray: ' #D0D0D0',
       black: '#0B0D17',
     },

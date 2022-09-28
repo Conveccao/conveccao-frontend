@@ -21,18 +21,26 @@ export function Sidebar() {
           <Logo src={logo} alt="logo" />
           <Title>Menu</Title>
         </ContainerLogo>
+       
         <Navbar>
-          <NavbarLink to="/dashboard">
-            Dashboard
+          <NavbarLink to="">
+            Página inicial
           </NavbarLink>
-          <NavbarLink to="/stationlist">
-            Visualizar estações
+
+          <NavbarLink to="">
+            Perfil
           </NavbarLink>
-          <NavbarLink to="/stationregister">
-            Cadastrar estações
+
+          <NavbarLink to="">
+            Usuários cadastrados
           </NavbarLink>
-          <NavbarLink to="/parameterregister">
-            Cadastrar Parâmetros
+
+          <NavbarLink to="">
+            Cadastro de estações
+          </NavbarLink>
+
+          <NavbarLink to="">
+            Estações cadastradas
           </NavbarLink>
         </Navbar>
       </Header>

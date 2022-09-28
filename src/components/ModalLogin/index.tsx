@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Skeleton } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
 import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 import {
@@ -19,6 +19,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 export default function ModalLogin() {
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ export default function ModalLogin() {
       
       <ButtonContainer>
         {isLoading ? (
-            <ButtonGoogle >
+            <ButtonGoogle onClick={() => navigate('/dashboard')}>
                 <FontAwesomeIcon icon={faGoogle} />
                 Google
             </ButtonGoogle>
