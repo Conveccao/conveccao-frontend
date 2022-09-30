@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { GoogleAuthProvider, signInWithPopup, User} from "firebase/auth";
+import { auth } from "../../services/firebase";
 
 import {
   Container,
@@ -19,6 +21,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 export default function ModalLogin() {
+
+  const [ user, setUser ] = useState<User>({} as User);
+
+  function handleGoogleLogin(){
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup (auth, provider)
+    .then (result => {setUser(result.user); console.log(result);})
+    .catch((error) => {console.log(error);})
+
+  }
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -48,10 +62,16 @@ export default function ModalLogin() {
           )}
       </SubtitleContainer>
       </Header>
+
+      <div className=" user">
+        {user.photoURL && <img src={user.photoURL} style={{width: "40px", height: "40px"}}/>}
+        <strong>{user.displayName}</strong>
+        <small>{user.email}</small>
+      </div>
       
       <ButtonContainer>
         {isLoading ? (
-            <ButtonGoogle onClick={() => navigate('/dashboard')}>
+            <ButtonGoogle onClick={handleGoogleLogin}>
                 <FontAwesomeIcon icon={faGoogle} />
                 Google
             </ButtonGoogle>
@@ -66,7 +86,7 @@ export default function ModalLogin() {
         )}
 
         {isLoading ? (
-          <ButtonFacebook>
+          <ButtonFacebook onClick={() => navigate('/dashboard')}>
             <FontAwesomeIcon icon={faFacebook} />
             Facebook
           </ButtonFacebook>

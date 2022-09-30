@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import { StationList } from '../pages/StationList';
 import { StationRegister } from '../pages/StationRegister';
-import { Login } from '../pages/Login';
+import { Login } from '../pages/Login/index';
 import { Dashboard } from '../pages/Dashboard';
 import { ParameterRegister } from '../pages/ParameterRegister';
 
