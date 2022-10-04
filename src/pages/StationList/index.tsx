@@ -37,7 +37,7 @@ export function StationList(){
             <Footer>
                 <ContentFooter>
                     <ButtonDefault 
-                     title='Cadastrar estação' 
+                     title='Usuários cadastrados' 
                      backgroundButton={THEME.colors.green_100} 
                      widthButton={'184px'} 
                      heightButton={'56px'}
