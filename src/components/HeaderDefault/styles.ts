@@ -27,7 +27,7 @@ export const Image = styled.img`
 `;
 
 export const Title = styled.span`
-    color: ${THEME.colors.blue_100};
+    color: ${THEME.colors.green_100};
     font-size: 24px;
     font-weight: bold;
 `;
