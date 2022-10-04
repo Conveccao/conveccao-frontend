@@ -6,6 +6,7 @@ import { Login } from '../pages/Login/index';
 import { Dashboard } from '../pages/Dashboard';
 import { Presentation } from '../pages/Presentation';
 import { ParameterRegister } from '../pages/ParameterRegister';
+import { StationDetails } from '../pages/StationDetails';
 import { UserControl } from '../pages/UserControl';
 
 export default function AppRoutes() {
@@ -19,6 +20,7 @@ export default function AppRoutes() {
       <Route path="/user-control" element={<UserControl />} />
       <Route path="/parameter-register" element={<ParameterRegister />} />
       <Route path="/home" element={<Presentation />} />
+      <Route path="/station-details" element={<StationDetails />} />
     </Routes>
   );
 }
