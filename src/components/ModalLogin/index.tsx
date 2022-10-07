@@ -18,23 +18,45 @@ import {
 } from "./styles";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import UserHandlers from "../../integration/handlers/userHandlers";
 
 
 export default function ModalLogin() {
 
   const [ user, setUser ] = useState<User>({} as User);
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  let userHandler = new UserHandlers()
+
+  const handleCreateUser = async(user: object) => {
+    try {
+      userHandler.handleCreateUser(user)
+      console.log(user)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   function handleGoogleLogin(){
     const provider = new GoogleAuthProvider();
 
     signInWithPopup (auth, provider)
-    .then (result => {setUser(result.user); console.log(result);})
-    .catch((error) => {console.log(error);})
+    .then (
+      (result: any) => {
+        setUser(result.user); console.log(result);
+        let newUser = {
+          name: result.user.displayName,
+          email: result.user.email,
+          photo: result.user.photoURL
+        }
+        console.log(user)
+        handleCreateUser(newUser)
+      }
+    )
+    .catch((error: any) => {console.log(error);})
 
   }
-
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
