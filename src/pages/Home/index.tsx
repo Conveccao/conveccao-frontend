@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 
+import CardStation from "../../components/CardStation";      
 import { HeaderDefault } from "../../components/HeaderDefault";
 import { Sidebar } from "../../components/Sidebar";
 import { TileLayer, Marker, Popup } from "react-leaflet";
@@ -8,13 +9,14 @@ import {
   StyledMap,
   StyledMapContainer,
   LoadingContainer,
+  Container
 } from "./styles";
 
-
+import FatecImg from "../../assets/images/fatecImg.jpg";
+import EscolaImg from "../../assets/images/escolaImg.png";
 
 import L from "leaflet";
 import StationIcon from "../../assets/icons/satelliteIcon.svg";
-
 
 const markerIcon = new L.Icon({
   iconUrl: StationIcon,
@@ -72,6 +74,32 @@ export function Home() {
           </LoadingContainer>
         )}
       </StyledMapContainer>
+
+      <Container>
+{isLoading ? (
+  <CardStation
+    stationName="Estação Fatec"
+    stationImage={FatecImg}
+    stationInfo="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mauris sapien, vestibulum mollis ultrices dapibus, ornare ut nunc. Nunc tempus nunc massa, et molestie urna viverra ut. Cras feugiat est in ligula auctor scelerisque. Integer et ullamcorper dolor. Mauris consectetur tellus a dui pharetra, ut luctus velit pretium."
+  />
+) : (
+  <LoadingContainer>
+    <CircularProgress color="success" variant="indeterminate" />
+  </LoadingContainer>
+)}
+
+{isLoading ? (
+  <CardStation
+    stationName="Estação Escola"
+    stationImage={EscolaImg}
+    stationInfo="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mauris sapien, vestibulum mollis ultrices dapibus, ornare ut nunc. Nunc tempus nunc massa, et molestie urna viverra ut. Cras feugiat est in ligula auctor scelerisque. Integer et ullamcorper dolor. Mauris consectetur tellus a dui pharetra, ut luctus velit pretium."
+  />
+) : (
+  <LoadingContainer>
+    <CircularProgress color="success" variant="indeterminate" />
+  </LoadingContainer>
+)}
+</Container>
     </>
   );
 }

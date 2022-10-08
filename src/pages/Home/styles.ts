@@ -21,6 +21,17 @@ export const StyledMap = styled(MapContainer)`
     border-radius: 0.5rem;
 `;
 
+export const Container = styled.div`
+  margin: 0 1.5rem 1rem 17rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  
+  @media (max-width: 768px) {
+    margin: 0 1.5rem 1rem 1.5rem;
+  }
+`;
+
 export const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
