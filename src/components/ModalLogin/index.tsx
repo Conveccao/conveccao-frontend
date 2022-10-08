@@ -33,29 +33,43 @@ export default function ModalLogin() {
     try {
       userHandler.handleCreateUser(user)
       console.log(user)
+      navigate('/dashboard')
     } catch (error) {
       console.log(error)
     }
   }
 
-  function handleGoogleLogin(){
+  const handleUserExists = async(email: string) => {
+    try{
+      return await userHandler.handleUserExists(email)
+    } catch (error){
+      console.log(error)
+    }
+  }
+
+  async function handleGoogleLogin(){
     const provider = new GoogleAuthProvider();
 
     signInWithPopup (auth, provider)
     .then (
-      (result: any) => {
+      async (result: any) => {
         setUser(result.user); console.log(result);
         let newUser = {
           name: result.user.displayName,
           email: result.user.email,
           photo: result.user.photoURL
         }
-        console.log(user)
-        handleCreateUser(newUser)
+        console.log(newUser)
+        let userExists = await handleUserExists(result.user.email)
+        if(userExists[0]){
+          navigate('/dashboard')
+          console.log('usuario existe!')
+        } else {
+          handleCreateUser(newUser)
+        }
       }
     )
     .catch((error: any) => {console.log(error);})
-
   }
 
   useEffect(() => {

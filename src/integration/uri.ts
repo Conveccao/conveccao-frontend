@@ -3,5 +3,6 @@ export enum URI{
     SENSORS = '/sensors',
     SENSORTYPES = '/sensorTypes',
     CREATEUSER = '/user',
+    USEREXISTS = '/user-exists',
     USERS = '',
 }
