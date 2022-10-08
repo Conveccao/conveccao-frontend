@@ -1,86 +1,49 @@
-import { useEffect, useState } from "react";
-import { CircularProgress, Box } from "@mui/material";
-
+import { ChartDefault } from "../../components/CardChart";
 import { HeaderDefault } from "../../components/HeaderDefault";
 import { Sidebar } from "../../components/Sidebar";
-import { Container, Main } from "./styles";
-import { ChartDefault } from "../../components/Chart";
+import { Container } from "./styles";
+
+const options = {
+  chart: {
+    type: "spline",
+  },
+  series: [
+    {
+      data: [1, 2, 3,4,5,6,7,8,9,10],
+    },
+  ],
+  title: {
+    text: "Monthly Average Temperature",
+  },
+  subtitle: {
+    text: "Source: WorldClimate.com",
+  },
+  xAxis: {
+    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  },
+  yAxis: {
+    title: {
+      text: "Temperature (°C)",
+    },
+  },
+}
 
 
 export function Dashboard() {
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(true);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <Container>
-      <HeaderDefault title="Dashboard" />
+    <>
+      <HeaderDefault title="Dashboard"/>
       <Sidebar />
-      <Main>
-        {isLoading ? (
-          <ChartDefault/> 
-        ) : (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "100%",
-            }}
-          >
-            <CircularProgress color="success" />
-          </Box>
-        )}
-        {isLoading ? (
-          <ChartDefault/> 
-        ) : (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "100%",
-            }}
-          >
-            <CircularProgress color="success" />
-          </Box>
-        )}
-      </Main>
-      <Main>
-        {isLoading ? (
-          <ChartDefault/> 
-        ) : (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "100%",
-            }}
-          >
-            <CircularProgress color="success" />
-          </Box>
-        )}
-        {isLoading ? (
-          <ChartDefault/> 
-        ) : (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "100%",
-            }}
-          >
-            <CircularProgress color="success" />
-          </Box>
-        )}
-      </Main>
-    </Container>
+      <Container>
+        <ChartDefault title="Sensor pluviométrico" options={options}/>
+        <ChartDefault title="Sensor pluviométrico" options={options}/>
+        <ChartDefault title="Sensor pluviométrico" options={options}/>
+        <ChartDefault title="Sensor pluviométrico" options={options}/>
+        <ChartDefault title="Sensor pluviométrico" options={options}/>
+        <ChartDefault title="Sensor pluviométrico" options={options}/>
+        <ChartDefault title="Sensor pluviométrico" options={options}/>
+        <ChartDefault title="Sensor pluviométrico" options={options}/>
+      </Container>
+    </>
   );
 }

@@ -1,132 +1,123 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-
-export const Page = styled.body`
-    background-color: #FFFFFF;
-`;
-
 export const Container = styled.div`
-    max-width: 980px;
-    display: block;
-    margin: 0 auto;
-    background-color: #FFFFFF;
+  width: 100%;
+  min-width: 600px;
+  height: 100vh;
 `;
 
-export const Menu = styled.main`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    height: 15vh;    
+export const Menu = styled.nav`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 6rem;
+  padding: 1rem;
 `;
-
-export const Main = styled.main`
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-`;
-
-
-export const Nav = styled.main`
-    display: flex;
-`;
-
-export const ButtonNav = styled.main`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #00C667;
-    width: 160px;
-    height: 40px;
-    color: #fff;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    border-radius: 3px;
-    cursor: pointer;
-    text-decoration: none;
-    :hover{
-        text-decoration: none;
-        color: #fff;
-    }    
-`;
-
-export const Title = styled.h1`
-    font-size: 32px;
-    color: #1d629d;
-    font-weight: bold;
-    text-transform: uppercase;
-`;
-
-export const Subtitle = styled.p`
-    font-size: 82px;
-    color: #00C667;
-    font-weight: bold;
-    text-transform: uppercase;
-    max-width: 800px;
-`;
-
-
 
 export const Logo = styled.img`
-    max-width: 200px;
+  width: 150px;
 `;
 
-export const ButtonDoc = styled.main`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #1d629d;
-    width: 180px;
-    height: 40px;
-    color: #fff;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    border-radius: 3px;
-    cursor: pointer;
-    text-decoration: none;
-    :hover{
-        text-decoration: none;
-        color: #fff;
-    }    
+export const ButtonLogin = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+
+  text-decoration: none;
+  background-color: ${(props) => props.theme.colors.blue_100};
+  color: white;
+
+  transition: all 0.2s;
+
+  :hover {
+    background-color: ${(props) => props.theme.colors.blue_50};
+  }
 `;
 
-export const ButtonAcess = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #00C667;
-    width: 180px;
-    height: 40px;
-    color: #fff;
-    font-weight: bold;
-    text-align: center;
-    text-transform: uppercase;
-    border-radius: 3px;
-    cursor: pointer;
-    border: none;   
+export const MainContent = styled.div`
+    min-width: 600px;
+    width: 100vw;
+    height: 80vh;
 `;
 
-export const AreaButton = styled.div`
+export const Content = styled.div`
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+    padding: 0 30rem 0 30rem;
+    width: 100vw;
+    height: 100%;
+`;
+
+export const Title = styled.div`
+    font-size: 3rem;
+    font-weight: 700;
+    color: ${(props) => props.theme.colors.blue_100};
+`;
+
+export const Subtitle = styled.div`
+    font-size: 5.125rem;
+    font-weight: 400;
+    color: ${(props) => props.theme.colors.green_100};
+`;
+
+export const ContainerButton = styled.div`
+    display: flex;
     flex-direction: row;
-    gap: 20px;
-    margin: 10px 0px;
+    justify-content: space-around;
+    align-items: center;
 `;
 
+export const ButtonAccess = styled(Link)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 150px;
+    height: 40px;
 
-export const ButtonLink = styled(Link)`
+    border-radius: 8px;
+
     text-decoration: none;
-    color: white;
 
-    :hover{
-        color: white;
+    background-color: ${(props) => props.theme.colors.green_100};
+
+    color: ${(props) => props.theme.colors.white_100};
+
+    transition: all 0.2s;
+
+    :hover {
+        background-color: ${(props) => props.theme.colors.green_50};
+    }
+`;
+
+export const ButtonDoc = styled.a`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 150px;
+    height: 40px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    background-color: ${(props) => props.theme.colors.green_100};
+
+    color: ${(props) => props.theme.colors.white_100};
+
+    transition: all 0.2s;
+
+    :hover {
+        background-color: ${(props) => props.theme.colors.green_50};
     }
 `;
 

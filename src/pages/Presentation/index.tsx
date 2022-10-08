@@ -1,32 +1,41 @@
-import react from 'react';
-import { Link } from 'react-router-dom';
+import {
+  Container,
+  Menu,
+  Logo,
+  ButtonLogin,
+  MainContent,
+  Content,
+  Title,
+  Subtitle,
+  ContainerButton,
+  ButtonAccess,
+  ButtonDoc
+} from "./styles";
 
-
-import { Container, Menu, Main, Logo, Nav, ButtonNav, Title, Subtitle, ButtonDoc, ButtonAcess, AreaButton, Page, ButtonLink, } from './styles';
-
-import LogoMenu from '../../assets/images/logosubtitle.jpeg';
-
-
+import LogoMenu from "../../assets/images/logosubtitle.png";
 
 export function Presentation() {
 
   return (
-    <Page>
+    
       <Container>
         <Menu>
-          <Nav></Nav>
           <Logo src={LogoMenu} alt="logo" />
-          <ButtonLink to="/login"><ButtonNav>LOGIN</ButtonNav></ButtonLink>
+          <ButtonLogin to="/login">
+            Login
+          </ButtonLogin>
         </Menu>
-        <Main>
-          <Title>Convecção</Title>
-          <Subtitle>Plataforma de disseminação de dados.</Subtitle>
-          <AreaButton>
-            <ButtonLink to="/dashboard"><ButtonDoc>ACESSAR</ButtonDoc></ButtonLink>
-            <a href='https://app.swaggerhub.com/apis-docs/Nathtruyts/Conveccao/1.0' ><ButtonAcess>DOCUMENTAÇÃO</ButtonAcess></a>
-          </AreaButton>
-        </Main>
+
+        <MainContent>
+            <Content>
+                <Title>Convecção</Title>
+                <Subtitle>Plataforma de disseminação de dados.</Subtitle>
+            </Content>
+            <ContainerButton>
+                <ButtonAccess to="/register">Acessar</ButtonAccess>
+                <ButtonDoc href="https://app.swaggerhub.com/apis-docs/Nathtruyts/Conveccao/1.0" target="_blank">Documentação</ButtonDoc>
+            </ContainerButton>
+        </MainContent>
       </Container>
-    </Page>
   );
 }

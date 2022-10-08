@@ -10,7 +10,7 @@ import {
   Logo,
 } from './styles';
 
-import logo from '../../assets/images/logo.svg';
+import logo from '../../assets/icons/logo.svg';
 
 
 export function Sidebar() {
@@ -21,11 +21,17 @@ export function Sidebar() {
           <Logo src={logo} alt="logo" />
           <Title>Menu</Title>
         </ContainerLogo>
+       
         <Navbar>
-          <NavbarLink to="/dashboard">
+          <NavbarLink to="/home">
             Página inicial
           </NavbarLink>
-          <NavbarLink to="/usercontrol">
+
+          <NavbarLink to="">
+            Perfil
+          </NavbarLink>
+
+          <NavbarLink to="">
             Usuários cadastrados
           </NavbarLink>
 

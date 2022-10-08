@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import StationHandlers from '../../integration/handlers/stationHandlers';
-import { ContentFooter, FormFooter } from '../../pages/StationList/styles';
+import { FormFooter } from '../../pages/StationList/styles';
 import THEME from '../../styles/theme';
 import { ButtonDefault } from '../ButtonDefault';
 import {CustomInput} from '../InputDefault';

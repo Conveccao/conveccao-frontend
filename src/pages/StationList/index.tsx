@@ -1,51 +1,68 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {ButtonDefault} from '../../components/ButtonDefault';
-import {HeaderDefault} from '../../components/HeaderDefault';
-import { Sidebar } from '../../components/Sidebar';
-import { TableStation } from '../../components/TableStation';
-import THEME from '../../styles/theme';
-import {CircularProgress, Box} from '@mui/material';
-import { Main, Footer, ContentFooter, Container } from './styles';
+import { useEffect, useState } from "react";
 
-export function StationList(){
-    const [isLoading, setIsLoading] = useState(false);
+import { ButtonDefault } from "../../components/ButtonDefault";
+import { HeaderDefault } from "../../components/HeaderDefault";
+import { Sidebar } from "../../components/Sidebar";
 
-    const navigate = useNavigate();
-    
-    useEffect(() => {
-        const timer = setTimeout(() => {
-          setIsLoading(true);
-        }, 2000);
-        return () => clearTimeout(timer);
-      } , []);
+import axios from "axios";
+import { URI } from "../../integration/uri";
 
-    return(
-        <Container>
-            <Sidebar />
-            <HeaderDefault title='Estações meteorológicas'/>
-            <Main> 
-            { 
-                isLoading ? 
-                <TableStation />
-                :
-                <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%"}}>
-                    <CircularProgress color="success" />
-                </Box>
-            }
-            </Main>
-            <Footer>
-                <ContentFooter>
-                    <ButtonDefault 
-                     title='Usuários cadastrados' 
-                     backgroundButton={THEME.colors.green_100} 
-                     widthButton={'184px'} 
-                     heightButton={'56px'}
-                     hoverBackgroundButton={THEME.colors.green_50}
-                     onClick={() => navigate('/stationregister')}
-                     />
-                </ContentFooter>
-            </Footer>
-        </Container>
-    )
+import { Main, Table, TableTH, TableTD, TableTDButton } from "./styles";
+import THEME from "../../styles/theme";
+
+export function StationList() {
+  const [stations, setStations] = useState([]);
+
+  const handleGetAll = async () => {
+    const res = await axios.get(URI.STATIONS);
+    return res.data;
+  };
+
+  const getAllStations = async () => {
+    const allStations: [] = await handleGetAll();
+    setStations(allStations);
+    console.log(allStations);
+  };
+
+  useEffect(() => {
+    getAllStations();
+  }, []);
+
+  return (
+    <>
+      <HeaderDefault title="Lista das estações" />
+      <Sidebar />
+      <Main>
+        <Table>
+          <thead>
+            <tr>
+              <TableTH>Código</TableTH>
+              <TableTH>Nome da estação</TableTH>
+              <TableTH>Localização</TableTH>
+              <TableTH>Detalhes</TableTH>
+            </tr>
+          </thead>
+
+          <tbody>
+           {stations.map((station: any) => (
+              <tr key={station.id}>
+                <TableTD>{station.id}</TableTD>
+                <TableTD>{station.name}</TableTD>
+                <TableTD>{station.reference}</TableTD>
+                <TableTDButton>
+                  <ButtonDefault
+                    title="Detalhes"
+                    backgroundButton={THEME.colors.green_100}
+                    widthButton={"184px"}
+                    heightButton={"40px"}
+                    hoverBackgroundButton={THEME.colors.green_50}
+                  />
+                </TableTDButton>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </Main>
+    </>
+  );
 }
