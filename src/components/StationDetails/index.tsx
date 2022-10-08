@@ -109,6 +109,5 @@ export function StationDisplay() {
           </Footer>
         </Row>
       </Container>
-        
     );
 }

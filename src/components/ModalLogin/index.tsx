@@ -105,7 +105,7 @@ export default function ModalLogin() {
 
       <div className=" user">
         {user.photoURL && (
-          <img src={user.photoURL} style={{ width: "40px", height: "40px" }} />
+          <img src={user.photoURL} style={{ width: "40px", height: "40px" }} alt="Foto de perfil"/>
         )}
         <strong>{user.displayName}</strong>
         <small>{user.email}</small>

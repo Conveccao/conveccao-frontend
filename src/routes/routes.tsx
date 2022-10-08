@@ -1,13 +1,16 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
-import { StationList } from '../pages/StationList';
-import { StationRegister } from '../pages/StationRegister';
-import { Login } from '../pages/Login/index';
-import { Dashboard } from '../pages/Dashboard';
-import { Presentation } from '../pages/Presentation';
-import { ParameterRegister } from '../pages/ParameterRegister';
-import { StationDetails } from '../pages/StationDetails';
-import { UserControl } from '../pages/UserControl';
+import {
+  StationList,
+  StationRegister,
+  Login,
+  Dashboard,
+  Presentation,
+  ParameterRegister,
+  StationDetails,
+  UserControl,
+  Home
+} from "../pages/index";
 
 export default function AppRoutes() {
   return (
@@ -19,7 +22,7 @@ export default function AppRoutes() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/user-control" element={<UserControl />} />
       <Route path="/parameter-register" element={<ParameterRegister />} />
-      <Route path="/home" element={<Presentation />} />
+      <Route path="/home-page" element={<Home />} />
       <Route path="/station-details" element={<StationDetails />} />
     </Routes>
   );
