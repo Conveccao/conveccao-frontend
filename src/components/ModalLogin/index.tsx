@@ -128,7 +128,7 @@ export default function ModalLogin() {
         )}
 
         {isLoading ? (
-          <ButtonFacebook>
+          <ButtonFacebook disabled>
             <FontAwesomeIcon icon={faFacebook} />
             Facebook
           </ButtonFacebook>

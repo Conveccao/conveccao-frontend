@@ -1,8 +1,9 @@
 export enum URI{
-    STATIONS = '/stations',
-    SENSORS = '/sensors',
-    SENSORTYPES = '/sensorTypes',
+    STATIONS = 'http://localhost:8081/stations',
+    PARAMETERS = '/parameters',
+    PARAMETERTYPES = '/parametersTypes',
     CREATEUSER = '/user',
     USEREXISTS = '/user-exists',
-    USERS = '',
+    USERS = '/users',
+    LOGIN = '/login'
 }

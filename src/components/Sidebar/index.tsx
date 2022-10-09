@@ -39,7 +39,7 @@ export function Sidebar() {
             Cadastro de estações
           </NavbarLink>
 
-          <NavbarLink to="/stationlist">
+          <NavbarLink to="/stationList">
             Estações cadastradas
           </NavbarLink>
         </Navbar>
