@@ -9,7 +9,8 @@ import {
   ParameterRegister,
   StationDetails,
   UserControl,
-  Home
+  Home,
+  SensorList
 } from "../pages/index";
 
 export default function AppRoutes() {
@@ -22,6 +23,7 @@ export default function AppRoutes() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/user-control" element={<UserControl />} />
       <Route path="/parameter-register" element={<ParameterRegister />} />
+      <Route path="/sensor-list" element={<SensorList />} />
       <Route path="/home-page" element={<Home />} />
       <Route path="/station-details" element={<StationDetails />} />
     </Routes>

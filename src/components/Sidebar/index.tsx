@@ -23,23 +23,23 @@ export function Sidebar() {
         </ContainerLogo>
        
         <Navbar>
-          <NavbarLink to="/home">
+          <NavbarLink to="/home-page">
             Página inicial
           </NavbarLink>
 
-          <NavbarLink to="">
+          {/* <NavbarLink to="">
             Perfil
-          </NavbarLink>
+          </NavbarLink> */}
 
-          <NavbarLink to="">
+          <NavbarLink to="/user-control">
             Usuários cadastrados
           </NavbarLink>
 
-          <NavbarLink to="/stationregister">
+          <NavbarLink to="/station-register">
             Cadastro de estações
           </NavbarLink>
 
-          <NavbarLink to="/stationlist">
+          <NavbarLink to="/station-list">
             Estações cadastradas
           </NavbarLink>
         </Navbar>
