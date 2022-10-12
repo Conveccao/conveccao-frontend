@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { HeaderDefault } from "../../components/HeaderDefault";
 import { Sidebar } from "../../components/Sidebar";
+
+import axios from "axios";
+import { URI } from "../../integration/uri";
+
 import {
   Select,
   MenuItem,
-  SelectChangeEvent,
   FormControl,
   Box,
 } from "@mui/material";
@@ -12,18 +15,26 @@ import { Main, Table, TableTH, TableTD, TableTDButton } from "./styles";
 
 export function UserControl() {
   const [isLoading, setIsLoading] = useState(false);
-  const [nivelUsu, setNivelUsu] = useState("");
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setNivelUsu(event.target.value);
+  const [users, setUsers] = useState([]);
+
+  const handleGetAll = async () => {
+    const res = await axios.get(URI.USERS);
+    return res.data;
+  };
+
+  const getAllUsers = async () => {
+    const allUsers: [] = await handleGetAll();
+    setUsers(allUsers);
   };
 
   useEffect(() => {
+    getAllUsers();
     const timer = setTimeout(() => {
       setIsLoading(true);
     }, 2000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [getAllUsers]);
 
   return (
     <>
@@ -41,32 +52,33 @@ export function UserControl() {
           </thead>
 
           <tbody>
-            <tr>
-              <TableTD>Vinicius Buarque</TableTD>
-              <TableTD>vinicius@gmail.com</TableTD>
-              <TableTD>Usuário comum</TableTD>
-              <TableTDButton>
-                <Box sx={{ minWidth: 80 }}>
-                  <FormControl sx={{ minWidth: 250 }}>
-                    <Select
-                      value={nivelUsu}
-                      onChange={handleChange}
-                      displayEmpty
-                      inputProps={{ "aria-label": "Without label" }}
-                      renderValue={(selected) => {
-                        if (selected.length === 0) {
+            {users.map((user: any) => (
+              <tr key={user.id} >
+                <TableTD>{user.name}</TableTD>
+                <TableTD>{user.email}</TableTD>
+                <TableTD>{user.role}</TableTD>
+                <TableTDButton>
+                  <Box sx={{ minWidth: 80 }}>
+                    <FormControl sx={{ minWidth: 250 }}>
+                      <Select
+                        value='Escolha o nível de acesso'
+                        displayEmpty
+                        inputProps={{ "aria-label": "Without label" }}
+                        renderValue={(selected) => {
+                          if (selected.length === 0) {
                             return <em>Nível de acesso</em>;
-                        }
-                        return selected;
+                          }
+                          return selected;
                         }}
-                    >
-                      <MenuItem value="Administrador">Administrador</MenuItem>
-                      <MenuItem value="Usuário Comum">Usuário Comum</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Box>
-              </TableTDButton>
-            </tr>
+                      >
+                        <MenuItem value="Administrador">Administrador</MenuItem>
+                        <MenuItem value="Usuário Comum">Usuário Comum</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Box>
+                </TableTDButton>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </Main>

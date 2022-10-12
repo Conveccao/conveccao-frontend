@@ -18,15 +18,15 @@ export function StationList() {
     return res.data;
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getAllStations = async () => {
     const allStations: [] = await handleGetAll();
     setStations(allStations);
-    console.log(allStations);
   };
 
   useEffect(() => {
     getAllStations();
-  }, []);
+  }, [getAllStations]);
 
   return (
     <>
