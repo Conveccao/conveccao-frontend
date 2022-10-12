@@ -32,7 +32,7 @@ export function Presentation() {
                 <Subtitle>Plataforma de disseminação de dados.</Subtitle>
             </Content>
             <ContainerButton>
-                <ButtonAccess to="/register">Acessar</ButtonAccess>
+                <ButtonAccess to="/home-page">Acessar</ButtonAccess>
                 <ButtonDoc href="https://app.swaggerhub.com/apis-docs/Nathtruyts/Conveccao/1.0" target="_blank">Documentação</ButtonDoc>
             </ContainerButton>
         </MainContent>

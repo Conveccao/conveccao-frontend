@@ -12,7 +12,7 @@ export default class UserHandlers{
         return this.userRequests.userExists(email)
     }
 
-    public handleLogin(user: object){
-        return this.userRequests.login(user)
+    public handleLogin(email: string){
+        return this.userRequests.login(email)
     }
 }

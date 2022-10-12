@@ -1,5 +1,6 @@
 import axios from "../axios"
 import { URI } from "../uri"
+import SessionController from "../../session/sessionController"
 
 export default class UserRequests{
     public async createUser(user: object){
@@ -15,17 +16,15 @@ export default class UserRequests{
     public async userExists(email: string) {
         try {
             const res = await axios.post(URI.USEREXISTS, {email: email})
-            console.log(res.data)
             return res.data
         } catch (error) {
             console.log(error)
         }
     }
 
-    public async login(user: object) {
+    public async login(email: string) {
         try {
-            const res = await axios.post(URI.LOGIN, user)
-            console.log(res.data)
+            const res = await axios.post(URI.LOGIN, {email: email})
             return res.data
         } catch (error) {
             console.log(error)

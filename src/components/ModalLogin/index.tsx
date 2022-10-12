@@ -19,23 +19,55 @@ import {
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import UserHandlers from "../../integration/handlers/userHandlers";
+import SessionController from "../../session/sessionController";
 
 export default function ModalLogin() {
   const [user, setUser] = useState<User>({} as User);
   const navigate = useNavigate();
+  const [authenticated, setAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(false);
 
   let userHandler = new UserHandlers();
+
+  useEffect(() => {
+    checkAuthentication()
+  }, [])
+
+  const checkAuthentication = async () => {
+    const token = SessionController.getToken()
+    if(token == null){
+      setAuthenticated(false)
+    } else {
+      setAuthenticated(true)
+    }
+    return authenticated
+  }
+
+  useEffect(() => {
+    if(authenticated){
+      navigate('/dashboard')
+    }
+  }, [authenticated, navigate])
 
   const handleCreateUser = async (user: object) => {
     try {
       userHandler.handleCreateUser(user);
       console.log(user);
-      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }
   };
+
+  const handleLogin = async (email: string) => {
+    try {
+      const obj = await userHandler.handleLogin(email);
+      SessionController.setToken(obj.token)
+      SessionController.setUserData(obj.user)
+      setAuthenticated(true)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const handleUserExists = async (email: string) => {
     try {
@@ -57,14 +89,14 @@ export default function ModalLogin() {
           email: result.user.email,
           photo: result.user.photoURL,
         };
-        console.log(newUser);
         let userExists = await handleUserExists(result.user.email);
         if (userExists[0]) {
-          navigate("/dashboard");
           console.log("usuario existe!");
         } else {
           handleCreateUser(newUser);
         }
+
+        await handleLogin(result.user.email)
       })
       .catch((error: any) => {
         console.log(error);

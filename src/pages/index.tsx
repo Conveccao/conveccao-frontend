@@ -1,6 +1,6 @@
 export * from './StationList';
 export * from './StationRegister';
-export * from './Login/index';
+export * from './Login';
 export * from './Dashboard';
 export * from './Presentation';
 export * from './ParameterRegister';
@@ -8,3 +8,4 @@ export * from './StationDetails';
 export * from './UserControl';
 export * from './StationDetails';
 export * from './Home';
+export * from './SensorList';

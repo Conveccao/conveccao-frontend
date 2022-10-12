@@ -15,7 +15,7 @@ export const Container = styled.div`
 
   background: ${THEME.colors.white_100};
 
-  border-radius: 16px;
+  border-radius: 8px;
 
   box-shadow: ${THEME.boxShadow.shadowDefault};
 `;
