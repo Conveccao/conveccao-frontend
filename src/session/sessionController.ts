@@ -22,7 +22,7 @@ export default new class SessionController{
 
     //USER
     setUserData(user: object){
-        sessionStorage.setItem('user_data', JSON.stringify(user))
+        return sessionStorage.setItem('user_data', JSON.stringify(user))
     }
 
     getUserData(){
@@ -31,5 +31,9 @@ export default new class SessionController{
 
     removeUserData(){
         sessionStorage.removeItem('user_data')
+    }
+
+    getUserRole(){
+        sessionStorage.get('user_data')
     }
 }

@@ -35,7 +35,7 @@ export default function ModalLogin() {
 
   const checkAuthentication = async () => {
     const token = SessionController.getToken()
-    if(token == null){
+    if (token == null) {
       setAuthenticated(false)
     } else {
       setAuthenticated(true)
@@ -44,7 +44,7 @@ export default function ModalLogin() {
   }
 
   useEffect(() => {
-    if(authenticated){
+    if (authenticated) {
       navigate('/dashboard')
     }
   }, [authenticated, navigate])
@@ -79,7 +79,6 @@ export default function ModalLogin() {
 
   async function handleGoogleLogin() {
     const provider = new GoogleAuthProvider();
-
     signInWithPopup(auth, provider)
       .then(async (result: any) => {
         setUser(result.user);
@@ -90,15 +89,10 @@ export default function ModalLogin() {
         };
         let userExists = await handleUserExists(result.user.email);
         if (userExists[0]) {
-<<<<<<< HEAD
           navigate("/dashboard");
-=======
-          console.log("usuario existe!");
->>>>>>> 0f24b4dbca52a259cebb16ac11238084904f762d
         } else {
           handleCreateUser(newUser);
         }
-
         await handleLogin(result.user.email)
       })
       .catch((error: any) => {
@@ -141,7 +135,7 @@ export default function ModalLogin() {
           <img src={user.photoURL} style={{ width: "40px", height: "40px" }} alt="Foto de perfil" />
         )}
         <strong>{user.displayName}</strong>
-        <small>{user.email}</small> 
+        <small>{user.email}</small>
       </div>
 
       <ButtonContainer>

@@ -1,4 +1,4 @@
-import { UserData } from './Usuario';
+import { DadosUsuario } from './Usuario';
 
 export default new class ControleSessao {
     clear() {
@@ -24,21 +24,23 @@ export default new class ControleSessao {
         sessionStorage.setItem('authentication_token', JSON.stringify(token))
     }
 
-    setUserInfo(usuario: UserData) {
+    setUserInfo(usuario: DadosUsuario) {
         sessionStorage.setItem('dados_usuario', JSON.stringify(usuario))
     }
 
-    getUserInfo() {
+    getUserInfo(){
         const sessionUser = sessionStorage.getItem('dados_usuario')
-
-        if (sessionUser == null) {
+        console.log(sessionUser())
+        if (sessionUser == null){
             return null
         }
-
         const userInfo: string = JSON.stringify(sessionUser)
         return sessionUser
     }
 
+    
+
+    /*
     getUserName() {
         const userNome = this.getUserInfo()?.split(',')[2].split(':')[1]
         return userNome?.replaceAll('"', '')
@@ -48,9 +50,10 @@ export default new class ControleSessao {
         const userEmail = this.getUserInfo()?.replaceAll('{', '').replaceAll('}', '').replaceAll('"', '').replaceAll(":", ',').split(',')[2]
         return userEmail
     }
+    */
 
     getUserCargo() {
         const userCargo = this.getUserInfo()?.split(',')[4].split(':')[1].split("_")[1].split('"')[0]
         return userCargo
-    }
+    }    
 }()
