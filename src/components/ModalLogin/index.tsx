@@ -51,17 +51,14 @@ export default function ModalLogin() {
     signInWithPopup(auth, provider)
       .then(async (result: any) => {
         setUser(result.user);
-        console.log(result);
         let newUser = {
           name: result.user.displayName,
           email: result.user.email,
           photo: result.user.photoURL,
         };
-        console.log(newUser);
         let userExists = await handleUserExists(result.user.email);
         if (userExists[0]) {
           navigate("/dashboard");
-          console.log("usuario existe!");
         } else {
           handleCreateUser(newUser);
         }
@@ -70,7 +67,6 @@ export default function ModalLogin() {
         console.log(error);
       });
   }
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(true);
@@ -102,13 +98,12 @@ export default function ModalLogin() {
           )}
         </SubtitleContainer>
       </Header>
-
       <div className=" user">
         {user.photoURL && (
-          <img src={user.photoURL} style={{ width: "40px", height: "40px" }} alt="Foto de perfil"/>
+          <img src={user.photoURL} style={{ width: "40px", height: "40px" }} alt="Foto de perfil" />
         )}
         <strong>{user.displayName}</strong>
-        <small>{user.email}</small>
+        <small>{user.email}</small> 
       </div>
 
       <ButtonContainer>

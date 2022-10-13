@@ -12,6 +12,9 @@ import {
   Container
 } from "./styles";
 
+import ControleSessao from '../../Login/ControleSessao';
+import { useNavigate } from "react-router-dom";
+
 import FatecImg from "../../assets/images/fatecImg.jpg";
 import EscolaImg from "../../assets/images/escolaImg.png";
 
@@ -26,6 +29,35 @@ const markerIcon = new L.Icon({
 });
 
 export function Home() {
+  const navigate = useNavigate();
+  const [autenticado, setAutenticado] = useState(true);
+
+  useEffect(() => {
+    checarAutenticacao()
+  }, [])
+
+  useEffect(() => {
+    if (autenticado) {
+        if (ControleSessao.getUserCargo() == 'admin') {
+            navigate('/home-page')
+        } else if (ControleSessao.getUserCargo() == 'moderator') {
+            navigate('/home-page')
+        } else if (ControleSessao.getUserCargo() == 'user') {
+            navigate('/home-page')
+        }
+    }
+}, [autenticado, navigate])
+
+  const checarAutenticacao = async () => {
+    const token = ControleSessao.getToken()
+    if (token == null) {
+      setAutenticado(false)
+    } else {
+      setAutenticado(true)
+    }
+    return autenticado
+  } 
+  
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {

@@ -12,7 +12,6 @@ import {
 
 import logo from '../../assets/icons/logo.svg';
 
-
 export function Sidebar() {
   return (
     <Container>
@@ -21,7 +20,7 @@ export function Sidebar() {
           <Logo src={logo} alt="logo" />
           <Title>Menu</Title>
         </ContainerLogo>
-       
+
         <Navbar>
           <NavbarLink to="/home-page">
             Página inicial

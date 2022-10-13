@@ -4,13 +4,38 @@ import { Container, ContainerButton, Title, SHr, ButtonTrash, Header, Content, T
 import { faTrash, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import ControleSessao from '../../Login/ControleSessao';
+import { useNavigate } from "react-router-dom";
+
 import { RadioGroup, FormControlLabel, Checkbox, Tooltip } from '@mui/material';
 import { ButtonDefault } from "../../components/ButtonDefault";
 import THEME from "../../styles/theme";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export function SensorList() {
     const navigate = useNavigate();
+    const [autenticado, setAutenticado] = useState(true);
+
+    useEffect(() => {
+        checarAutenticacao()
+    }, [])
+
+    useEffect(() => {
+        // eslint-disable-next-line eqeqeq
+        if (!autenticado || ControleSessao.getUserCargo() != 'moderator' && 'admin') {
+            navigate('/home-page')
+        }
+    }, [autenticado, navigate])
+
+    const checarAutenticacao = async () => {
+        const token = ControleSessao.getToken()
+        if (token == null) {
+            setAutenticado(false)
+        } else {
+            setAutenticado(true)
+        }
+        return autenticado
+    }
 
     return (
         <>

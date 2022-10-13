@@ -1,19 +1,43 @@
 import { useState, useEffect } from "react";
+
 import { HeaderDefault } from "../../components/HeaderDefault";
 import { Sidebar } from "../../components/Sidebar";
 
 import axios from "axios";
 import { URI } from "../../integration/uri";
 
-import {
-  Select,
-  MenuItem,
-  FormControl,
-  Box,
-} from "@mui/material";
+import ControleSessao from '../../Login/ControleSessao';
+import { useNavigate } from "react-router-dom";
+
+import { Select, MenuItem, FormControl, Box } from "@mui/material";
 import { Main, Table, TableTH, TableTD, TableTDButton } from "./styles";
 
 export function UserControl() {
+
+  const navigate = useNavigate();
+  const [autenticado, setAutenticado] = useState(true);
+
+  useEffect(() => {
+    checarAutenticacao()
+  }, [])
+
+  useEffect(() => {
+    // eslint-disable-next-line eqeqeq
+    if (!autenticado || ControleSessao.getUserCargo() != 'admin') {
+      navigate('/home-page')
+    }
+  }, [autenticado, navigate])
+
+  const checarAutenticacao = async () => {
+    const token = ControleSessao.getToken()
+    if (token == null) {
+      setAutenticado(false)
+    } else {
+      setAutenticado(true)
+    }
+    return autenticado
+  }
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [users, setUsers] = useState([]);
