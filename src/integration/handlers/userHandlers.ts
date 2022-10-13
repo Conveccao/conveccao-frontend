@@ -11,4 +11,8 @@ export default class UserHandlers{
     public handleUserExists(email: string){
         return this.userRequests.userExists(email)
     }
+
+    public handleLogin(email: string){
+        return this.userRequests.login(email)
+    }
 }

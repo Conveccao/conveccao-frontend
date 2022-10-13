@@ -11,8 +11,40 @@ import {
 } from './styles';
 
 import logo from '../../assets/icons/logo.svg';
+import { useEffect, useState } from 'react';
+import SessionController from '../../session/sessionController'
+import { useNavigate } from 'react-router-dom';
+import { GoogleLogout } from 'react-google-login';
 
 export function Sidebar() {
+
+  const [authenticated, setAuthenticated] = useState(true)
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    checkAuthentication()
+  }, [])
+
+  const checkAuthentication = async () => {
+    const token = SessionController.getToken()
+    if(token == null){
+      setAuthenticated(false)
+    } else {
+      setAuthenticated(true)
+    }
+    return authenticated
+  }
+
+  useEffect(() => {
+    if(!authenticated){
+      navigate('/login')
+    }
+  }, [authenticated, navigate])
+
+  function logout(e: any){
+    SessionController.clear()
+  }
+
   return (
     <Container>
       <Header>
@@ -44,7 +76,9 @@ export function Sidebar() {
         </Navbar>
       </Header>
       <Footer>
-        <NavbarLinkButton to="/login">
+        <NavbarLinkButton 
+          onClick={(e) => logout(e)}
+          to="/login">
           Sair
         </NavbarLinkButton>
       </Footer>

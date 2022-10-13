@@ -4,7 +4,7 @@ import { URI } from "../uri";
 export default class ParameterRequests{
     public async newParameter(parameter: object){
         try {
-            const res = await axios.post(URI.SENSORTYPES, parameter)
+            const res = await axios.post(URI.PARAMETERTYPES, parameter)
             window.alert("Parâmetro cadastrado.")
             return res.data
         } catch (err) {
