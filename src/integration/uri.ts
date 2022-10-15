@@ -5,6 +5,6 @@ export enum URI{
     CREATEUSER = 'https://conveccao.onrender.com/user',
     USEREXISTS = 'https://conveccao.onrender.com/user-exists',
     USERS = 'https://conveccao.onrender.com/users',
-    UPDATEUSER = "https://conveccao.onrender.com/update-user/:id",
+    UPDATEUSER = "https://conveccao.onrender.com/update-user",
     LOGIN = 'https://conveccao.onrender.com/login'
 }

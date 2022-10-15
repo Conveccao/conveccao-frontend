@@ -15,4 +15,8 @@ export default class UserHandlers{
     public handleLogin(email: string){
         return this.userRequests.login(email)
     }
+
+    public handleUpdateUser(id: number, role: string){
+        return this.userRequests.updateUser(id, role)
+    }
 }
