@@ -77,6 +77,7 @@ export default function ModalLogin() {
     }
   };
 
+
   async function handleGoogleLogin() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
@@ -153,12 +154,12 @@ export default function ModalLogin() {
         )}
 
         {isLoading ? (
-          
+
           <ButtonFacebook disabled>
             <FontAwesomeIcon icon={faFacebook} />
             Facebook
           </ButtonFacebook>
-          
+
         ) : (
           <Skeleton
             variant="rounded"
