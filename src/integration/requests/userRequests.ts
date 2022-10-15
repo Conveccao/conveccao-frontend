@@ -12,7 +12,7 @@ export default class UserRequests{
             window.alert("Ocorreu um erro")
         }
     }
-
+    
     public async userExists(email: string) {
         try {
             const res = await axios.post(URI.USEREXISTS, {email: email})
@@ -21,11 +21,19 @@ export default class UserRequests{
             console.log(error)
         }
     }
-
+    
     public async login(email: string) {
         try {
             const res = await axios.post(URI.LOGIN, {email: email})
-            console.log(res.data.user)
+            return res.data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    public async updateUser(id: number, role: string) {
+        try {
+            const res = await axios.put(`${URI.UPDATEUSER}/${id}`, {role: role})
             return res.data
         } catch (error) {
             console.log(error)
