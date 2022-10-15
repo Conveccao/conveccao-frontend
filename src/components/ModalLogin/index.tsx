@@ -88,9 +88,7 @@ export default function ModalLogin() {
           photo: result.user.photoURL,
         };
         let userExists = await handleUserExists(result.user.email);
-        if (userExists[0]) {
-          navigate("/dashboard");
-        } else {
+        if (!userExists[0]) {
           handleCreateUser(newUser);
         }
         await handleLogin(result.user.email)

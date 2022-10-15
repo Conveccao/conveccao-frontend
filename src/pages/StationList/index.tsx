@@ -7,7 +7,6 @@ import { Sidebar } from "../../components/Sidebar";
 import axios from "axios";
 import { URI } from "../../integration/uri";
 
-import ControleSessao from '../../Login/ControleSessao';
 import { useNavigate } from "react-router-dom";
 
 import { Main, Table, TableTH, TableTD, TableTDButton } from "./styles";
@@ -17,26 +16,6 @@ export function StationList() {
   const navigate = useNavigate();
   const [autenticado, setAutenticado] = useState(true);
 
-  useEffect(() => {
-    checarAutenticacao()
-  }, [])
-
-  useEffect(() => {
-    // eslint-disable-next-line eqeqeq, no-mixed-operators
-    if (!autenticado || ControleSessao.getUserCargo() != 'moderator' && 'admin') {
-      navigate('/home-page')
-    }
-  }, [autenticado, navigate])
-
-  const checarAutenticacao = async () => {
-    const token = ControleSessao.getToken()
-    if (token == null) {
-      setAutenticado(false)
-    } else {
-      setAutenticado(true)
-    }
-    return autenticado
-  }
 
   const [stations, setStations] = useState([]);
 

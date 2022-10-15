@@ -6,7 +6,7 @@ import { Sidebar } from "../../components/Sidebar";
 import axios from "axios";
 import { URI } from "../../integration/uri";
 
-import sessionController from '../../session/sessionController';
+import SessionController from '../../session/sessionController';
 import { useNavigate } from "react-router-dom";
 
 import { Select, MenuItem, FormControl, Box } from "@mui/material";
@@ -23,13 +23,13 @@ export function UserControl() {
 
   useEffect(() => {
     // eslint-disable-next-line eqeqeq
-    if (!autenticado || sessionController.getUserRole() != 'moderator') {
+    if (!autenticado) {
         navigate('/')
     }
   }, [autenticado, navigate])
 
   const checarAutenticacao = async () => {
-    const token = sessionController.getToken()
+    const token = SessionController.getToken()
     if (token == null) {
         setAutenticado(false)
         window.alert('Erro no Login')
@@ -40,7 +40,7 @@ export function UserControl() {
     return autenticado
   }
 
-  console.log(sessionController.getUserData);
+  console.log(SessionController.getUserData());
 
   const [isLoading, setIsLoading] = useState(false);
 

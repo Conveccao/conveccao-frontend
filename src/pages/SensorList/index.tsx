@@ -4,7 +4,7 @@ import { Container, ContainerButton, Title, SHr, ButtonTrash, Header, Content, T
 import { faTrash, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import ControleSessao from '../../Login/ControleSessao';
+import SessionController from "../../session/sessionController"
 import { useNavigate } from "react-router-dom";
 
 import { RadioGroup, FormControlLabel, Checkbox, Tooltip } from '@mui/material';
@@ -14,27 +14,26 @@ import { useEffect, useState } from "react";
 
 export function SensorList() {
     const navigate = useNavigate();
-    const [autenticado, setAutenticado] = useState(true);
+    const [authenticated, setAuthenticated] = useState(true);
 
     useEffect(() => {
-        checarAutenticacao()
+        checkAuthentication()
     }, [])
 
     useEffect(() => {
-        // eslint-disable-next-line eqeqeq
-        if (!autenticado || ControleSessao.getUserCargo() != 'moderator' && 'admin') {
-            navigate('/home-page')
+        if (!authenticated) {
+            navigate('/')
         }
-    }, [autenticado, navigate])
+    }, [authenticated, navigate])
 
-    const checarAutenticacao = async () => {
-        const token = ControleSessao.getToken()
+    const checkAuthentication = async () => {
+        const token = SessionController.getToken()
         if (token == null) {
-            setAutenticado(false)
+            setAuthenticated(false)
         } else {
-            setAutenticado(true)
+            setAuthenticated(true)
         }
-        return autenticado
+        return authenticated
     }
 
     return (

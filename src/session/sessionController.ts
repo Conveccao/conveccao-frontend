@@ -26,7 +26,10 @@ export default new class SessionController{
     }
 
     getUserData(){
-        sessionStorage.getItem('user_data')
+        const userData = sessionStorage.getItem('user_data')
+        if(userData){
+            return JSON.parse(userData)
+        }
     }
 
     removeUserData(){
@@ -34,6 +37,7 @@ export default new class SessionController{
     }
 
     getUserRole(){
-        sessionStorage.get('user_data')
+        const userRole = this.getUserData().role
+        return userRole
     }
 }

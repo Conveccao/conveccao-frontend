@@ -25,6 +25,7 @@ export default class UserRequests{
     public async login(email: string) {
         try {
             const res = await axios.post(URI.LOGIN, {email: email})
+            console.log(res.data.user)
             return res.data
         } catch (error) {
             console.log(error)
