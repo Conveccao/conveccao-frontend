@@ -153,10 +153,12 @@ export default function ModalLogin() {
         )}
 
         {isLoading ? (
+          
           <ButtonFacebook disabled>
             <FontAwesomeIcon icon={faFacebook} />
             Facebook
           </ButtonFacebook>
+          
         ) : (
           <Skeleton
             variant="rounded"

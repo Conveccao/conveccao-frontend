@@ -28,20 +28,22 @@ export function UserControl() {
     }
   }, [autenticado, navigate])
 
+  useEffect(() => {
+    if (!autenticado || SessionController.getUserRole() != 'admin') {
+        navigate('/home-page')
+    }
+  }, [autenticado, navigate])
+
   const checarAutenticacao = async () => {
     const token = SessionController.getToken()
     if (token == null) {
         setAutenticado(false)
-        window.alert('Erro no Login')
     } else {
         setAutenticado(true)
-        window.alert('Login com Sucesso')
     }
     return autenticado
   }
-
-  console.log(SessionController.getUserData());
-
+  
   const [isLoading, setIsLoading] = useState(false);
 
   const [users, setUsers] = useState([]);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import StationHandlers from '../../integration/handlers/stationHandlers';
 import { FormFooter } from '../../pages/StationList/styles';
 import THEME from '../../styles/theme';
@@ -8,7 +8,40 @@ import { Footer } from '../Sidebar/styles';
 import { SFieldset, SLabel, SFieldsetObs, Title, Subtitle } from './styles'
 import { Col, Row, Container } from 'react-grid-system';
 
+import SessionController from '../../session/sessionController';
+import { useNavigate } from 'react-router-dom';
+
 export function StationDisplay() {
+
+  const navigate = useNavigate();
+  const [autenticado, setAutenticado] = useState(true);
+
+  useEffect(() => {
+    checarAutenticacao()
+  }, [])
+
+  useEffect(() => {
+    // eslint-disable-next-line eqeqeq
+    if (!autenticado) {
+        navigate('/')
+    }
+  }, [autenticado, navigate])
+
+  useEffect(() => {
+    if (!autenticado || SessionController.getUserRole() != 'admin' && 'moderator'  ) {
+        navigate('/home-page')
+    }
+  }, [autenticado, navigate])
+
+  const checarAutenticacao = async () => {
+    const token = SessionController.getToken()
+    if (token == null) {
+        setAutenticado(false)
+    } else {
+        setAutenticado(true)
+    }
+    return autenticado
+  }
 
     const [name, setName] = useState('')
     const [installDate, setInstallDate] = useState('')

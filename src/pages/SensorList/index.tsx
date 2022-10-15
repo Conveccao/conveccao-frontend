@@ -13,29 +13,35 @@ import THEME from "../../styles/theme";
 import { useEffect, useState } from "react";
 
 export function SensorList() {
-    const navigate = useNavigate();
-    const [authenticated, setAuthenticated] = useState(true);
+     const navigate = useNavigate();
+    const [autenticado, setAutenticado] = useState(true);
 
-    useEffect(() => {
-        checkAuthentication()
-    }, [])
+  useEffect(() => {
+    checarAutenticacao()
+  }, [])
 
-    useEffect(() => {
-        if (!authenticated) {
-            navigate('/')
-        }
-    }, [authenticated, navigate])
-
-    const checkAuthentication = async () => {
-        const token = SessionController.getToken()
-        if (token == null) {
-            setAuthenticated(false)
-        } else {
-            setAuthenticated(true)
-        }
-        return authenticated
+  useEffect(() => {
+    // eslint-disable-next-line eqeqeq
+    if (!autenticado) {
+        navigate('/')
     }
+  }, [autenticado, navigate])
 
+  useEffect(() => {
+    if (!autenticado || SessionController.getUserRole() == 'user') {
+        navigate('/home-page')
+    }
+  }, [autenticado, navigate])
+
+  const checarAutenticacao = async () => {
+    const token = SessionController.getToken()
+    if (token == null) {
+        setAutenticado(false)
+    } else {
+        setAutenticado(true)
+    }
+    return autenticado
+  }
     return (
         <>
             <Header>

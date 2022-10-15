@@ -7,6 +7,7 @@ import { Sidebar } from "../../components/Sidebar";
 import axios from "axios";
 import { URI } from "../../integration/uri";
 
+import SessionController from '../../session/sessionController';
 import { useNavigate } from "react-router-dom";
 
 import { Main, Table, TableTH, TableTD, TableTDButton } from "./styles";
@@ -16,6 +17,34 @@ export function StationList() {
   const navigate = useNavigate();
   const [autenticado, setAutenticado] = useState(true);
 
+
+  useEffect(() => {
+    checarAutenticacao()
+  }, [])
+
+  useEffect(() => {
+    // eslint-disable-next-line eqeqeq
+    if (!autenticado) {
+        navigate('/')
+    }
+  }, [autenticado, navigate])
+
+  useEffect(() => {
+    // eslint-disable-next-line eqeqeq
+    if (!autenticado || SessionController.getUserRole() == 'user'){
+        navigate('/home-page')
+    }
+  }, [autenticado, navigate])
+
+  const checarAutenticacao = async () => {
+    const token = SessionController.getToken()
+    if (token == null) {
+        setAutenticado(false)
+    } else {
+        setAutenticado(true)
+    }
+    return autenticado
+  }
 
   const [stations, setStations] = useState([]);
 
