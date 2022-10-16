@@ -13,8 +13,16 @@ import { useNavigate } from 'react-router-dom';
 
 export function StationDisplay() {
 
+  console.log(SessionController.getStationInstallDate())
+
   const navigate = useNavigate();
   const [autenticado, setAutenticado] = useState(true);
+  const [id, setId] = useState(SessionController.getStationId())
+  const [name, setName] = useState(SessionController.getStationName())
+  const [installDate, setInstallDate] = useState(SessionController.getStationInstallDate())
+  const [lat, setLat] = useState(SessionController.getStationLat())
+  const [lon, setLon] = useState(SessionController.getStationLon())
+  const [reference, setReference] = useState(SessionController.getStationReference())
 
   useEffect(() => {
     checarAutenticacao()
@@ -28,7 +36,7 @@ export function StationDisplay() {
   }, [autenticado, navigate])
 
   useEffect(() => {
-    if (!autenticado || SessionController.getUserRole() != 'admin' && 'moderator'  ) {
+    if (!autenticado || (SessionController.getUserRole() == 'user')) {
         navigate('/home-page')
     }
   }, [autenticado, navigate])
@@ -43,12 +51,6 @@ export function StationDisplay() {
     return autenticado
   }
 
-    const [name, setName] = useState('')
-    const [installDate, setInstallDate] = useState('')
-    const [lat, setLat] = useState('')
-    const [lon, setLon] = useState('')
-    const [reference, setReference] = useState('')
-
     let station = {
         installation_date: installDate,
         name: name,
@@ -59,13 +61,10 @@ export function StationDisplay() {
 
     let stationHandlers = new StationHandlers()
 
-    const handleNewStation = async(e:any) => {
-        e.preventDefault()
+    const handleUpdateStation = async(id: number, station: object) => {
 
         try{
-            stationHandlers.handleNewStation(station)
-            e.target.reset()
-            console.log(station)
+            stationHandlers.handleUpdateStation(id, station)
         } catch (err){
             console.log(err)
         }
@@ -73,20 +72,20 @@ export function StationDisplay() {
 
     return (
       <Container>     
-        <Title>Estação 001 - FATEC</Title>
-        <Subtitle>Estação criada dia 01/01/2022</Subtitle>
+        <Title>{name}</Title>
+        <Subtitle>Estação criada dia {installDate}</Subtitle>
         <Row>
           <Col>   
             <SFieldset>
               <SLabel>Nome da estação</SLabel>
-              <CustomInput placeholder='Digite o nome da estação'
+              <CustomInput placeholder={name}
               onChange={(e) => setName(e.target.value)}/>
             </SFieldset>
           </Col>
           <Col>
             <SFieldset>
-              <SLabel>Cidade</SLabel>
-              <CustomInput placeholder='Digite a data da instalação'
+              <SLabel>Data de instalação</SLabel>
+              <CustomInput placeholder={installDate}
               type='date'
               onChange={(e) => setInstallDate(e.target.value)}/>
             </SFieldset>
@@ -95,15 +94,15 @@ export function StationDisplay() {
         <Row>
           <Col>
             <SFieldset>
-              <SLabel>Referência</SLabel>
-              <CustomInput placeholder='Digite a latitude da estação'
+              <SLabel>Latitude</SLabel>
+              <CustomInput placeholder={lat}
               onChange={(e) => setLat(e.target.value)}/>
             </SFieldset>
           </Col>
           <Col>
             <SFieldset>
-              <SLabel>Tipo</SLabel>
-              <CustomInput placeholder='Digite a longitude da estação'
+              <SLabel>Longitude</SLabel>
+              <CustomInput placeholder={lon}
               onChange={(e) => setLon(e.target.value)}/>
             </SFieldset>
           </Col>
@@ -111,8 +110,8 @@ export function StationDisplay() {
         <Row style={{alignItems: 'end'}}>  
           <Col>
             <SFieldsetObs>
-              <SLabel>Observações</SLabel>
-              <CustomInput placeholder='Digite a referência da estação'
+              <SLabel>Referência</SLabel>
+              <CustomInput placeholder={reference}
               onChange={(e) => setReference(e.target.value)}/>
             </SFieldsetObs>
           </Col>
@@ -126,6 +125,7 @@ export function StationDisplay() {
                   backgroundButton={THEME.colors.green_50}
                   widthButton={'184px'} 
                   heightButton={'56px'}
+                  onClick={(e) => handleUpdateStation(id, station)}
                   type = "submit"
                 />
               </Col>

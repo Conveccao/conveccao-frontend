@@ -65,7 +65,7 @@ export function StationForm() {
             </SFieldset>
 
             <SFieldset>
-                <SLabel>Altitude</SLabel>
+                <SLabel>Referência</SLabel>
                 <CustomInput placeholder='Digite a referência da estação'
                 onChange={(e) => setReference(e.target.value)}/>
             </SFieldset>

@@ -23,18 +23,18 @@ export function StationList() {
   }, [])
 
   useEffect(() => {
-    // eslint-disable-next-line eqeqeq
     if (!autenticado) {
-        navigate('/')
+        navigate('/login')
+    } else {
+      if (!checkAuthorization()) navigate('/home-page')
     }
   }, [autenticado, navigate])
 
-  useEffect(() => {
-    // eslint-disable-next-line eqeqeq
-    if (!autenticado || SessionController.getUserRole() == 'user'){
-        navigate('/home-page')
-    }
-  }, [autenticado, navigate])
+  const checkAuthorization = () => {
+    const userRole = SessionController.getUserRole()
+    if(userRole == 'user') return false
+    return true
+  }
 
   const checarAutenticacao = async () => {
     const token = SessionController.getToken()
@@ -91,6 +91,7 @@ export function StationList() {
                     widthButton={"184px"}
                     heightButton={"40px"}
                     hoverBackgroundButton={THEME.colors.green_50}
+                    onClick={(e) => {navigate("/station-details"); SessionController.setStationData(station)}}
                   />
                 </TableTDButton>
               </tr>
