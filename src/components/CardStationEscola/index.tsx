@@ -12,14 +12,16 @@ import {
     StationCardImage,
 } from "./styles";
 
+import { useNavigate } from 'react-router-dom';
+
 type StationCardProps = ImgHTMLAttributes<HTMLImageElement> & {
     stationName: string;
     stationImage: string;
     stationInfo: string;
 };
 
-
 export default function CardStation({ stationName, stationImage, stationInfo }: StationCardProps) {
+    const navigate = useNavigate();
     return (
         <StationCard>
           <StationCardHeader>
@@ -34,6 +36,7 @@ export default function CardStation({ stationName, stationImage, stationInfo }: 
             </StationCardInfo>
           </StationCardInfoContainer>
           <ButtonDefault
+            onClick={() => navigate('/dashboard-escola')}
             title={stationName}
             widthButton="230px"
             heightButton="48px"

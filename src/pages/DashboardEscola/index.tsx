@@ -32,11 +32,11 @@ const options = {
 }
 
 
-export function Dashboard() {
+export function DashboardEscola() {
 
   return (
     <>
-      <HeaderDefault title="Dashboard"/>
+      <HeaderDefault title="Estação Rio Cumprido"/>
       <Sidebar />
       <Container>
         <ChartDefault title="Sensor pluviométrico" options={options}/>

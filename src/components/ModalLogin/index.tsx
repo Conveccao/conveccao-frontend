@@ -45,7 +45,7 @@ export default function ModalLogin() {
 
   useEffect(() => {
     if (authenticated) {
-      navigate('/dashboard')
+      navigate('/home-page')
     }
   }, [authenticated, navigate])
 
