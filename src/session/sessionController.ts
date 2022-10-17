@@ -37,7 +37,6 @@ export default new class SessionController{
     }
 
     getUserRole(){
-<<<<<<< HEAD
         if(this.getUserData()) return this.getUserData().role
         return null
     }
@@ -88,9 +87,7 @@ export default new class SessionController{
         if (station) return station.id
         return null
     }
-=======
         const userRole = this.getUserData().role
         return userRole
     } 
->>>>>>> e060c2a (Feat: adicionado a integração da página inicial)
 }
