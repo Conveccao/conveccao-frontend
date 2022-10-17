@@ -22,14 +22,14 @@ export default new class SessionController{
 
     //USER
     setUserData(user: object){
-        return sessionStorage.setItem('user_data', JSON.stringify(user))
+        sessionStorage.setItem('user_data', JSON.stringify(user))
+        console.log(user)
     }
 
     getUserData(){
         const userData = sessionStorage.getItem('user_data')
-        if(userData){
-            return JSON.parse(userData)
-        }
+        if(userData) return JSON.parse(userData)
+        return null
     }
 
     removeUserData(){
@@ -37,7 +37,54 @@ export default new class SessionController{
     }
 
     getUserRole(){
-        const userRole = this.getUserData().role
-        return userRole
+        if(this.getUserData()) return this.getUserData().role
+        return null
+    }
+
+    //STATION
+    setStationData(station: object){
+        sessionStorage.setItem('current_station', JSON.stringify(station))
+    }
+
+    getStationData(){
+        const stationData = sessionStorage.getItem('current_station')
+        if (stationData) return JSON.parse(stationData)
+        return null
+    }
+
+    getStationName(){
+        const station = this.getStationData()
+        if (station) return station.name
+        return null
+    }
+
+    getStationInstallDate(){
+        const station = this.getStationData()
+        if (station) return station.installation_date
+        return null
+    }
+
+    getStationLat(){
+        const station = this.getStationData()
+        if (station) return station.lat
+        return null
+    }
+
+    getStationLon(){
+        const station = this.getStationData()
+        if (station) return station.lon
+        return null
+    }
+
+    getStationReference(){
+        const station = this.getStationData()
+        if (station) return station.reference
+        return null
+    }
+
+    getStationId(){
+        const station = this.getStationData()
+        if (station) return station.id
+        return null
     }
 }
