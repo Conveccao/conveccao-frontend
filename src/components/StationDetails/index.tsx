@@ -135,6 +135,7 @@ export function StationDisplay() {
                   backgroundButton={THEME.colors.green_50}
                   widthButton={'184px'} 
                   heightButton={'56px'}
+                  onClick={(e) => navigate('/sensor-list')}
                   type = "submit"
                 />
               </Col>
