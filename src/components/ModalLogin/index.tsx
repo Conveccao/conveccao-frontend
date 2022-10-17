@@ -129,12 +129,12 @@ export default function ModalLogin() {
           )}
         </SubtitleContainer>
       </Header>
-      <div className=" user">
+      <div className=" user" style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
         {user.photoURL && (
-          <img src={user.photoURL} style={{ width: "40px", height: "40px" }} alt="Foto de perfil" />
+          <img src={user.photoURL} style={{ width: "40px", height: "40px", display: "flex", justifyContent: "center", marginTop: "5px"  }} alt="Foto de perfil" />
         )}
-        <strong>{user.displayName}</strong>
-        <small>{user.email}</small>
+        <strong style={{marginTop: "10px"}}>{user.displayName}</strong>
+        <small  style={{marginTop: "5px", marginBottom: "15px"}}>{user.email}</small>
       </div>
 
       <ButtonContainer>
@@ -153,8 +153,9 @@ export default function ModalLogin() {
           />
         )}
 
+        {/* Comentário do seu código 
         {isLoading ? (
-
+          //
           <ButtonFacebook disabled>
             <FontAwesomeIcon icon={faFacebook} />
             Facebook
@@ -169,6 +170,7 @@ export default function ModalLogin() {
             style={{ marginBottom: "16px" }}
           />
         )}
+        */}
       </ButtonContainer>
     </Container>
   );
