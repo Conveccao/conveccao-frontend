@@ -4,7 +4,8 @@ import {
   StationList,
   StationRegister,
   Login,
-  Dashboard,
+  DashboardEscola,
+  DashboardFatec,
   Presentation,
   ParameterRegister,
   StationDetails,
@@ -20,7 +21,8 @@ export default function AppRoutes() {
       <Route path="/station-list" element={<StationList />} />
       <Route path="/station-register" element={<StationRegister />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard-escola" element={<DashboardEscola />} />
+      <Route path="/dashboard-fatec" element={<DashboardFatec />} />
       <Route path="/user-control" element={<UserControl />} />
       <Route path="/parameter-register" element={<ParameterRegister />} />
       <Route path="/sensor-list" element={<SensorList />} />

@@ -27,7 +27,9 @@ export function ParameterRegister() {
     useEffect(() => {
         if (!autenticado || SessionController.getUserRole() == 'user') {
             navigate('/home-page')
-        }
+        } else {
+            if(!checkStationExistence()) navigate('/station-list')
+          }
     }, [autenticado, navigate])
 
     const checarAutenticacao = async () => {
@@ -39,6 +41,12 @@ export function ParameterRegister() {
         }
         return autenticado
     }
+
+    const checkStationExistence = () => {
+        const station = SessionController.getStationData()
+        if(station) return true
+        return false
+      }
 
     return (
         <Container>

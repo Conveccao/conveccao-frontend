@@ -45,7 +45,7 @@ export default function ModalLogin() {
 
   useEffect(() => {
     if (authenticated) {
-      navigate('/dashboard')
+      navigate('/home-page')
     }
   }, [authenticated, navigate])
 
@@ -129,14 +129,6 @@ export default function ModalLogin() {
           )}
         </SubtitleContainer>
       </Header>
-      <div className=" user">
-        {user.photoURL && (
-          <img src={user.photoURL} style={{ width: "40px", height: "40px" }} alt="Foto de perfil" />
-        )}
-        <strong>{user.displayName}</strong>
-        <small>{user.email}</small>
-      </div>
-
       <ButtonContainer>
         {isLoading ? (
           <ButtonGoogle onClick={handleGoogleLogin}>
@@ -153,8 +145,9 @@ export default function ModalLogin() {
           />
         )}
 
+        {/* Comentário do seu código 
         {isLoading ? (
-
+          //
           <ButtonFacebook disabled>
             <FontAwesomeIcon icon={faFacebook} />
             Facebook
@@ -169,6 +162,7 @@ export default function ModalLogin() {
             style={{ marginBottom: "16px" }}
           />
         )}
+        */}
       </ButtonContainer>
     </Container>
   );

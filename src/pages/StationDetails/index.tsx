@@ -27,6 +27,8 @@ export function StationDetails() {
   useEffect(() => {
     if (!autenticado || SessionController.getUserRole() == 'user') {
         navigate('/home-page')
+    } else {
+      if(!checkStationExistence()) navigate('/station-list')
     }
   }, [autenticado, navigate])
 
@@ -38,6 +40,12 @@ export function StationDetails() {
         setAutenticado(true)
     }
     return autenticado
+  }
+
+  const checkStationExistence = () => {
+    const station = SessionController.getStationData()
+    if(station) return true
+    return false
   }
 
   return (

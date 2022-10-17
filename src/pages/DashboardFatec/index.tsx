@@ -32,11 +32,11 @@ const options = {
 }
 
 
-export function Dashboard() {
+export function DashboardFatec() {
 
   return (
     <>
-      <HeaderDefault title="Dashboard"/>
+      <HeaderDefault title="Estação Fatec"/>
       <Sidebar />
       <Container>
         <ChartDefault title="Sensor pluviométrico" options={options}/>

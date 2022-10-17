@@ -11,10 +11,17 @@ import { RadioGroup, FormControlLabel, Checkbox, Tooltip } from '@mui/material';
 import { ButtonDefault } from "../../components/ButtonDefault";
 import THEME from "../../styles/theme";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { URI } from "../../integration/uri";
+import ParameterHandlers from "../../integration/handlers/parameterHandlers";
 
 export function SensorList() {
-     const navigate = useNavigate();
+    const navigate = useNavigate();
     const [autenticado, setAutenticado] = useState(true);
+    const [parameters, setParameters] = useState([])
+    const [stationParameters, setStationParameters]: any[] = useState([])
+
+    const parameterHandler = new ParameterHandlers()
 
   useEffect(() => {
     checarAutenticacao()
@@ -42,67 +49,69 @@ export function SensorList() {
     }
     return autenticado
   }
+
+  const handleGetAll = async () => {
+    const res = await axios.get(URI.PARAMETERS)
+    return res.data
+  }
+
+  const getAllParameters = async () => {
+    const allParameters: [] = await handleGetAll()
+    const parameterList = getStationParameters(allParameters)
+    setParameters(allParameters)
+    setStationParameters(parameterList)
+  }
+
+  const getStationParameters = (parameterList: []) => {
+    const tempParamList: any[] = []
+    parameterList.forEach(parameter => {
+        if(parameter['station']['id'] == SessionController.getStationId() && !parameterExistsInList(stationParameters, parameter['id'])){
+            tempParamList.push(parameter)
+        }
+    })
+    return tempParamList
+  }
+
+  const parameterExistsInList = (parameterList: any[], id: number) => {
+    parameterList.forEach(parameter => {
+        if (id == parameter.id) return true
+    })
+    return false
+  }
+
+  useEffect(() => {
+    getAllParameters()
+  }, [getAllParameters])
+
     return (
         <>
             <Header>
                 <Content>
-                    <BackButton onClick={() => navigate('/home')}>
+                    <BackButton onClick={() => navigate('/station-details')}>
                         <FontAwesomeIcon icon={faAngleLeft} />
                     </BackButton>
                     <TitleHeader>
-                        Estação | 0001
+                        {}
                     </TitleHeader>
                 </Content>
             </Header>
             <Container>
                 <div>
-                    <Title>Sensores da estação Fatec 0001</Title>
+                    <Title>Parâmetros de {SessionController.getStationName()}</Title>
                     <SHr />
                 </div>
                 <RadioGroup>
-                    <div>
-                        <FormControlLabel value="first" control={<Checkbox />} label="Sensor pluviométrico" />
+                    {stationParameters.map((parameter: any) => (
+                        <div key={parameter.id}>
+                        <FormControlLabel value={parameter.id} control={<Checkbox onChange={(e) => parameterHandler.handleActivateParameter(parameter.id)}/>} label={parameter.parameterType.name} />
                         <Tooltip title="Deletar">
-                            <ButtonTrash>
+                            <ButtonTrash onClick={(e) => parameterHandler.handleDeleteParameter(parameter.id)}>
                                 <FontAwesomeIcon icon={faTrash} />
                             </ButtonTrash>
                         </Tooltip>
 
-                    </div>
-                    <div>
-                        <FormControlLabel value="secondary" control={<Checkbox />} label="Sensor pluviométrico" />
-                        <Tooltip title="Deletar">
-                            <ButtonTrash><FontAwesomeIcon icon={faTrash} /></ButtonTrash>
-                        </Tooltip>
-                    </div>
-                    <div>
-                        <FormControlLabel value="third" control={<Checkbox />} label="Sensor pluviométrico" />
-                        <Tooltip title="Deletar">
-                            <ButtonTrash><FontAwesomeIcon icon={faTrash} /></ButtonTrash>
-                        </Tooltip>
-
-                    </div>
-                    <div>
-                        <FormControlLabel value="fourth" control={<Checkbox />} label="Sensor pluviométrico" />
-                        <Tooltip title="Deletar">
-                            <ButtonTrash><FontAwesomeIcon icon={faTrash} /></ButtonTrash>
-                        </Tooltip>
-
-                    </div>
-                    <div>
-                        <FormControlLabel value="fifth" control={<Checkbox />} label="Sensor pluviométrico" />
-                        <Tooltip title="Deletar">
-                            <ButtonTrash><FontAwesomeIcon icon={faTrash} /></ButtonTrash>
-                        </Tooltip>
-
-                    </div>
-                    <div>
-                        <FormControlLabel value="sixth" control={<Checkbox />} label="Sensor pluviométrico" />
-                        <Tooltip title="Deletar">
-                            <ButtonTrash><FontAwesomeIcon icon={faTrash} /></ButtonTrash>
-                        </Tooltip>
-
-                    </div>
+                        </div>
+                    ))}
                 </RadioGroup>
             </Container>
             <ContainerButton>
@@ -112,7 +121,7 @@ export function SensorList() {
                     widthButton={'15%'}
                     heightButton={'56px'}
 
-                    onClick={() => navigate('/parameterregister')}
+                    onClick={() => navigate('/parameter-register')}
                 />
             </ContainerButton>
         </>

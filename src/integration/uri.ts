@@ -1,10 +1,10 @@
 export enum URI{
-    STATIONS = 'https://conveccao.onrender.com/stations',
-    PARAMETERS = 'https://conveccao.onrender.com/parameters',
-    PARAMETERTYPES = 'https://conveccao.onrender.com/parametersTypes',
-    CREATEUSER = 'https://conveccao.onrender.com/user',
-    USEREXISTS = 'https://conveccao.onrender.com/user-exists',
-    USERS = 'https://conveccao.onrender.com/users',
-    UPDATEUSER = "https://conveccao.onrender.com/update-user/:id",
-    LOGIN = 'https://conveccao.onrender.com/login'
+    STATIONS = 'http://localhost:8081/stations',
+    PARAMETERS = 'http://localhost:8081/parameters',
+    PARAMETERTYPES = 'http://localhost:8081/parameterTypes',
+    CREATEUSER = 'http://localhost:8081/user',
+    USEREXISTS = 'http://localhost:8081/user-exists',
+    USERS = 'http://localhost:8081/users',
+    UPDATEUSER = "http://localhost:8081/update-user",
+    LOGIN = 'http://localhost:8081/login'
 }

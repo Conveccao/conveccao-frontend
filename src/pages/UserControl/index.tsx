@@ -11,11 +11,24 @@ import { useNavigate } from "react-router-dom";
 
 import { Select, MenuItem, FormControl, Box } from "@mui/material";
 import { Main, Table, TableTH, TableTD, TableTDButton } from "./styles";
+import UserHandlers from "../../integration/handlers/userHandlers";
 
 export function UserControl() {
 
   const navigate = useNavigate();
   const [autenticado, setAutenticado] = useState(true);
+  const userHandler = new UserHandlers();
+  const [isLoading, setIsLoading] = useState(false);
+  const [users, setUsers] = useState([]);
+  const [usersModerators, setUsersModerators]: any[] = useState([]);
+
+  const handleUpdateUser = async (id: number, role: string) => {
+    try {
+      await userHandler.handleUpdateUser(id, role);
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
     checarAutenticacao()
@@ -43,10 +56,6 @@ export function UserControl() {
     }
     return autenticado
   }
-  
-  const [isLoading, setIsLoading] = useState(false);
-
-  const [users, setUsers] = useState([]);
 
   const handleGetAll = async () => {
     const res = await axios.get(URI.USERS);
@@ -55,8 +64,27 @@ export function UserControl() {
 
   const getAllUsers = async () => {
     const allUsers: [] = await handleGetAll();
-    setUsers(allUsers);
+    const userList = getUsersModerators(allUsers);
+    // setUsers(allUsers); --> todos os usuários da aplicação, incluindo os admins
+    setUsersModerators(userList);
   };
+
+  const getUsersModerators =  (userList: []) => {
+    const tempUserList: any[] = [];
+    userList.forEach(user => {
+      if(user['role'] != 'admin' && !userExistsInList(usersModerators, user['id'])) {
+        tempUserList.push(user)
+      }
+    })
+    return tempUserList;
+  }
+
+  const userExistsInList = (userList: any[], userId: number) => {
+    userList.forEach((user: any) => {
+      if(user['id'] == userId) return true
+    })
+    return false
+  }
 
   useEffect(() => {
     getAllUsers();
@@ -82,7 +110,7 @@ export function UserControl() {
           </thead>
 
           <tbody>
-            {users.map((user: any) => (
+            {usersModerators.map((user: any) => (
               <tr key={user.id} >
                 <TableTD>{user.name}</TableTD>
                 <TableTD>{user.email}</TableTD>
@@ -91,18 +119,20 @@ export function UserControl() {
                   <Box sx={{ minWidth: 80 }}>
                     <FormControl sx={{ minWidth: 250 }}>
                       <Select
-                        value='Escolha o nível de acesso'
+                        onChange={(e) => handleUpdateUser(user.id, e.target.value)}
+                        value=''
                         displayEmpty
                         inputProps={{ "aria-label": "Without label" }}
                         renderValue={(selected) => {
                           if (selected.length === 0) {
-                            return <em>Nível de acesso</em>;
+                            return <em>Escolha o nível de acesso</em>;
                           }
                           return selected;
                         }}
                       >
-                        <MenuItem value="Administrador">Administrador</MenuItem>
-                        <MenuItem value="Usuário Comum">Usuário Comum</MenuItem>
+                        <MenuItem value="admin">Administrador</MenuItem>
+                        <MenuItem value="moderator">Moderador</MenuItem>
+                        <MenuItem value="user">Usuário Comum</MenuItem>
                       </Select>
                     </FormControl>
                   </Box>

@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 
-import CardStation from "../../components/CardStation";      
+import CardStationEscola from "../../components/CardStationEscola";
+import CardStationFatec from "../../components/CardStationFatec";
+
+
 import { HeaderDefault } from "../../components/HeaderDefault";
 import { Sidebar } from "../../components/Sidebar";
 import { TileLayer, Marker, Popup } from "react-leaflet";
@@ -11,7 +14,7 @@ import {
   LoadingContainer,
   Container
 } from "./styles";
-import { useNavigate } from "react-router-dom";
+
 
 import FatecImg from "../../assets/images/fatecImg.jpg";
 import EscolaImg from "../../assets/images/escolaImg.png";
@@ -57,16 +60,20 @@ export function Home() {
               icon={markerIcon}
             >
               <Popup>
-                <strong>Estação Fatec</strong>
+                <a href="/dashboard-fatec">
+                  <strong>Estação Fatec</strong>
+                </a> 
               </Popup>
             </Marker>
-
             <Marker
               position={[-23.248023742957955, -45.9220273597218]}
               icon={markerIcon}
             >
               <Popup>
-                <strong>Estação E.E. Prof° Elmano Ferreira Veloso</strong>
+                <a href="/dashboard-escola">
+                  <strong>Estação E.E. Prof° Elmano Ferreira Veloso</strong>
+                </a>
+                
               </Popup>
             </Marker>
           </StyledMap>
@@ -79,10 +86,10 @@ export function Home() {
 
       <Container>
 {isLoading ? (
-  <CardStation
+  <CardStationFatec
     stationName="Estação Fatec"
     stationImage={FatecImg}
-    stationInfo="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mauris sapien, vestibulum mollis ultrices dapibus, ornare ut nunc. Nunc tempus nunc massa, et molestie urna viverra ut. Cras feugiat est in ligula auctor scelerisque. Integer et ullamcorper dolor. Mauris consectetur tellus a dui pharetra, ut luctus velit pretium."
+    stationInfo="Descrição da Estação Fatec"
   />
 ) : (
   <LoadingContainer>
@@ -91,10 +98,10 @@ export function Home() {
 )}
 
 {isLoading ? (
-  <CardStation
+  <CardStationEscola
     stationName="Estação Escola"
     stationImage={EscolaImg}
-    stationInfo="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent mauris sapien, vestibulum mollis ultrices dapibus, ornare ut nunc. Nunc tempus nunc massa, et molestie urna viverra ut. Cras feugiat est in ligula auctor scelerisque. Integer et ullamcorper dolor. Mauris consectetur tellus a dui pharetra, ut luctus velit pretium."
+    stationInfo="Descrição da Estação Rio Cumprido"
   />
 ) : (
   <LoadingContainer>
