@@ -87,7 +87,4 @@ export default new class SessionController{
         if (station) return station.id
         return null
     }
-        const userRole = this.getUserData().role
-        return userRole
-    } 
 }
