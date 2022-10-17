@@ -36,7 +36,7 @@ export function DashboardEscola() {
 
   return (
     <>
-      <HeaderDefault title="Estação Rio Cumprido"/>
+      <HeaderDefault title="Estação Rio Comprido"/>
       <Sidebar />
       <Container>
         <ChartDefault title="Sensor pluviométrico" options={options}/>

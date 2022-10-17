@@ -129,14 +129,6 @@ export default function ModalLogin() {
           )}
         </SubtitleContainer>
       </Header>
-      <div className=" user" style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
-        {user.photoURL && (
-          <img src={user.photoURL} style={{ width: "40px", height: "40px", display: "flex", justifyContent: "center", marginTop: "5px"  }} alt="Foto de perfil" />
-        )}
-        <strong style={{marginTop: "10px"}}>{user.displayName}</strong>
-        <small  style={{marginTop: "5px", marginBottom: "15px"}}>{user.email}</small>
-      </div>
-
       <ButtonContainer>
         {isLoading ? (
           <ButtonGoogle onClick={handleGoogleLogin}>

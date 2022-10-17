@@ -12,9 +12,6 @@ import SessionController from '../../session/sessionController';
 import { useNavigate } from 'react-router-dom';
 
 export function StationDisplay() {
-
-  console.log(SessionController.getStationInstallDate())
-
   const navigate = useNavigate();
   const [autenticado, setAutenticado] = useState(true);
   const [id, setId] = useState(SessionController.getStationId())

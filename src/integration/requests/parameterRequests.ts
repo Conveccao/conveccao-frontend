@@ -10,11 +10,13 @@ export default class ParameterRequests{
                 station_id: SessionController.getStationId(),
                 parameterType_id: res.data.id
             })
-            window.alert("Parâmetro cadastrado.")
+            window.alert("Parâmetro Cadastrado com Sucesso.")
+            window.location.href = './sensor-list'
             return res.data
         } catch (error) {
             console.log(error)
-            window.alert("Ocorreu um erro.")
+            window.alert("Ocorreu um Erro. Tente Novamente")
+            window.location.href = './sensor-list'
         }
     }
 
@@ -30,7 +32,7 @@ export default class ParameterRequests{
     public async deleteParameter(id: number) {
         try {
             const res = await axios.delete(`${URI.PARAMETERS}/${id}`)
-            window.alert('Parâmetro deletado!')
+            window.alert('Parâmetro Deletado com Sucesso')
             return res.data
         } catch (error) {
             console.log(error)
