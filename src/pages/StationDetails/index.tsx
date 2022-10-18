@@ -110,27 +110,27 @@ export function StationDetails() {
         <FormDetails>
           <Fieldset>
             <Legend>Nome da estação</Legend>
-            <Input value={name} onChange={(e) => setName(e.target.value)} disabled/>
+            <Input value={name} onChange={(e) => setName(e.target.value)} />
           </Fieldset>
 
           <Fieldset>
             <Legend>Data da instalação</Legend>
-            <Input value={installDate} type='date' onChange={(e) => setInstallDate(e.target.value)} disabled/>
+            <Input value={installDate} type='date' onChange={(e) => setInstallDate(e.target.value)} />
           </Fieldset>
 
           <Fieldset>
             <Legend>Latitude</Legend>
-            <Input value={lat} onChange={(e) => setLat(e.target.value)} disabled/>
+            <Input value={lat} onChange={(e) => setLat(e.target.value)} />
           </Fieldset>
 
           <Fieldset>
             <Legend>Longitude</Legend>
-            <Input value={lon} onChange={(e) => setLon(e.target.value)} disabled/>
+            <Input value={lon} onChange={(e) => setLon(e.target.value)} />
           </Fieldset>
 
           <FieldsetTextBox>
             <Legend>Referência</Legend>
-            <InputRef value={reference} onChange={(e) => setReference(e.target.value)}  disabled/>
+            <InputRef value={reference} onChange={(e) => setReference(e.target.value)}  />
           </FieldsetTextBox>
         </FormDetails>
         <ButtonDiv>
