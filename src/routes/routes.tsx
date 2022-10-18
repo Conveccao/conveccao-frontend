@@ -11,7 +11,8 @@ import {
   StationDetails,
   UserControl,
   Home,
-  SensorList
+  SensorList,
+  Perfil,
 } from "../pages/index";
 
 export default function AppRoutes() {
@@ -28,6 +29,7 @@ export default function AppRoutes() {
       <Route path="/sensor-list" element={<SensorList />} />
       <Route path="/home-page" element={<Home />} />
       <Route path="/station-details" element={<StationDetails />} />
+      <Route path="/perfil" element={<Perfil />} />
     </Routes>
   );
 }

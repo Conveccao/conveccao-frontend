@@ -10,3 +10,4 @@ export * from './UserControl';
 export * from './StationDetails';
 export * from './Home';
 export * from './SensorList';
+export * from './Perfil';
