@@ -12,12 +12,10 @@ import {
   ButtonDoc
 } from "./styles";
 
-import { useNavigate } from "react-router-dom";
-
 import LogoMenu from "../../assets/images/logosubtitle.png";
-import { useEffect, useState } from "react";
 
 export function Presentation() {
+
   return (
     
       <Container>
@@ -33,11 +31,12 @@ export function Presentation() {
                 <Title>Convecção</Title>
                 <Subtitle>Plataforma de disseminação de dados.</Subtitle>
             </Content>
-            <ContainerButton>
+        </MainContent>
+        
+        <ContainerButton>
                 <ButtonAccess to="/home-page">Acessar</ButtonAccess>
                 <ButtonDoc href="https://app.swaggerhub.com/apis-docs/Nathtruyts/Conveccao/1.0" target="_blank">Documentação</ButtonDoc>
             </ContainerButton>
-        </MainContent>
       </Container>
   );
 }

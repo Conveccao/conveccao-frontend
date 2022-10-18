@@ -5,6 +5,8 @@ import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { GoogleAuthProvider, signInWithPopup, User } from "firebase/auth";
 import { auth } from "../../services/firebase";
 
+import LogoGoogle from '../../assets/icons/googleIcon.svg';
+
 import {
   Container,
   TitleContainer,
@@ -132,8 +134,8 @@ export default function ModalLogin() {
       <ButtonContainer>
         {isLoading ? (
           <ButtonGoogle onClick={handleGoogleLogin}>
-            <FontAwesomeIcon icon={faGoogle} />
-            Google
+            <img src={LogoGoogle} alt="Google Icon"/>
+            Faça login com o Google
           </ButtonGoogle>
         ) : (
           <Skeleton
@@ -145,14 +147,11 @@ export default function ModalLogin() {
           />
         )}
 
-        {/* Comentário do seu código 
-        {isLoading ? (
-          //
-          <ButtonFacebook disabled>
-            <FontAwesomeIcon icon={faFacebook} />
-            Facebook
+        {/* {isLoading ? (
+          <ButtonFacebook>
+           <FontAwesomeIcon icon={faFacebook} size="lg" />
+              Continuar com o Facebook
           </ButtonFacebook>
-
         ) : (
           <Skeleton
             variant="rounded"
@@ -161,8 +160,7 @@ export default function ModalLogin() {
             height={40}
             style={{ marginBottom: "16px" }}
           />
-        )}
-        */}
+        )} */}
       </ButtonContainer>
     </Container>
   );
