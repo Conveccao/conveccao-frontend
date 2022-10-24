@@ -47,16 +47,7 @@ export function Perfil() {
           </PhotoBackground>
         </SectionBackground>
         <SectionUserInfo>
-          {/* ID DO USUÁRIO */}
-          <UserInfoName>
-            <LabelUserName>
-              ID:
-            </LabelUserName>
-            <UserName>
-              {userData.id}
-            </UserName>
-          </UserInfoName>
-
+          
           {/* NOME DO USUÁRIO */}
           <UserInfoName>
             <LabelUserName>

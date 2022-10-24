@@ -87,4 +87,10 @@ export default new class SessionController{
         if (station) return station.id
         return null
     }
+
+    getStationLink(){
+        const station = this.getStationData()
+        if (station) return station.link
+        return null
+    }
 }()
