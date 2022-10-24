@@ -12,7 +12,10 @@ import {
   StyledMap,
   StyledMapContainer,
   LoadingContainer,
-  Container
+  Container,
+  Stations,
+  TitleStation,
+  TitleStations
 } from "./styles";
 
 
@@ -21,6 +24,7 @@ import EscolaImg from "../../assets/images/escolaImg.png";
 
 import L from "leaflet";
 import StationIcon from "../../assets/icons/satelliteIcon.svg";
+import CardStations from "../../components/CardStations";
 
 const markerIcon = new L.Icon({
   iconUrl: StationIcon,
@@ -83,8 +87,11 @@ export function Home() {
           </LoadingContainer>
         )}
       </StyledMapContainer>
-
+      <TitleStation>
+          Principais Estações
+      </TitleStation>
       <Container>
+      
 {isLoading ? (
   <CardStationFatec
     stationName="Estação Fatec"
@@ -109,6 +116,12 @@ export function Home() {
   </LoadingContainer>
 )}
 </Container>
+  <Stations>
+  <TitleStations>
+          Outras Estações
+  </TitleStations>
+  <CardStations />
+  </Stations>
     </>
   );
 }

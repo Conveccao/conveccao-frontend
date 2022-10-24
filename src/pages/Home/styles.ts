@@ -26,10 +26,19 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
+
   
   @media (max-width: 768px) {
     margin: 0 1.5rem 1rem 1.5rem;
   }
+`;
+
+export const TitleStation = styled.h1`
+    margin: 2rem 1.5rem 0 17rem;
+`;
+
+export const TitleStations = styled.h1`
+    margin: 2rem 1.5rem 0 0rem;
 `;
 
 export const LoadingContainer = styled.div`
@@ -39,3 +48,13 @@ export const LoadingContainer = styled.div`
   height: 300px;
   width: 100%;
 `;
+
+export const Stations = styled.div`
+  margin: 0 1.5rem 1rem 17rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+`;
+
+
+

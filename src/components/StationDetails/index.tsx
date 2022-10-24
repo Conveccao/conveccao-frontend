@@ -131,7 +131,7 @@ export function StationDisplay() {
             <FormFooter>
               <Col>
                 <ButtonDefault 
-                  title='Editar Informações' 
+                  title='Atualizar Informações' 
                   backgroundButton={THEME.colors.green_50}
                   widthButton={'184px'} 
                   heightButton={'56px'}

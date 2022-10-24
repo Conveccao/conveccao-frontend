@@ -142,7 +142,7 @@ export function StationDetails() {
 
         </FormDetails>
         <ButtonDiv>
-          <ButtonDefault title="Editar informações" widthButton="250px" backgroundButton={THEME.colors.green_100} hoverBackgroundButton={THEME.colors.green_50} onClick={(e) => handleUpdateStation(id, station)}/>
+          <ButtonDefault title="Atualizar informações" widthButton="250px" backgroundButton={THEME.colors.green_100} hoverBackgroundButton={THEME.colors.green_50} onClick={(e) => handleUpdateStation(id, station)}/>
           <ButtonDefault title="Visualizar sensores" widthButton="250px" backgroundButton={THEME.colors.green_100} hoverBackgroundButton={THEME.colors.green_50} onClick={(e) => navigate('/sensor-list')}/>
         </ButtonDiv>
       </Main>
