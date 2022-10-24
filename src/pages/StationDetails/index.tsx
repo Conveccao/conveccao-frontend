@@ -33,6 +33,7 @@ export function StationDetails() {
   const [lat, setLat] = useState(SessionController.getStationLat())
   const [lon, setLon] = useState(SessionController.getStationLon())
   const [reference, setReference] = useState(SessionController.getStationReference())
+  const [link, setLink] = useState(SessionController.getStationLink())
 
   useEffect(() => {
     checarAutenticacao()
@@ -82,7 +83,8 @@ export function StationDetails() {
         name: name,
         lat: lat,
         lon: lon,
-        reference: reference
+        reference: reference,
+        link: link
     }
 
     let stationHandlers = new StationHandlers()
@@ -129,9 +131,15 @@ export function StationDetails() {
           </Fieldset>
 
           <FieldsetTextBox>
+            <Legend>Link de Imagem da Estação</Legend>
+            <InputRef value={link} onChange={(e) => setLink(e.target.value)}  />
+          </FieldsetTextBox>
+
+          <FieldsetTextBox>
             <Legend>Referência</Legend>
             <InputRef value={reference} onChange={(e) => setReference(e.target.value)}  />
           </FieldsetTextBox>
+
         </FormDetails>
         <ButtonDiv>
           <ButtonDefault title="Editar informações" widthButton="250px" backgroundButton={THEME.colors.green_100} hoverBackgroundButton={THEME.colors.green_50} onClick={(e) => handleUpdateStation(id, station)}/>

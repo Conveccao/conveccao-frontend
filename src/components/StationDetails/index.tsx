@@ -116,13 +116,15 @@ export function StationDisplay() {
               onChange={(e) => setReference(e.target.value)}/>
             </SFieldsetObs>
           </Col>
-          <Col>
+
+          <Col>   
             <SFieldset>
               <SLabel>Link de Imagem da Estação</SLabel>
               <CustomInput placeholder={link}
               onChange={(e) => setLink(e.target.value)}/>
             </SFieldset>
           </Col>
+      
         </Row>  
         <Row>
           <Footer>
