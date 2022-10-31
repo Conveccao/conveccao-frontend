@@ -15,7 +15,7 @@ import {
   Subtitle,
   ButtonContainer,
   ButtonGoogle,
-  ButtonFacebook,
+  ButtonGithub,
   Header,
 } from "./styles";
 
@@ -172,10 +172,10 @@ export default function ModalLogin() {
         )}
 
         {isLoading ? (
-          <ButtonFacebook onClick={handleGithubLogin}>
+          <ButtonGithub onClick={handleGithubLogin}>
            <FontAwesomeIcon icon={faFacebook} size="lg" />
-              Faça login com o Facebook
-          </ButtonFacebook>
+              Faça login com o Github
+          </ButtonGithub>
         ) : (
           <Skeleton
             variant="rounded"
