@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { GoogleAuthProvider, signInWithPopup, User } from "firebase/auth";
+import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, User } from "firebase/auth";
 import { auth } from "../../services/firebase";
 
 import LogoGoogle from '../../assets/icons/googleIcon.svg';
@@ -79,6 +79,30 @@ export default function ModalLogin() {
     }
   };
 
+  async function handleFacebookLogin(){
+    const provider = new FacebookAuthProvider();
+    provider.addScope('name');
+    provider.addScope('email');
+    provider.addScope('picture{url}');
+
+    console.log("oi");
+
+    signInWithPopup(auth, provider)
+    .then(result => {console.log(result)}).catch(error => {console.log(error)});
+  }
+
+  async function handleGithubLogin() {
+    const provider = new GithubAuthProvider(); 
+    console.log(user);
+  
+    signInWithPopup(auth, provider)
+    .then(result => {
+      console.log(result.user)})
+      .catch(error => {
+        console.log(error.code)
+        console.log(error.message)});
+
+  }
 
   async function handleGoogleLogin() {
     const provider = new GoogleAuthProvider();
@@ -147,10 +171,10 @@ export default function ModalLogin() {
           />
         )}
 
-        {/* {isLoading ? (
-          <ButtonFacebook>
+        {isLoading ? (
+          <ButtonFacebook onClick={handleGithubLogin}>
            <FontAwesomeIcon icon={faFacebook} size="lg" />
-              Continuar com o Facebook
+              Faça login com o Facebook
           </ButtonFacebook>
         ) : (
           <Skeleton
@@ -160,7 +184,7 @@ export default function ModalLogin() {
             height={40}
             style={{ marginBottom: "16px" }}
           />
-        )} */}
+        )}
       </ButtonContainer>
     </Container>
   );
