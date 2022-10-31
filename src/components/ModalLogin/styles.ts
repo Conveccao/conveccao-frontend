@@ -80,7 +80,7 @@ export const ButtonGoogle = styled.button`
   }
 `;
 
-export const ButtonFacebook = styled.button`
+export const ButtonGithub = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -91,7 +91,7 @@ export const ButtonFacebook = styled.button`
   padding: 16px 24px;
   margin-bottom: 1rem;
 
-  background: ${THEME.colors.blue_facebook};
+  background: #161B22;
   border: none;
   border-radius: 2px;
 
@@ -103,9 +103,9 @@ export const ButtonFacebook = styled.button`
   transition: 0.3s;
 
   :hover {
-    border: 1px solid ${THEME.colors.blue_facebook};
+    border: 1px solid #161B22;
     background: #f8f8ff;
-    color: ${THEME.colors.blue_facebook};
+    color: #161B22;
     height: 3rem;
   }
 `;
