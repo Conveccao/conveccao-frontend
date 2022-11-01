@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, User } from "firebase/auth";
 import { auth } from "../../services/firebase";
 
@@ -15,7 +15,7 @@ import {
   Subtitle,
   ButtonContainer,
   ButtonGoogle,
-  ButtonFacebook,
+  ButtonGithub,
   Header,
 } from "./styles";
 
@@ -172,10 +172,10 @@ export default function ModalLogin() {
         )}
 
         {isLoading ? (
-          <ButtonFacebook onClick={handleGithubLogin}>
+          <ButtonGithub onClick={handleGithubLogin}>
            <FontAwesomeIcon icon={faFacebook} size="lg" />
-              Faça login com o Facebook
-          </ButtonFacebook>
+              Faça login com o Github
+          </ButtonGithub>
         ) : (
           <Skeleton
             variant="rounded"
