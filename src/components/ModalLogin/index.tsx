@@ -92,13 +92,17 @@ export default function ModalLogin() {
   }
 
   async function handleGithubLogin() {
-    const provider = new GithubAuthProvider(); 
-    console.log(user);
+    const provider = new GithubAuthProvider();
   
     signInWithPopup(auth, provider)
     .then(result => {
-      console.log(result.user)})
-      .catch(error => {
+      console.log("oi");
+      console.log(result.user.displayName);
+      console.log(result.user.email);
+      console.log(result.user.photoURL);
+      console.log("ola");
+      //console.log(result.credential.accessToken);
+    }).catch(error => {
         console.log(error.code)
         console.log(error.message)});
 
@@ -173,7 +177,7 @@ export default function ModalLogin() {
 
         {isLoading ? (
           <ButtonGithub onClick={handleGithubLogin}>
-           <FontAwesomeIcon icon={faFacebook} size="lg" />
+           <FontAwesomeIcon icon={faGithub} size="lg" />
               Faça login com o Github
           </ButtonGithub>
         ) : (
