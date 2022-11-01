@@ -23,9 +23,6 @@ import axios from "axios";
 import { URI } from "../../integration/uri";
 
 
-
-
-
 export default function CardStations() {
 
   const navigate = useNavigate()
@@ -63,7 +60,7 @@ export default function CardStations() {
             </StationCardInfo>
           </StationCardInfoContainer>
           <ButtonDefault  
-            onClick={() => navigate('/home-page')}
+            onClick={(e) => {navigate("/dashboard"); SessionController.setStationData(station)}}
             title="Ver Dados"
             widthButton="230px"
             heightButton="48px"

@@ -1,6 +1,7 @@
 export * from './StationList';
 export * from './StationRegister';
 export * from './Login';
+export * from './Dashboard';
 export * from './DashboardFatec';
 export * from './DashboardEscola';
 export * from './Presentation';
