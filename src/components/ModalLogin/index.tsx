@@ -110,6 +110,7 @@ export default function ModalLogin() {
       })
       .catch((error: any) => {
         console.log(error);
+        window.alert("Email cadastrado! Tente Logar com Gmail")
       });
 
   }
@@ -132,6 +133,7 @@ export default function ModalLogin() {
       })
       .catch((error: any) => {
         console.log(error);
+        window.alert("Email cadastrado! Tente Logar com GitHub")
       });
   }
   useEffect(() => {
