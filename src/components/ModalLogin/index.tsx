@@ -95,16 +95,22 @@ export default function ModalLogin() {
     const provider = new GithubAuthProvider();
   
     signInWithPopup(auth, provider)
-    .then(result => {
-      console.log("oi");
-      console.log(result.user.displayName);
-      console.log(result.user.email);
-      console.log(result.user.photoURL);
-      console.log("ola");
-      //console.log(result.credential.accessToken);
-    }).catch(error => {
-        console.log(error.code)
-        console.log(error.message)});
+    .then(async (result: any) => {
+        setUser(result.user);
+        let newUser = {
+          name: result.user.displayName,
+          email: result.user.email,
+          photo: result.user.photoURL,
+        };
+        let userExists = await handleUserExists(result.user.email);
+        if (!userExists[0]) {
+          handleCreateUser(newUser);
+        }
+        await handleLogin(result.user.email)
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
 
   }
 
