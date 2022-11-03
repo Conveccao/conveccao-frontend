@@ -1,3 +1,4 @@
+import { red } from '@mui/material/colors';
 import { useState } from 'react';
 import ParameterHandlers from '../../integration/handlers/parameterHandlers';
 import { FormFooter } from '../../pages/StationList/styles';
@@ -5,9 +6,9 @@ import THEME from '../../styles/theme';
 import { ButtonDefault } from '../ButtonDefault';
 import {CustomInput} from '../InputDefault';
 import { Footer } from '../Sidebar/styles';
-import {SForm, SFieldset, SLabel} from './styles'
+import {SForm, SFieldset, SFieldsetSelect, SLabel} from './styles'
 
-export default function ParameterForm() {
+export default function ParameterForm(this: any) {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [unit, setUnit] = useState('')
@@ -48,10 +49,16 @@ export default function ParameterForm() {
                 <CustomInput placeholder='Digite a descrição'
                 onChange={(e:any) => setDescription(e.target.value)}/>
             </SFieldset>
+
             <SFieldset>
-                <SLabel>Unidade</SLabel>
-                <CustomInput placeholder='(ml³ / °C / km / etc)'
-                onChange={(e:any) => setUnit(e.target.value)}/>
+            <SLabel>Unidade</SLabel>
+                <SFieldsetSelect onChange={(e:any) => setUnit(e.target.value)} style={{ height: '60px', background: '#f8f8ff', border: '1px solid #00C667', borderRadius: '8px', }}>
+                    <option selected style={{ fontSize: '16px' }}>Escolha a unidade</option>
+                    <option value="mm" style={{ fontSize: '16px' }}>mm</option>
+                    <option value="ºC" style={{ fontSize: '16px' }}>ºC</option>
+                    <option value="km/h" style={{ fontSize: '16px' }}>km/h</option>
+                    <option value="%" style={{ fontSize: '16px' }}>%</option>
+                </SFieldsetSelect>
             </SFieldset>
             <SFieldset>
                 <SLabel>Fator</SLabel>
@@ -63,6 +70,7 @@ export default function ParameterForm() {
                 <CustomInput placeholder='Digite a margem de erro'
                 onChange={(e:any) => setOffset(e.target.value)}/>
             </SFieldset>
+            
             <Footer>
                 <FormFooter>
                      <ButtonDefault 
