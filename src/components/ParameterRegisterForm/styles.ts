@@ -21,3 +21,12 @@ export const SLabel = styled.label`
     color: ${THEME.colors.blue_100};
     font-weight: ${THEME.fontWeights.bold};
 `;
+
+export const SFieldsetSelect = styled.select` 
+    display: block; 
+    margin-bottom: 12px;
+    background: background: #f8f8ff;; 
+    width: 100%;
+    color: ${THEME.colors.blue_100};
+    font-weight: ${THEME.fontWeights.bold};
+`;
