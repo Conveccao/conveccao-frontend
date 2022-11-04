@@ -3,50 +3,62 @@ import { HeaderDefault } from "../../components/HeaderDefault";
 import { Sidebar } from "../../components/Sidebar";
 import { Container } from "./styles";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import SessionController from '../../session/sessionController';
 
 import StationHandlers from '../../integration/handlers/stationHandlers';
-
-const options = {
-  chart: {
-    type: "spline",
-  },
-  series: [
-    {
-      data: [1, 2, 3,4,5,6,7,8,9,10],
-    },
-  ],
-  title: {
-    text: "Monthly Average Temperature",
-  },
-  subtitle: {
-    text: "Source: WorldClimate.com",
-  },
-  xAxis: {
-    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-  },
-  yAxis: {
-    title: {
-      text: "Temperature (°C)",
-    },
-  },
-}
-
-const checkStationExistence = () => {
-  const station = SessionController.getStationData()
-  if(station) return true
-  return false
-}
-
-
-
+import axios from "axios";
+import { URI } from "../../integration/uri";
 
 export function Dashboard() {
+  const [measuresList, setMeasuresList] = useState([])
+  const [stationId, setStationId] = useState(SessionController.getStationId())
+
+  const handleGetAllMeasures = async (id: number) => {
+    const res = await axios.get(`${URI.STATIONMEASURES}/${id}`);
+    return res.data;
+  };
+
+  const handleSetMeasures = async (id: number) => {
+    const measuresValues: any = [];
+    const measures = await handleGetAllMeasures(id);
+    measures.forEach((measure: any) => {
+      measuresValues.push(measure.value);
+    });
+    setMeasuresList(measuresValues);
+  }
+
+  useEffect(() => {
+    handleSetMeasures(stationId)
+  })
+
+  const options = {
+    chart: {
+      type: "spline",
+    },
+    series: [
+      {
+        data: measuresList,
+      },
+    ],
+    title: {
+      text: "Monthly Average Temperature",
+    },
+    subtitle: {
+      text: "Source: WorldClimate.com",
+    },
+    xAxis: {
+      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    },
+    yAxis: {
+      title: {
+        text: "Temperature (°C)",
+      },
+    },
+  }
 
   const [autenticado, setAutenticado] = useState(true);
-  const [id, setId] = useState(SessionController.getStationId())
   const [name, setName] = useState(SessionController.getStationName())
   const [installDate, setInstallDate] = useState(SessionController.getStationInstallDate())
   const [lat, setLat] = useState(SessionController.getStationLat())
@@ -68,14 +80,7 @@ export function Dashboard() {
       <HeaderDefault title={name} />
       <Sidebar />
       <Container>
-        <ChartDefault title="Sensor pluviométrico" options={options}/>
-        <ChartDefault title="Sensor pluviométrico" options={options}/>
-        <ChartDefault title="Sensor pluviométrico" options={options}/>
-        <ChartDefault title="Sensor pluviométrico" options={options}/>
-        <ChartDefault title="Sensor pluviométrico" options={options}/>
-        <ChartDefault title="Sensor pluviométrico" options={options}/>
-        <ChartDefault title="Sensor pluviométrico" options={options}/>
-        <ChartDefault title="Sensor pluviométrico" options={options}/>
+        <ChartDefault title="Sensor pluviométrico" options={options} />
       </Container>
     </>
   );

@@ -2,9 +2,6 @@ import { ButtonDefault } from "../../components/ButtonDefault";
 import THEME from "../../styles/theme";
 import { ImgHTMLAttributes, useEffect, useState } from 'react';
 
-
-
-
 import {
     StationCard,
     CardStation,
@@ -39,6 +36,10 @@ export default function CardStations() {
     setStations(allStations);
   };
 
+  const setStationData = async(station: object) => {
+    SessionController.setStationData(station)
+  }
+
   useEffect(() => {
     getAllStations();
   }, [getAllStations]);
@@ -60,7 +61,7 @@ export default function CardStations() {
             </StationCardInfo>
           </StationCardInfoContainer>
           <ButtonDefault  
-            onClick={(e) => {navigate("/dashboard"); SessionController.setStationData(station)}}
+            onClick={async(e) => {await setStationData(station); navigate("/dashboard")}}
             title="Ver Dados"
             widthButton="230px"
             heightButton="48px"
