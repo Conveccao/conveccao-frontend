@@ -1,7 +1,7 @@
 import { ChartDefault } from "../../components/CardChart";
 import { HeaderDefault } from "../../components/HeaderDefault";
 import { Sidebar } from "../../components/Sidebar";
-import { Container } from "./styles";
+import { Container, ButtonDownload } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SessionController from "../../session/sessionController";
@@ -48,6 +48,9 @@ export function DashboardEscola() {
         <ChartDefault title="Sensor pluviométrico" options={options}/>
         <ChartDefault title="Sensor pluviométrico" options={options}/>
       </Container>
+      <ButtonDownload>
+          EXPORTAR DADOS PARA CSV
+      </ButtonDownload>
     </>
   );
 }
