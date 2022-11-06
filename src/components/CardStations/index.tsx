@@ -48,7 +48,7 @@ export default function CardStations() {
         <StationCard>
 
       {stations.map((station: any) => (
-        <CardStation>
+        <CardStation key={station.id}>
           <StationCardHeader>
             <StationCardTitle>{station.name}</StationCardTitle>
           </StationCardHeader>

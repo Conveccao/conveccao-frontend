@@ -2,11 +2,17 @@ export default class Options {
 
     private _measuresList: number[]
     private _stationName: string
+    private _parameterName: string
+    private _parameterUnit: string
+    private _measureType: string
     public options: object
 
-    constructor(measuresList: number[], stationName: string) {
+    constructor(measuresList: number[], stationName: string, parameterName: string, parameterUnit: string, measureType: string) {
         this._measuresList = measuresList; 
         this._stationName = stationName;   
+        this._parameterName = parameterName
+        this._parameterUnit = parameterUnit
+        this._measureType = measureType
         this.options = {
             chart: {
                 type: "spline",
@@ -17,7 +23,7 @@ export default class Options {
                 },
               ],
               title: {
-                text: `Medidas do pluviômetro de ${this._stationName}`,
+                text: `Medidas do ${this._parameterName} de ${this._stationName}`,
               },
               subtitle: {
                 text: "Source: Convecção",
@@ -27,7 +33,7 @@ export default class Options {
               },
               yAxis: {
                 title: {
-                  text: "Temperature (°C)",
+                  text: `${this._measureType} (${this._parameterUnit})`,
                 },
               },
         }

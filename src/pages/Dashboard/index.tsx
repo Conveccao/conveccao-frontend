@@ -56,11 +56,11 @@ export function Dashboard() {
     handleSetAllMeasures(stationId)
   })
 
-  const pluvOptions = new Options(pluvMeasuresList, name)
-  const tempOptions = new Options(tempMeasuresList, name)
-  const umidOptions = new Options(umidMeasuresList, name)
-  const vVentOptions = new Options(vVentMeasuresList, name)
-  const dVentOptions = new Options(dVentMeasuresList, name)
+  const pluvOptions = new Options(pluvMeasuresList, name, 'pluviômetro', 'mm', 'Chuva')
+  const tempOptions = new Options(tempMeasuresList, name, 'termômetro', '°C', 'Temperatura')
+  const umidOptions = new Options(umidMeasuresList, name, 'higrômetro', '%', 'Umidade do ar')
+  const vVentOptions = new Options(vVentMeasuresList, name, 'anenômetro', 'km/h', 'Velocidade do vento')
+  const dVentOptions = new Options(dVentMeasuresList, name, 'catavento', 'Direção', 'Direção do vento')
 
 
   return (
