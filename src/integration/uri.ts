@@ -6,5 +6,7 @@ export enum URI{
     USEREXISTS = 'http://localhost:8081/user-exists',
     USERS = 'http://localhost:8081/users',
     UPDATEUSER = "http://localhost:8081/update-user",
-    LOGIN = 'http://localhost:8081/login'
+    LOGIN = 'http://localhost:8081/login',
+    MEASURES = 'http://localhost:8081/measures',
+    STATIONMEASURES = 'http://localhost:8081/station-measures'
 }

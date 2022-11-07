@@ -1,6 +1,7 @@
 export * from './StationList';
 export * from './StationRegister';
 export * from './Login';
+export * from './Dashboard';
 export * from './DashboardFatec';
 export * from './DashboardEscola';
 export * from './Presentation';
@@ -10,3 +11,5 @@ export * from './UserControl';
 export * from './StationDetails';
 export * from './Home';
 export * from './SensorList';
+export * from './Perfil';
+export * from './Alerts';

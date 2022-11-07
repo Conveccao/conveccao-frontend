@@ -17,7 +17,7 @@ export const Menu = styled.nav`
 `;
 
 export const Logo = styled.img`
-  width: 150px;
+  width: 100px;
 `;
 
 export const ButtonLogin = styled(Link)`
@@ -27,7 +27,7 @@ export const ButtonLogin = styled(Link)`
 
   width: 150px;
   height: 40px;
-  border-radius: 8px;
+  border-radius: 4px;
 
   text-decoration: none;
   background-color: ${(props) => props.theme.colors.blue_100};
@@ -41,19 +41,15 @@ export const ButtonLogin = styled(Link)`
 `;
 
 export const MainContent = styled.div`
-    min-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
-    height: 80vh;
+    height: calc(100vh - 10rem);
 `;
 
 export const Content = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0 30rem 0 30rem;
-    width: 100vw;
-    height: 100%;
+  max-width: 900px;
 `;
 
 export const Title = styled.div`
@@ -83,7 +79,7 @@ export const ButtonAccess = styled(Link)`
     width: 150px;
     height: 40px;
 
-    border-radius: 8px;
+    border-radius: 4px;
 
     text-decoration: none;
 
@@ -106,7 +102,7 @@ export const ButtonDoc = styled.a`
     width: 150px;
     height: 40px;
 
-    border-radius: 8px;
+    border-radius: 4px;
 
     text-decoration: none;
 

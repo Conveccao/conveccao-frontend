@@ -59,6 +59,18 @@ export function Sidebar() {
             <NavbarLink to="/home-page">
               Página inicial
             </NavbarLink>
+            {
+              /*
+              <NavbarLink to="/alertas">
+                Alertas
+              </NavbarLink>
+              */
+            }
+            
+            
+            <NavbarLink to="/perfil">
+              Perfil
+            </NavbarLink>
           </Navbar>
         </Header>
         <Footer>
@@ -85,6 +97,16 @@ export function Sidebar() {
             </NavbarLink>
             <NavbarLink to="/station-register">
               Cadastro de estações
+            </NavbarLink>
+            {
+              /*
+              <NavbarLink to="/alertas">
+                Alertas
+              </NavbarLink>
+              */
+            }
+            <NavbarLink to="/perfil">
+              Perfil
             </NavbarLink>
           </Navbar>
         </Header>
@@ -115,6 +137,16 @@ export function Sidebar() {
             </NavbarLink>
             <NavbarLink to="/station-register">
               Cadastro de estações
+            </NavbarLink>
+            {
+              /*
+              <NavbarLink to="/alertas">
+                Alertas
+              </NavbarLink>
+              */
+            }
+            <NavbarLink to="/perfil">
+              Perfil
             </NavbarLink>
           </Navbar>
         </Header>

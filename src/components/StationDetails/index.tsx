@@ -20,6 +20,7 @@ export function StationDisplay() {
   const [lat, setLat] = useState(SessionController.getStationLat())
   const [lon, setLon] = useState(SessionController.getStationLon())
   const [reference, setReference] = useState(SessionController.getStationReference())
+  const [link, setLink] = useState(SessionController.getStationLink())
 
   useEffect(() => {
     checarAutenticacao()
@@ -53,7 +54,8 @@ export function StationDisplay() {
         name: name,
         lat: lat,
         lon: lon,
-        reference: reference
+        reference: reference,
+        link: link,
     }
 
     let stationHandlers = new StationHandlers()
@@ -96,6 +98,7 @@ export function StationDisplay() {
               onChange={(e) => setLat(e.target.value)}/>
             </SFieldset>
           </Col>
+          
           <Col>
             <SFieldset>
               <SLabel>Longitude</SLabel>
@@ -104,6 +107,7 @@ export function StationDisplay() {
             </SFieldset>
           </Col>
         </Row>
+
         <Row style={{alignItems: 'end'}}>  
           <Col>
             <SFieldsetObs>
@@ -112,13 +116,22 @@ export function StationDisplay() {
               onChange={(e) => setReference(e.target.value)}/>
             </SFieldsetObs>
           </Col>
+
+          <Col>   
+            <SFieldset>
+              <SLabel>Link de Imagem da Estação</SLabel>
+              <CustomInput placeholder={link}
+              onChange={(e) => setLink(e.target.value)}/>
+            </SFieldset>
+          </Col>
+      
         </Row>  
         <Row>
           <Footer>
             <FormFooter>
               <Col>
                 <ButtonDefault 
-                  title='Editar Informações' 
+                  title='Atualizar Informações' 
                   backgroundButton={THEME.colors.green_50}
                   widthButton={'184px'} 
                   heightButton={'56px'}

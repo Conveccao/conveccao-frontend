@@ -5,8 +5,8 @@ export const Container = styled.div``;
 
 export const Main = styled.main`
   max-width: 800px;
-  height: 600px;
-  margin: 50px auto;
+  height: 700px;
+  margin: 100px auto;
   padding: 24px;
   display: flex;
   justify-content: center;

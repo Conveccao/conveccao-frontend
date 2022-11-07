@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { GoogleAuthProvider, signInWithPopup, User } from "firebase/auth";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, User } from "firebase/auth";
 import { auth } from "../../services/firebase";
+
+import LogoGoogle from '../../assets/icons/googleIcon.svg';
 
 import {
   Container,
@@ -13,7 +15,7 @@ import {
   Subtitle,
   ButtonContainer,
   ButtonGoogle,
-  ButtonFacebook,
+  ButtonGithub,
   Header,
 } from "./styles";
 
@@ -77,6 +79,41 @@ export default function ModalLogin() {
     }
   };
 
+  async function handleFacebookLogin(){
+    const provider = new FacebookAuthProvider();
+    provider.addScope('name');
+    provider.addScope('email');
+    provider.addScope('picture{url}');
+
+    console.log("oi");
+
+    signInWithPopup(auth, provider)
+    .then(result => {console.log(result)}).catch(error => {console.log(error)});
+  }
+
+  async function handleGithubLogin() {
+    const provider = new GithubAuthProvider();
+  
+    signInWithPopup(auth, provider)
+    .then(async (result: any) => {
+        setUser(result.user);
+        let newUser = {
+          name: result.user.displayName,
+          email: result.user.email,
+          photo: result.user.photoURL,
+        };
+        let userExists = await handleUserExists(result.user.email);
+        if (!userExists[0]) {
+          handleCreateUser(newUser);
+        }
+        await handleLogin(result.user.email)
+      })
+      .catch((error: any) => {
+        console.log(error);
+        window.alert("Email cadastrado! Tente Logar com Gmail")
+      });
+
+  }
 
   async function handleGoogleLogin() {
     const provider = new GoogleAuthProvider();
@@ -96,6 +133,7 @@ export default function ModalLogin() {
       })
       .catch((error: any) => {
         console.log(error);
+        window.alert("Email cadastrado! Tente Logar com GitHub")
       });
   }
   useEffect(() => {
@@ -132,8 +170,8 @@ export default function ModalLogin() {
       <ButtonContainer>
         {isLoading ? (
           <ButtonGoogle onClick={handleGoogleLogin}>
-            <FontAwesomeIcon icon={faGoogle} />
-            Google
+            <img src={LogoGoogle} alt="Google Icon"/>
+            Faça login com o Google
           </ButtonGoogle>
         ) : (
           <Skeleton
@@ -145,14 +183,11 @@ export default function ModalLogin() {
           />
         )}
 
-        {/* Comentário do seu código 
         {isLoading ? (
-          //
-          <ButtonFacebook disabled>
-            <FontAwesomeIcon icon={faFacebook} />
-            Facebook
-          </ButtonFacebook>
-
+          <ButtonGithub onClick={handleGithubLogin}>
+           <FontAwesomeIcon icon={faGithub} size="lg" />
+              Faça login com o Github
+          </ButtonGithub>
         ) : (
           <Skeleton
             variant="rounded"
@@ -162,7 +197,6 @@ export default function ModalLogin() {
             style={{ marginBottom: "16px" }}
           />
         )}
-        */}
       </ButtonContainer>
     </Container>
   );

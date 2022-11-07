@@ -14,20 +14,21 @@ export function StationForm() {
     const [lat, setLat] = useState('')
     const [lon, setLon] = useState('')
     const [reference, setReference] = useState('')
+    const [link, setLink] = useState('')
 
     let station = {
         installation_date: installDate,
         name: name,
         lat: lat,
         lon: lon,
-        reference: reference
+        reference: reference,
+        link: link
     }
 
     let stationHandlers = new StationHandlers()
 
     const handleNewStation = async(e:any) => {
         e.preventDefault()
-
         try{
             stationHandlers.handleNewStation(station)
             e.target.reset()
@@ -69,6 +70,13 @@ export function StationForm() {
                 <CustomInput placeholder='Digite a referência da estação'
                 onChange={(e) => setReference(e.target.value)}/>
             </SFieldset>
+
+            <SFieldset>
+                <SLabel>Link de Imagem da Estação</SLabel>
+                <CustomInput placeholder='Digite o link da imagem da estação'
+                onChange={(e) => setLink(e.target.value)}/>
+            </SFieldset>
+
             <Footer>
                 <FormFooter>
                      <ButtonDefault 
