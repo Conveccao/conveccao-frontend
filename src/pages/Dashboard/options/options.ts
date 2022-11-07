@@ -1,4 +1,10 @@
 export default class Options {
+  forEach() {
+    throw new Error("Method not implemented.")
+  }
+  value(value: any) {
+    throw new Error("Method not implemented.")
+  }
 
     private _measuresList: number[]
     private _stationName: string
@@ -6,6 +12,7 @@ export default class Options {
     private _parameterUnit: string
     private _measureType: string
     public options: object
+  length: any
 
     constructor(measuresList: number[], stationName: string, parameterName: string, parameterUnit: string, measureType: string) {
         this._measuresList = measuresList; 

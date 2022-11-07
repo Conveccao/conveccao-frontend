@@ -37,8 +37,8 @@ display: flex;
 align-items: center;
 justify-content: center;
 
-width: 100%;
-height: 100%;
+width: 410px;
+    height: 270px;
 border: 2px solid ${props => props.theme.colors.green_100};
 border-radius: 0.5rem;
 
@@ -57,12 +57,12 @@ color: ${props => props.theme.colors.black};
 `;
 
 export const StationCardInfoValue = styled.span`
-font-size: 1rem;
-font-weight: 400;
-color: ${props => props.theme.colors.green_100};
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${props => props.theme.colors.green_100};
 `;
 
 export const StationCardImage = styled.img`
-    width: 100%;
-    height: 100%;
+    width: 410px;
+    height: 270px;
 `;

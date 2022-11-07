@@ -1,3 +1,9 @@
+/*
+import * as json2csv from "json2csv";
+import * as fs from "fs";
+import * as uuid from "uuid";
+*/
+
 import { ChartDefault } from "../../components/CardChart";
 import { HeaderDefault } from "../../components/HeaderDefault";
 import { Sidebar } from "../../components/Sidebar";
@@ -62,7 +68,6 @@ export function Dashboard() {
   const vVentOptions = new Options(vVentMeasuresList, name, 'anenômetro', 'km/h', 'Velocidade do vento')
   const dVentOptions = new Options(dVentMeasuresList, name, 'catavento', 'Direção', 'Direção do vento')
 
-
   return (
     <>
       <HeaderDefault title={name} />
@@ -79,8 +84,4 @@ export function Dashboard() {
       </ButtonDownload>
     </>
   );
-}
-
-function handleDownload() {
-  throw new Error("Function not implemented.");
 }
