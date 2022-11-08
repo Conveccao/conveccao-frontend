@@ -59,15 +59,9 @@ export function Sidebar() {
             <NavbarLink to="/home-page">
               Página inicial
             </NavbarLink>
-            {
-              /*
-              <NavbarLink to="/alertas">
-                Alertas
-              </NavbarLink>
-              */
-            }
-            
-            
+            <NavbarLink to="/alertas">
+              Alertas
+            </NavbarLink>
             <NavbarLink to="/perfil">
               Perfil
             </NavbarLink>
@@ -98,13 +92,9 @@ export function Sidebar() {
             <NavbarLink to="/station-register">
               Cadastro de estações
             </NavbarLink>
-            {
-              /*
               <NavbarLink to="/alertas">
                 Alertas
               </NavbarLink>
-              */
-            }
             <NavbarLink to="/perfil">
               Perfil
             </NavbarLink>
@@ -138,13 +128,9 @@ export function Sidebar() {
             <NavbarLink to="/station-register">
               Cadastro de estações
             </NavbarLink>
-            {
-              /*
               <NavbarLink to="/alertas">
                 Alertas
               </NavbarLink>
-              */
-            }
             <NavbarLink to="/perfil">
               Perfil
             </NavbarLink>

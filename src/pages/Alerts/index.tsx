@@ -6,7 +6,7 @@ import { Sidebar } from "../../components/Sidebar";
 import SessionController from '../../session/sessionController';
 import { useNavigate } from "react-router-dom";
 
-import { Container, Card, InfoAlerts, TypeAlert, TypeAlertTitle, TypeAlertText, HourAlert, HourAlertTitle, HourAlertText, DateAlert, DateAlertTitle, DateAlertText, DescriptionAlerts, DescriptionAlertsTitle, DescriptionAlertsText, TitleCard } from "./styles";
+import { Container, Card, InfoAlerts, TypeAlert, TypeAlertTitle, TypeAlertText, HourAlert, HourAlertTitle, HourAlertText, DateAlert, DateAlertTitle, DateAlertText, TitleCard } from "./styles";
 
 export function Alerts() {
   const navigate = useNavigate();
@@ -46,20 +46,20 @@ export function Alerts() {
       <HeaderDefault title="Lista de Alertas" />
       <Sidebar />
       <Container>
-      <TitleCard>Alerta de Chuva</TitleCard>
         <Card>
+          <TitleCard>DESLIZAMENTO DE CHUVA</TitleCard>
           <InfoAlerts>            
             <TypeAlert>
               <TypeAlertTitle>
-                  Tipo do Alerta:
+                  LOCAL:
               </TypeAlertTitle>
               <TypeAlertText>
-                  Deslizamento de Terra
+                  SAO JOSE DOS CAMPOS
               </TypeAlertText>
             </TypeAlert>
             <HourAlert>
               <HourAlertTitle>
-                Data:
+                DATA:
               </HourAlertTitle>
               <HourAlertText>
                 12/12/2022
@@ -67,24 +67,14 @@ export function Alerts() {
             </HourAlert>
             <DateAlert>
               <DateAlertTitle>
-                  Hora:
+                  HORA:
               </DateAlertTitle>
               <DateAlertText>
                   13:29:58
               </DateAlertText>
             </DateAlert>
           </InfoAlerts>
-
-          <DescriptionAlerts>
-            <DescriptionAlertsTitle>
-                Descrição do Alerta:
-            </DescriptionAlertsTitle>
-            <DescriptionAlertsText>
-                Atenção, deslizamento de chuva pode ocorrer a qualquer momento.
-            </DescriptionAlertsText>  
-          </DescriptionAlerts>
-        </Card>      
-
+        </Card>
       </Container>
     </>
   );
