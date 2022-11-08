@@ -61,24 +61,23 @@ export function Dashboard() {
         const fields = [ "estação", "data", "hora", "parametro", "unidade", "valor" ];
         const opts = {fields};  
 
-        function exportFiles(){
-          const tocsv = function(measuresDownload: any){
+        async function exportFiles(){
+          const tocsv = async function(measuresDownload: any){
             try {
-              const csv = json2csv.parseAsync(measuresDownload, opts);
+              const csv = await json2csv.parseAsync(measuresDownload, opts);
               const FileName = uuid.v4() + ".csv";
               fs.writeFile("./Download/" + FileName, csv, function(err) {
-                try {
-                  window.alert("Arquivo salvo com sucesso!");
-                } catch (error) {
-                  console.log(error)
-                }
+                if (err) throw new Error('não funcionou')
+                console.log('Arquivo salvo')
               });
               return FileName;
             }catch (erro) {
               console.log(erro);
             }
           }
+          await tocsv(measuresDownload)
         }
+        exportFiles()
         return measuresValuesDownload;
       }
       setMeasuresDownload(stationId)
