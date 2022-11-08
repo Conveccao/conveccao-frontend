@@ -8,5 +8,6 @@ export enum URI{
     UPDATEUSER = "http://localhost:8081/update-user",
     LOGIN = 'http://localhost:8081/login',
     MEASURES = 'http://localhost:8081/measures',
-    STATIONMEASURES = 'http://localhost:8081/station-measures'
+    STATIONMEASURES = 'http://localhost:8081/station-measures',
+    DOWNLOADMEASURES = 'http://localhost:8081/build-csv'
 }

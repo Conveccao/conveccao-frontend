@@ -1,24 +1,18 @@
-/*
 import * as json2csv from "json2csv";
 import * as fs from "fs";
 import * as uuid from "uuid";
-*/
 
 import { ChartDefault } from "../../components/CardChart";
 import { HeaderDefault } from "../../components/HeaderDefault";
 import { Sidebar } from "../../components/Sidebar";
 import { Container, ButtonDownload } from "./styles";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Options from "./options/options";
 
 import SessionController from '../../session/sessionController';
 
-import StationHandlers from '../../integration/handlers/stationHandlers';
-import axios from "axios";
-import { URI } from "../../integration/uri";
 import MeasuresHandlers from "../../integration/handlers/measuresHandlers";
-import { async } from "@firebase/util";
+import MeasuresHandlersDownload from "../../integration/handlers/measuresHandlersDownload";
 
 export function Dashboard() {
   const [pluvMeasuresList, setPluvMeasuresList] = useState([])
@@ -31,7 +25,7 @@ export function Dashboard() {
   const [name, setName] = useState(SessionController.getStationName())
 
   const measuresHandler = new MeasuresHandlers();
-
+  
   const handleGetMeasures =  async (id: number, reference: string) => {
     return await measuresHandler.handleMeasuresPerStationAndReference(id, reference)
   };
@@ -44,6 +38,52 @@ export function Dashboard() {
     });
     return measuresValues;
   }
+
+
+  function handleDownload(){
+      console.log('funcionando')
+      // DOWNLOAD
+      const measuresHandlerDownload = new MeasuresHandlersDownload();
+      
+      const handleGetMeasuresDownload =  async (id: number) => {
+        return await measuresHandlerDownload.handleMeasuresPerStation(id)
+      };
+
+      const setMeasuresDownload = async (id: number) => {
+        const measuresValuesDownload: any[] = [];
+        const measuresDownload = await handleGetMeasuresDownload(id);
+        measuresDownload.forEach((measureDownload: any) => {
+          measuresValuesDownload.push(measureDownload.value); 
+        });
+        
+        console.log(measuresDownload)
+
+        const fields = [ "estação", "data", "hora", "parametro", "unidade", "valor" ];
+        const opts = {fields};  
+
+        function exportFiles(){
+          const tocsv = function(measuresDownload: any){
+            try {
+              const csv = json2csv.parseAsync(measuresDownload, opts);
+              const FileName = uuid.v4() + ".csv";
+              fs.writeFile("./Download/" + FileName, csv, function(err) {
+                try {
+                  window.alert("Arquivo salvo com sucesso!");
+                } catch (error) {
+                  console.log(error)
+                }
+              });
+              return FileName;
+            }catch (erro) {
+              console.log(erro);
+            }
+          }
+        }
+        return measuresValuesDownload;
+      }
+      setMeasuresDownload(stationId)
+  }
+
 
   const handleSetAllMeasures = async (id: number) => {
     const pluvMeasuresValues: any = await setMeasuresList(id, 'pluv');
@@ -62,6 +102,8 @@ export function Dashboard() {
     handleSetAllMeasures(stationId)
   })
 
+  
+
   const pluvOptions = new Options(pluvMeasuresList, name, 'pluviômetro', 'mm', 'Chuva')
   const tempOptions = new Options(tempMeasuresList, name, 'termômetro', '°C', 'Temperatura')
   const umidOptions = new Options(umidMeasuresList, name, 'higrômetro', '%', 'Umidade do ar')
@@ -79,7 +121,9 @@ export function Dashboard() {
         <ChartDefault title="Sensor velocidade do vento" options={vVentOptions.options} />
         <ChartDefault title="Sensor direção do vento" options={dVentOptions.options} />
       </Container>
-      <ButtonDownload>
+      <ButtonDownload
+        onClick={handleDownload}
+      >
           EXPORTAR DADOS PARA CSV
       </ButtonDownload>
     </>
