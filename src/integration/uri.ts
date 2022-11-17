@@ -1,5 +1,6 @@
 export enum URI{
     STATIONS = 'http://localhost:8081/stations',
+    STATIONS_ACTIVE = 'http://localhost:8081/active-stations',
     PARAMETERS = 'http://localhost:8081/parameters',
     PARAMETERTYPES = 'http://localhost:8081/parameterTypes',
     CREATEUSER = 'http://localhost:8081/user',

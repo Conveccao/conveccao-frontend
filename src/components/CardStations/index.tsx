@@ -26,7 +26,7 @@ export default function CardStations() {
   const [stations, setStations] = useState([]);
 
   const handleGetAll = async () => {
-    const res = await axios.get(URI.STATIONS);
+    const res = await axios.get(URI.STATIONS_ACTIVE);
     return res.data;
   };
 
