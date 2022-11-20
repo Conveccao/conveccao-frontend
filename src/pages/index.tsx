@@ -13,3 +13,4 @@ export * from './Home';
 export * from './SensorList';
 export * from './Perfil';
 export * from './Alerts';
+export * from './Documentation';

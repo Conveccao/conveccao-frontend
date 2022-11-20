@@ -63,18 +63,30 @@ export function StationList() {
     getAllStations();
   }, [getAllStations]);
 
+
+
+
+  /*
+                
+  */
+
+
+
+
   return (
     <>
       <HeaderDefault title="Lista das estações" />
       <Sidebar />
       <Main>
         <Table>
+
           <thead>
             <tr>
               <TableTH>Código</TableTH>
               <TableTH>Nome da estação</TableTH>
               <TableTH>Localização</TableTH>
               <TableTH>Detalhes</TableTH>
+              <TableTH>Situação</TableTH>
             </tr>
           </thead>
 
@@ -94,9 +106,34 @@ export function StationList() {
                     onClick={(e) => {navigate("/station-details"); SessionController.setStationData(station)}}
                   />
                 </TableTDButton>
+                {station.active == 'true' &&
+                  <TableTDButton>
+                      <ButtonDefault
+                      title="Desativar"
+                      backgroundButton={THEME.colors.green_100}
+                      widthButton={"184px"}
+                      heightButton={"40px"}
+                      hoverBackgroundButton={THEME.colors.green_50}
+                      
+                    /> 
+                  </TableTDButton>                  
+                  }
+                  {station.active == 'false' &&
+                    <TableTDButton>
+                        <ButtonDefault
+                        title="Ativar"
+                        backgroundButton={THEME.colors.red_google}
+                        widthButton={"184px"}
+                        heightButton={"40px"}
+                        hoverBackgroundButton={THEME.colors.green_50}
+                        
+                      />
+                    </TableTDButton>                   
+                }
               </tr>
             ))}
           </tbody>
+
         </Table>
       </Main>
     </>

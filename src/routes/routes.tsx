@@ -14,7 +14,8 @@ import {
   Home,
   SensorList,
   Perfil,
-  Alerts
+  Alerts,
+  Documentation
 } from "../pages/index";
 
 export default function AppRoutes() {
@@ -35,6 +36,7 @@ export default function AppRoutes() {
       <Route path="/perfil" element={<Perfil />} />
       <Route path="/perfil" element={<Perfil />} />
       <Route path="/alertas" element={<Alerts />} />
+      <Route path="/documentacao" element={<Documentation />} />
     </Routes>
   );
 }
