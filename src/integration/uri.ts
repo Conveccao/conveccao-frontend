@@ -9,6 +9,7 @@ export enum URI{
     LOGIN = 'http://174.138.61.49:80/login',
     MEASURES = 'http://174.138.61.49:80/measures',
     STATIONMEASURES = 'http://174.138.61.49:80/station-measures',
-    DOWNLOADMEASURES = 'http://174.138.61.49:80/build-csv'
+    DOWNLOADMEASURES = 'http://174.138.61.49:80/build-csv',
+    STATIONS_ACTIVE = 'http://174.138.61.49:80/active-stations'
 }
 
