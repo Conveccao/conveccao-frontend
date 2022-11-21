@@ -6,6 +6,9 @@ import { Sidebar } from "../../components/Sidebar";
 import SessionController from '../../session/sessionController';
 import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
+import { URI } from "../../integration/uri";
+
 import { Container, Card, InfoAlerts, TypeAlert, TypeAlertTitle, TypeAlertText, HourAlert, HourAlertTitle, HourAlertText, DateAlert, DateAlertTitle, DateAlertText, TitleCard } from "./styles";
 
 export function Alerts() {
@@ -41,20 +44,41 @@ export function Alerts() {
     return autenticado
   }
 
+  const [alerts, setAlerts] = useState([]);
+
+  const handleGetAll = async () => {
+    const res = await axios.get(URI.ALERTS);
+    return res.data;
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getAllAlerts = async () => {
+    const allAlerts: [] = await handleGetAll();
+    setAlerts(allAlerts);
+  };
+
+  useEffect(() => {
+    getAllAlerts();
+  }, [getAllAlerts]);
+
+
+
+
   return (
     <>
       <HeaderDefault title="Lista de Alertas" />
       <Sidebar />
       <Container>
+      {alerts.map((alert: any) => (
         <Card>
-          <TitleCard>DESLIZAMENTO DE CHUVA</TitleCard>
+          <TitleCard>{alert.occurrence}</TitleCard>
           <InfoAlerts>            
             <TypeAlert>
               <TypeAlertTitle>
                   LOCAL:
               </TypeAlertTitle>
               <TypeAlertText>
-                  SAO JOSE DOS CAMPOS
+                  {alert.place}
               </TypeAlertText>
             </TypeAlert>
             <HourAlert>
@@ -62,7 +86,7 @@ export function Alerts() {
                 DATA:
               </HourAlertTitle>
               <HourAlertText>
-                12/12/2022
+                {alert.date}
               </HourAlertText>
             </HourAlert>
             <DateAlert>
@@ -70,11 +94,12 @@ export function Alerts() {
                   HORA:
               </DateAlertTitle>
               <DateAlertText>
-                  13:29:58
+                  {alert.hour}
               </DateAlertText>
             </DateAlert>
           </InfoAlerts>
         </Card>
+      ))} 
       </Container>
     </>
   );
