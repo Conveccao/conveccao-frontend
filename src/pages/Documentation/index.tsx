@@ -10,7 +10,16 @@ import { Sidebar } from "../../components/Sidebar";
 import SessionController from '../../session/sessionController';
 import { useNavigate } from "react-router-dom";
 
-import { Container, Main, ContentMain, ScrollMain, TitleTutorialOne, TitleTutorial, SubtitleTutorial, LinkTitleOne, LinkTitle } from "./styles";
+import { Container, Main, ContentMain, ScrollMain, TitleTutorialOne, TitleTutorial, SubtitleTutorial, LinkTitleOne, LinkTitle, LinkSubTitle } from "./styles";
+
+import graficos from '../../assets/images/assets-documents/graficos.png'
+import estação from '../../assets/images/assets-documents/estação.png'
+import home from '../../assets/images/assets-documents/home.png'
+import login from '../../assets/images/assets-documents/login.png'
+import logo from '../../assets/images/assets-documents/logo.png'
+import menuLateral from '../../assets/images/assets-documents/menuLateral.png'
+import paginaInicial from '../../assets/images/assets-documents/paginaInicial.png'
+import perfil from '../../assets/images/assets-documents/perfil.png'
 
 export function Documentation() {
   const navigate = useNavigate();
@@ -46,6 +55,8 @@ export function Documentation() {
     return autenticado
   }
 
+
+
   return (
     <>
       <HeaderDefault title="Guia de Uso" />
@@ -54,45 +65,58 @@ export function Documentation() {
         <Main>
           <ContentMain>
             <TitleTutorialOne>
-              Titulo 1
+            1. Página de Inicial
             </TitleTutorialOne>
             <SubtitleTutorial>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?
+            Na página inicial o usuário terá três opções, efetuar o Login, Acessar a plataforma (caso o login já tenha sido efetuado) e entrar na Documentação.
             </SubtitleTutorial>
+            <img src={paginaInicial} style={{ width: '80%' }} />
 
 
             <TitleTutorial>
-              Titulo 2
+            2. Página de Login
             </TitleTutorial>
             <SubtitleTutorial>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?
+            Nesta página o usuário poderá efetuar o Login/Cadastro de sua conta com as opções disponíveis: Google e Github.
             </SubtitleTutorial>
+            <img src={login} style={{ width: '80%' }} />
 
             <TitleTutorial>
-              Titulo 3
+            3. Página Home do Usuário. 
             </TitleTutorial>
             <SubtitleTutorial>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?
+            Nesta página o usuário terá acesso a algumas funções essenciais do software como: Menu Lateral, Mapa Geral das Estações e o acesso às Estações (Principais e Outras). E também Sair da aplicação.
             </SubtitleTutorial>
+            <img src={home} style={{ width: '80%' }} />
 
             <TitleTutorial>
-              Titulo 4
+              3.1 Menu Lateral
             </TitleTutorial>
             <SubtitleTutorial>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?
+            No Menu lateral o Usuário poderá navegar para as outras páginas e funções do nosso software, entre elas temos: Página Inicial (ao qual ele já está), Alertas e Perfil.
             </SubtitleTutorial>
+            <img src={menuLateral} style={{ width: '80%' }} />
 
             <TitleTutorial>
-              Titulo 5
+            4. Página de Perfil do Usuário
             </TitleTutorial>
             <SubtitleTutorial>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam, corrupti. Ab veniam nulla enim sit corporis quasi nisi eveniet illum quam ducimus voluptatem earum dignissimos, atque eligendi sequi? Numquam, ex?
+            Nesta Página o usuário poderá conferir as informações de seu cadastro (Nome, Email e Permissões de Acesso), que foi feito no início da aplicação. 
             </SubtitleTutorial>
+            <img src={perfil} style={{ width: '80%' }} />
+
+          <TitleTutorial>
+            5. Página de Perfil do Usuário
+            </TitleTutorial>
+            <SubtitleTutorial>
+            Nesta seção da página inicial o usuário poderá escolher uma das estações cadastradas para acessar sua página própria a partir do botão “Ver Dados”
+            </SubtitleTutorial>
+            
           </ContentMain>
 
           <ScrollMain>
             <LinkTitleOne href=''>
-              Titulo 1
+             Titulo 1
             </LinkTitleOne>
 
             <LinkTitle href=''>
@@ -102,6 +126,11 @@ export function Documentation() {
             <LinkTitle href=''>
               Titulo 3
             </LinkTitle>
+
+
+            <LinkSubTitle href=''>
+              Titulo 3.1
+            </LinkSubTitle>
 
             <LinkTitle href=''>
               Titulo 4

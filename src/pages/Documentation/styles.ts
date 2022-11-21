@@ -58,4 +58,10 @@ export const LinkTitle = styled.a`
   text-decoration: none;
 `;
 
+export const LinkSubTitle = styled.a`
+  margin-top: 25px;
+  text-decoration: none;
+  padding-left: 15px;
+`;
+
 
