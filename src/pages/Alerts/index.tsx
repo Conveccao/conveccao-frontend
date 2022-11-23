@@ -13,37 +13,6 @@ import { Container, Card, InfoAlerts, TypeAlert, TypeAlertTitle, TypeAlertText, 
 
 export function Alerts() {
   const navigate = useNavigate();
-  const [autenticado, setAutenticado] = useState(true);
-
-
-  useEffect(() => {
-    checarAutenticacao()
-  }, [])
-
-  useEffect(() => {
-    if (!autenticado) {
-        navigate('/login')
-    } else {
-      if (!checkAuthorization()) navigate('/home-page')
-    }
-  }, [autenticado, navigate])
-
-  const checkAuthorization = () => {
-    const userRole = SessionController.getUserRole()
-    if(userRole == 'user') return false
-    return true
-  }
-
-  const checarAutenticacao = async () => {
-    const token = SessionController.getToken()
-    if (token == null) {
-        setAutenticado(false)
-    } else {
-        setAutenticado(true)
-    }
-    return autenticado
-  }
-
   const [alerts, setAlerts] = useState([]);
 
   const handleGetAll = async () => {

@@ -23,39 +23,6 @@ import perfil from '../../assets/images/assets-documents/perfil.png'
 
 export function Documentation() {
   const navigate = useNavigate();
-  const [autenticado, setAutenticado] = useState(true);
-
-
-
-  useEffect(() => {
-    checarAutenticacao()
-  }, [])
-
-  useEffect(() => {
-    if (!autenticado) {
-      navigate('/login')
-    } else {
-      if (!checkAuthorization()) navigate('/home-page')
-    }
-  }, [autenticado, navigate])
-
-  const checkAuthorization = () => {
-    const userRole = SessionController.getUserRole()
-    if (userRole == 'user') return false
-    return true
-  }
-
-  const checarAutenticacao = async () => {
-    const token = SessionController.getToken()
-    if (token == null) {
-      setAutenticado(false)
-    } else {
-      setAutenticado(true)
-    }
-    return autenticado
-  }
-
-
 
   return (
     <>

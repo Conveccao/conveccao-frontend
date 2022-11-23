@@ -1,7 +1,3 @@
-import * as json2csv from "json2csv";
-import * as fs from "fs";
-import * as uuid from "uuid";
-
 import { ChartDefault } from "../../components/CardChart";
 import { HeaderDefault } from "../../components/HeaderDefault";
 import { Sidebar } from "../../components/Sidebar";
@@ -9,25 +5,67 @@ import { Container, ButtonDownload } from "./styles";
 import { useEffect, useState } from "react";
 import Options from "./options/options";
 
-import SessionController from '../../session/sessionController';
+import { CSVLink, CSVDownload } from 'react-csv';
+
+import SessionController from "../../session/sessionController";
 
 import MeasuresHandlers from "../../integration/handlers/measuresHandlers";
 import MeasuresHandlersDownload from "../../integration/handlers/measuresHandlersDownload";
+import React from "react";
+
+
+// OBTER JSON DE DADOS PARA DOWNLOAD
+const measuresHandlerDownload = new MeasuresHandlersDownload();
+
+const handleGetMeasuresDownload = async (id: number) => {
+  return await measuresHandlerDownload.handleMeasuresPerStation(id);
+};
+
+
+const setMeasuresDownload = (id: number) => {
+  const measuresDownload = handleGetMeasuresDownload(id);
+  return measuresDownload;
+};
+
+setMeasuresDownload(SessionController.getStationId())
+
+
+const data = [
+  { firstname: "Ahmed", lastname: "Tomi", email: "ah@smthing.co.com" },
+  { firstname: "Raed", lastname: "Labes", email: "rl@smthing.co.com" },
+  { firstname: "Yezzi", lastname: "Min l3b", email: "ymin@cocococo.com" }
+];
+
+const headers = [
+  { label: "First Name", key: "firstname" },
+  { label: "Last Name", key: "lastname" },
+  { label: "Email", key: "email" }
+];
+
+const csvReport = {
+  filename: "DataStation.csv",
+  headers: headers,
+  data: data,
+};
+
 
 export function Dashboard() {
-  const [pluvMeasuresList, setPluvMeasuresList] = useState([])
-  const [tempMeasuresList, setTempMeasuresList] = useState([])
-  const [umidMeasuresList, setUmidMeasuresList] = useState([])
-  const [vVentMeasuresList, setVVentMeasuresList] = useState([])
-  const [dVentMeasuresList, setDVentMeasuresList] = useState([])
+  const [pluvMeasuresList, setPluvMeasuresList] = useState([]);
+  const [tempMeasuresList, setTempMeasuresList] = useState([]);
+  const [umidMeasuresList, setUmidMeasuresList] = useState([]);
+  const [vVentMeasuresList, setVVentMeasuresList] = useState([]);
+  const [dVentMeasuresList, setDVentMeasuresList] = useState([]);
 
-  const [stationId, setStationId] = useState(SessionController.getStationId())
-  const [name, setName] = useState(SessionController.getStationName())
+  const [stationId, setStationId] = useState(SessionController.getStationId());
+  const [name, setName] = useState(SessionController.getStationName());
 
   const measuresHandler = new MeasuresHandlers();
-  
-  const handleGetMeasures =  async (id: number, reference: string) => {
-    return await measuresHandler.handleMeasuresPerStationAndReference(id, reference)
+
+  const handleGetMeasures = async (id: number, reference: string) => {
+    return await measuresHandler.handleMeasuresPerStationAndReference(
+      id,
+      reference
+    );
   };
 
   const setMeasuresList = async (id: number, reference: string) => {
@@ -37,93 +75,92 @@ export function Dashboard() {
       measuresValues.push(measure.value);
     });
     return measuresValues;
-  }
-
-
-  function handleDownload(){
-      console.log('funcionando')
-      // DOWNLOAD
-      const measuresHandlerDownload = new MeasuresHandlersDownload();
-      
-      const handleGetMeasuresDownload =  async (id: number) => {
-        return await measuresHandlerDownload.handleMeasuresPerStation(id)
-      };
-
-      const setMeasuresDownload = async (id: number) => {
-        const measuresValuesDownload: any[] = [];
-        const measuresDownload = await handleGetMeasuresDownload(id);
-        measuresDownload.forEach((measureDownload: any) => {
-          measuresValuesDownload.push(measureDownload.value); 
-        });
-        
-        console.log(measuresDownload)
-
-        const fields = [ "estação", "data", "hora", "parametro", "unidade", "valor" ];
-        const opts = {fields};  
-
-        async function exportFiles(){
-          const tocsv = async function(measuresDownload: any){
-            try {
-              const csv = await json2csv.parseAsync(measuresDownload, opts);
-              const FileName = uuid.v4() + ".csv";
-              fs.writeFile("./Download/" + FileName, csv, function(err) {
-                if (err) throw new Error('não funcionou')
-                console.log('Arquivo salvo')
-              });
-              return FileName;
-            }catch (erro) {
-              console.log(erro);
-            }
-          }
-          await tocsv(measuresDownload)
-        }
-        exportFiles()
-        return measuresValuesDownload;
-      }
-      setMeasuresDownload(stationId)
-  }
-
+  };
 
   const handleSetAllMeasures = async (id: number) => {
-    const pluvMeasuresValues: any = await setMeasuresList(id, 'pluv');
-    const tempMeasuresValues: any = await setMeasuresList(id, 'temp');
-    const umidMeasuresValues: any = await setMeasuresList(id, 'umid');
-    const vVentMeasuresValues: any = await setMeasuresList(id, 'v_vent');
-    const dVentMeasuresValues: any = await setMeasuresList(id, 'd_vent');
+    const pluvMeasuresValues: any = await setMeasuresList(id, "pluv");
+    const tempMeasuresValues: any = await setMeasuresList(id, "temp");
+    const umidMeasuresValues: any = await setMeasuresList(id, "umid");
+    const vVentMeasuresValues: any = await setMeasuresList(id, "v_vent");
+    const dVentMeasuresValues: any = await setMeasuresList(id, "d_vent");
     setPluvMeasuresList(pluvMeasuresValues);
     setTempMeasuresList(tempMeasuresValues);
     setUmidMeasuresList(umidMeasuresValues);
     setVVentMeasuresList(vVentMeasuresValues);
     setDVentMeasuresList(dVentMeasuresValues);
-  }
+  };
 
   useEffect(() => {
-    handleSetAllMeasures(stationId)
-  })
+    handleSetAllMeasures(stationId);
+  });
 
-  
-
-  const pluvOptions = new Options(pluvMeasuresList, name, 'pluviômetro', 'mm', 'Chuva')
-  const tempOptions = new Options(tempMeasuresList, name, 'termômetro', '°C', 'Temperatura')
-  const umidOptions = new Options(umidMeasuresList, name, 'higrômetro', '%', 'Umidade do ar')
-  const vVentOptions = new Options(vVentMeasuresList, name, 'anenômetro', 'km/h', 'Velocidade do vento')
-  const dVentOptions = new Options(dVentMeasuresList, name, 'catavento', 'Direção', 'Direção do vento')
+  const pluvOptions = new Options(
+    pluvMeasuresList,
+    name,
+    "pluviômetro",
+    "mm",
+    "Chuva"
+  );
+  const tempOptions = new Options(
+    tempMeasuresList,
+    name,
+    "termômetro",
+    "°C",
+    "Temperatura"
+  );
+  const umidOptions = new Options(
+    umidMeasuresList,
+    name,
+    "higrômetro",
+    "%",
+    "Umidade do ar"
+  );
+  const vVentOptions = new Options(
+    vVentMeasuresList,
+    name,
+    "anenômetro",
+    "km/h",
+    "Velocidade do vento"
+  );
+  const dVentOptions = new Options(
+    dVentMeasuresList,
+    name,
+    "catavento",
+    "Direção",
+    "Direção do vento"
+  );
 
   return (
     <>
+      <div>
+
+      </div>
+
       <HeaderDefault title={name} />
       <Sidebar />
       <Container>
-        <ChartDefault title="Sensor pluviométrico" options={pluvOptions.options} />
-        <ChartDefault title="Sensor temperatura" options={tempOptions.options} />
+        <ChartDefault
+          title="Sensor pluviométrico"
+          options={pluvOptions.options}
+        />
+        <ChartDefault
+          title="Sensor temperatura"
+          options={tempOptions.options}
+        />
         <ChartDefault title="Sensor umidade" options={umidOptions.options} />
-        <ChartDefault title="Sensor velocidade do vento" options={vVentOptions.options} />
-        <ChartDefault title="Sensor direção do vento" options={dVentOptions.options} />
+        <ChartDefault
+          title="Sensor velocidade do vento"
+          options={vVentOptions.options}
+        />
+        <ChartDefault
+          title="Sensor direção do vento"
+          options={dVentOptions.options}
+        />
       </Container>
-      <ButtonDownload
-        onClick={handleDownload}
-      >
+      <ButtonDownload>
+        <CSVLink {...csvReport}>
           EXPORTAR DADOS PARA CSV
+        </CSVLink>
       </ButtonDownload>
     </>
   );
