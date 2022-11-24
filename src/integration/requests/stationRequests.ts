@@ -28,4 +28,24 @@ export default class StationRequests{
             window.alert("Ocorreu um erro. Tente novamente")
         }
     }
+
+    public async activateStation(id: number) {
+        try {
+            const res = await axios.put(`${URI.ACTIVATE_STATION}/${id}`)
+            return res.data
+        } catch (error) {
+            console.log(error)
+            window.alert("Ocorreu um erro. Tente novamente")
+        }
+    }
+
+    public async deactivateStation(id: number) {
+        try {
+            const res = await axios.put(`${URI.DEACTIVATE_STATION}/${id}`)
+            return res.data
+        } catch (error) {
+            console.log(error)
+            window.alert("Ocorreu um erro. Tente novamente")
+        }
+    }
 }

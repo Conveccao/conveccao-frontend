@@ -4,6 +4,8 @@ const THEME = {
       green_50: '#007A3F',
 
       red_google: '#de5246',
+      red_google_50: '#c05040',
+
       blue_facebook: '#3b5998',
 
       blue_100: '#0A94ED',

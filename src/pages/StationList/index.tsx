@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Main, Table, TableTH, TableTD, TableTDButton } from "./styles";
 import THEME from "../../styles/theme";
+import StationHandlers from "../../integration/handlers/stationHandlers";
 
 export function StationList() {
   const navigate = useNavigate();
@@ -64,11 +65,23 @@ export function StationList() {
   }, [getAllStations]);
 
 
+  const stationHandlers = new StationHandlers()
 
+  async function handleActiveStations (id: number) {
+    try {
+      stationHandlers.handleActivateStation(id)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
-  /*
-                
-  */
+  function handleDeactiveStations (id: number) {
+    try {
+      stationHandlers.handleDeactivateStation(id)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
 
@@ -106,27 +119,27 @@ export function StationList() {
                     onClick={(e) => {navigate("/station-details"); SessionController.setStationData(station)}}
                   />
                 </TableTDButton>
-                {station.active == 'true' &&
+                {station.active == true &&
                   <TableTDButton>
                       <ButtonDefault
                       title="Desativar"
-                      backgroundButton={THEME.colors.green_100}
+                      backgroundButton={THEME.colors.red_google}
                       widthButton={"184px"}
                       heightButton={"40px"}
-                      hoverBackgroundButton={THEME.colors.green_50}
-                      
+                      hoverBackgroundButton={THEME.colors.red_google_50}
+                      onClick={() => handleDeactiveStations(station.id)}
                     /> 
                   </TableTDButton>                  
                   }
-                  {station.active == 'false' &&
+                  {station.active == false &&
                     <TableTDButton>
                         <ButtonDefault
                         title="Ativar"
-                        backgroundButton={THEME.colors.red_google}
+                        backgroundButton={THEME.colors.green_100}
                         widthButton={"184px"}
                         heightButton={"40px"}
                         hoverBackgroundButton={THEME.colors.green_50}
-                        
+                        onClick={(e) => handleActiveStations(station.id)}
                       />
                     </TableTDButton>                   
                 }
