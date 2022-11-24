@@ -12,41 +12,7 @@ import SessionController from "../../session/sessionController";
 import MeasuresHandlers from "../../integration/handlers/measuresHandlers";
 import MeasuresHandlersDownload from "../../integration/handlers/measuresHandlersDownload";
 import React from "react";
-
-
-// OBTER JSON DE DADOS PARA DOWNLOAD
-const measuresHandlerDownload = new MeasuresHandlersDownload();
-
-const handleGetMeasuresDownload = async (id: number) => {
-  return await measuresHandlerDownload.handleMeasuresPerStation(id);
-};
-
-
-const setMeasuresDownload = (id: number) => {
-  const measuresDownload = handleGetMeasuresDownload(id);
-  return measuresDownload;
-};
-
-setMeasuresDownload(SessionController.getStationId())
-
-
-const data = [
-  { firstname: "Ahmed", lastname: "Tomi", email: "ah@smthing.co.com" },
-  { firstname: "Raed", lastname: "Labes", email: "rl@smthing.co.com" },
-  { firstname: "Yezzi", lastname: "Min l3b", email: "ymin@cocococo.com" }
-];
-
-const headers = [
-  { label: "First Name", key: "firstname" },
-  { label: "Last Name", key: "lastname" },
-  { label: "Email", key: "email" }
-];
-
-const csvReport = {
-  filename: "DataStation.csv",
-  headers: headers,
-  data: data,
-};
+import sessionController from "../../session/sessionController";
 
 
 export function Dashboard() {
@@ -58,6 +24,8 @@ export function Dashboard() {
 
   const [stationId, setStationId] = useState(SessionController.getStationId());
   const [name, setName] = useState(SessionController.getStationName());
+  const [measuresDownload, setMeasuresDownload] = useState([]);
+  const [measuresCsv, setMeasuresCsv]: any[] = useState([])
 
   const measuresHandler = new MeasuresHandlers();
 
@@ -90,9 +58,52 @@ export function Dashboard() {
     setDVentMeasuresList(dVentMeasuresValues);
   };
 
+  // OBTER JSON DE DADOS PARA DOWNLOAD
+  const measuresHandlerDownload = new MeasuresHandlersDownload();
+
+  const handleGetMeasuresDownload = async (id: number) => {
+    return await measuresHandlerDownload.handleMeasuresPerStation(id);
+  };
+
+
+  // TODO: FAZ O RESTO
+  const handleSetMeasuresDownload = async (id: number) => {
+    const measures = await handleGetMeasuresDownload(id);
+    setMeasuresDownload(measures)
+    let tempMeasuresList: any[] = []
+    measuresDownload.forEach((measureDownload: any)=> {
+
+      let sId = measureDownload.station.id
+      let sInstallationDate = measureDownload.station.installation_date	
+
+      let newData = {
+        station_Id: sId,
+        installation_Date: sInstallationDate
+      }
+      tempMeasuresList.push(newData)
+    })
+
+    setMeasuresCsv(tempMeasuresList)
+  };
+
+  console.log(measuresDownload)
+
+  const headers = [
+    { label: "Id da Estação", key: "station_Id" },
+    { label: "Data de Instalação", key: "installation_Date"},   
+  ];
+
+  const csvReport = {
+    filename: "DataStation.csv",
+    headers: headers,
+    data: measuresCsv,
+  };
+
   useEffect(() => {
     handleSetAllMeasures(stationId);
+    handleSetMeasuresDownload(stationId);
   });
+
 
   const pluvOptions = new Options(
     pluvMeasuresList,
