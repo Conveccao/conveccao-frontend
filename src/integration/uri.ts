@@ -11,6 +11,8 @@ export enum URI{
     STATIONMEASURES = 'http://localhost:8081/station-measures',
     DOWNLOADMEASURES = 'http://localhost:8081/build-csv',
     STATIONS_ACTIVE = 'http://localhost:8081/active-stations',
-    ALERTS = 'http://localhost:8081/alerts'
+    ALERTS = 'http://localhost:8081/alerts',
+    ACTIVATE_STATION = 'http://localhost:8081/stations/activate',
+    DEACTIVATE_STATION = 'http://localhost:8081/stations/deactivate'
 }
 
