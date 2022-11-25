@@ -120,7 +120,7 @@ export function Dashboard() {
   
 
   const csvReport = {
-    filename: "DataStation.csv",
+    filename: `${name}.csv`,
     headers: headers,
     data: measuresCsv,
   };
