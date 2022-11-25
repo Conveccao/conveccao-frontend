@@ -65,6 +65,7 @@ export function Dashboard() {
     return await measuresHandlerDownload.handleMeasuresPerStation(id);
   };
 
+  
 
   // TODO: FAZ O RESTO
   const handleSetMeasuresDownload = async (id: number) => {
@@ -74,12 +75,28 @@ export function Dashboard() {
     measuresDownload.forEach((measureDownload: any)=> {
 
       let sId = measureDownload.station.id
-      let sInstallationDate = measureDownload.station.installation_date	
+      let sName = measureDownload.station.name
+      let sInstallationDate = measureDownload.station.installation_date
+      let sLat = measureDownload.station.lat
+      let sLon = measureDownload.station.lon
+      let sDateMeasure = measureDownload.measureTime
+      let sParameter = measureDownload.parameter.parameterType.name
+      let sMeasure = measureDownload.measureValue
+      let sUnity = measureDownload.parameter.parameterType.unit1
+      
+      
 
       let newData = {
         station_Id: sId,
-        installation_Date: sInstallationDate
-      }
+        station_Name: sName,
+        installation_Date: sInstallationDate,
+        latitude: sLat,
+        longitude: sLon,
+        date_measure: sDateMeasure,
+        parameter: sParameter,
+        measure: sMeasure,
+        unit: sUnity,
+      };
       tempMeasuresList.push(newData)
     })
 
@@ -88,10 +105,19 @@ export function Dashboard() {
 
   console.log(measuresDownload)
 
-  const headers = [
+  const headers: { label: string; key: string }[] = [
     { label: "Id da Estação", key: "station_Id" },
-    { label: "Data de Instalação", key: "installation_Date"},   
+    { label: "Nome da Estação", key: "station_Name" },
+    { label: "Data de Instalação", key: "installation_Date" },
+    { label: "Latitude", key: "latitude" },
+    { label: "Longitude", key: "longitude" },
+    { label: "Data da Medição", key: "date_measure" },
+    { label: "Parametro", key: "parameter" },
+    { label: "Valor", key: "measure" },
+    { label: "Unidade", key: "unit" },
   ];
+
+  
 
   const csvReport = {
     filename: "DataStation.csv",
