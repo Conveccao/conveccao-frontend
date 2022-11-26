@@ -167,6 +167,8 @@ export function Dashboard() {
     "Direção do vento"
   );
 
+  const userrole = SessionController.getUserRole()
+
   return (
     <>
       <div>
@@ -194,11 +196,30 @@ export function Dashboard() {
           options={dVentOptions.options}
         />
       </Container>
-      <ButtonDownload>
-        <CSVLink {...csvReport}>
-          EXPORTAR DADOS PARA CSV
-        </CSVLink>
-      </ButtonDownload>
+
+      {userrole == 'user' && 
+        <ButtonDownload>
+          <CSVLink {...csvReport} style={{textDecoration: 'none', color: '#ffffff'}} >
+            EXPORTAR DADOS PARA CSV
+          </CSVLink>
+        </ButtonDownload>
+      }
+
+      {userrole == 'moderator' && 
+        <ButtonDownload>
+          <CSVLink {...csvReport} style={{textDecoration: 'none', color: '#ffffff'}} >
+            EXPORTAR DADOS PARA CSV
+          </CSVLink>
+        </ButtonDownload>
+      }
+
+      {userrole == 'admin' && 
+        <ButtonDownload>
+          <CSVLink {...csvReport} style={{textDecoration: 'none', color: '#ffffff'}} >
+            EXPORTAR DADOS PARA CSV
+          </CSVLink>
+        </ButtonDownload>
+      }
     </>
   );
 }

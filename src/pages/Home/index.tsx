@@ -87,38 +87,13 @@ export function Home() {
           </LoadingContainer>
         )}
       </StyledMapContainer>
-      <TitleStation>
-          Principais Estações
-      </TitleStation>
       <Container>
       
-{isLoading ? (
-  <CardStationFatec
-    stationName="Estação Fatec"
-    stationImage={FatecImg}
-    stationInfo="Descrição da Estação Fatec"
-  />
-) : (
-  <LoadingContainer>
-    <CircularProgress color="success" variant="indeterminate" />
-  </LoadingContainer>
-)}
 
-{isLoading ? (
-  <CardStationEscola
-    stationName="Estação Escola"
-    stationImage={EscolaImg}
-    stationInfo="Descrição da Estação Rio Cumprido"
-  />
-) : (
-  <LoadingContainer>
-    <CircularProgress color="success" variant="indeterminate" />
-  </LoadingContainer>
-)}
 </Container>
   <Stations>
   <TitleStations>
-          Outras Estações
+          Estações Meteorológicas
   </TitleStations>
   <CardStations />
   </Stations>
