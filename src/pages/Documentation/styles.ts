@@ -8,18 +8,18 @@ export const Container = styled.div`
   align-items: flex-end;
   margin-top: 6%;
   width: 100%;
-  background: #F7F7F7;
+  background: #F8F8FF;
 `;
 
 export const Main = styled.div`
       width: 80%;
       display: flex;
       flex-direction: row;
-      background: #F7F7F7;
+      background: #F8F8FF;
 `;
 
 export const ContentMain = styled.div`
-      background: #F7F7F7;
+      background: #F8F8FF;
       width: 70%;
       justify-content: flex-start;
       align-items: flex-start;
@@ -28,7 +28,7 @@ export const ContentMain = styled.div`
 `;
 
 export const ScrollMain = styled.div`
-      background: #F7F7F7;
+      background: #F8F8FF;
       width: 30%;
       display: flex;
       flex-direction: column;
