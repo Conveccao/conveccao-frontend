@@ -24,10 +24,8 @@ export function StationList() {
   }, [])
 
   useEffect(() => {
-    if (!autenticado) {
-        navigate('/login')
-    } else {
-      if (!checkAuthorization()) navigate('/home-page')
+    if (!autenticado || !checkAuthorization()) {
+        navigate('/home-page')
     }
   }, [autenticado, navigate])
 
