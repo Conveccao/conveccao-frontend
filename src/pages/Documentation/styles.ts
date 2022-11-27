@@ -25,6 +25,7 @@ export const ContentMain = styled.div`
       align-items: flex-start;
       overflow-y: scroll;
       max-height: 870px;
+      padding-right: 50px;
 `;
 
 export const ScrollMain = styled.div`
