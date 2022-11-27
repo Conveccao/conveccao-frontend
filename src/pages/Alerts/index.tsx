@@ -40,7 +40,7 @@ export function Alerts() {
       <Container>
       {alerts.map((alert: any) => (
         <Card>
-          <TitleCard>{alert.occurrence}</TitleCard>
+          <TitleCard>Tipo do Alerta: {alert.occurrence}</TitleCard>
           <InfoAlerts>            
             <TypeAlert>
               <TypeAlertTitle>

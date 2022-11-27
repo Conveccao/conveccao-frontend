@@ -30,9 +30,9 @@ export const InfoAlerts = styled.div`
   width: 100%;
   height: 100%;
   justify-content: center;
-  
+  background: ${THEME.colors.red_google};
   padding: 15px;
-  border-radius: 2px;
+  border-radius: 5px;
   border: 3px solid ${THEME.colors.red_google};
 `;
 
@@ -46,11 +46,12 @@ export const TypeAlert = styled.div`
 `;
 
 export const TypeAlertTitle = styled.h3`
-  color: ${THEME.colors.red_google};
+  color: #ffffff;
 `;
 
 export const TypeAlertText = styled.p`
   margin-top: 2.5px;
+  color: #ffffff;
 `;
 
 export const HourAlert = styled.div`
@@ -63,11 +64,12 @@ export const HourAlert = styled.div`
 `;
 
 export const HourAlertTitle = styled.h3`
-  color: ${THEME.colors.red_google};
+  color: #ffffff;
 `;
 
 export const HourAlertText = styled.p`
   margin-top: 2.5px;
+  color: #ffffff;
 `;
 
 export const DateAlert = styled.div`
@@ -81,11 +83,12 @@ export const DateAlert = styled.div`
 `;
 
 export const DateAlertTitle = styled.h3`
-    color: ${THEME.colors.red_google};
+    color: #ffffff;
 `;
 
 export const DateAlertText = styled.p`
   margin-top: 2.5px;
+  color: #ffffff;
 `;
 
 

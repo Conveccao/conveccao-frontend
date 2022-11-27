@@ -5,33 +5,35 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;
-  margin-top: 7%;
+  align-items: flex-end;
+  margin-top: 6%;
+  width: 100%;
+  background: #F7F7F7;
 `;
 
 export const Main = styled.div`
-      width: 1200px;
+      width: 80%;
       display: flex;
       flex-direction: row;
-      margin-left: 10%;
+      background: #F7F7F7;
 `;
 
 export const ContentMain = styled.div`
+      background: #F7F7F7;
       width: 70%;
       justify-content: flex-start;
       align-items: flex-start;
-      padding: 30px;
       overflow-y: scroll;
-      max-height: 800px
+      max-height: 870px;
 `;
 
 export const ScrollMain = styled.div`
+      background: #F7F7F7;
       width: 30%;
       display: flex;
       flex-direction: column;
       padding: 0px 30px;
-      overflow-y: scroll;
-      max-height: 800px;
+      max-height: 900px;
 `;
 
 export const sectionContent = styled.section`
@@ -40,9 +42,9 @@ export const sectionContent = styled.section`
 
 export const TitleTutorialOne = styled.h2`
   text-decoration: none;
-  font-size: 32px;
+  font-size: 60px;
   color: #282c34;
-  font-weight: bold;
+  font-weight: 900;
 `;
 
 export const TitleTutorial = styled.h2`

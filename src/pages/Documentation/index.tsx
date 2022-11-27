@@ -31,10 +31,16 @@ export function Documentation() {
       <Container>
         <Main>
           <ContentMain>
-
-            <TitleTutorialOne id='termos'>
-              Termos e Definições
+            <TitleTutorialOne id='introducao'>
+              Introdução
             </TitleTutorialOne>
+            <SubtitleTutorial id='sensores' >
+              Introdução aqui
+            </SubtitleTutorial>
+
+            <TitleTutorial id='termos' >
+              Termos e Definições
+            </TitleTutorial>
 
             <SubtitleTutorial id='sensores' >
               <b>Sensores:</b> São Instrumentos capazes de medir condições da natureza entre eles temos:
@@ -69,7 +75,7 @@ export function Documentation() {
             </SubtitleTutorial>
 
             <SubtitleTutorial id='estacaometeorologica' >
-              <b>Estação Meteorológica:</b> Conjunto de Sensores
+              <b>Estação Meteorológica:</b> Conjunto de Sensores.
             </SubtitleTutorial>
 
             <SubtitleTutorial  id='latitudelongitude' >
@@ -146,9 +152,14 @@ export function Documentation() {
             </LinkTitleOne>
 
             <LinkTitle>
+              <a href='#introducao' style={{ textDecoration: 'none', color: '#282c34' }} >
+                Introdução
+              </a>
+            </LinkTitle>
+
+            <LinkTitle>
               <a href='#termos' style={{ textDecoration: 'none', color: '#282c34' }} >
                 Termos e Definições
-
               </a>
             </LinkTitle>
 
