@@ -86,7 +86,7 @@ export function StationList() {
 
   return (
     <>
-      <HeaderDefault title="Lista das estações" />
+      <HeaderDefault title="Estações Cadastradas" />
       <Sidebar />
       <Main>
         <Table>

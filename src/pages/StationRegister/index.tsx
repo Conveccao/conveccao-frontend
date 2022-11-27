@@ -43,7 +43,7 @@ export function StationRegister(){
     return(
         <Container>
 
-            <HeaderDefault title='Cadastro de estação'/>
+            <HeaderDefault title='Cadastro de Estação'/>
             <Sidebar/>
             <Main>
                 <StationForm />

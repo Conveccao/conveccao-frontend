@@ -51,13 +51,42 @@ export function Sidebar() {
         </Header>
         <Footer>
           <NavbarLinkButton
+            to="/login">
+            Entrar
+          </NavbarLinkButton>
+        </Footer>
+      </Container>
+    }   else if (userrole == 'user') {
+      return <Container>
+        <Header>
+          <ContainerLogo>
+            <Logo src={logo} alt="logo" />
+            <Title>Menu</Title>
+          </ContainerLogo>
+          <Navbar>
+            <NavbarLink to="/home-page">
+              Página inicial
+            </NavbarLink>
+            <NavbarLink to="/alertas">
+              Alertas
+            </NavbarLink>
+            <NavbarLink to="/documentacao">
+              Guia de Uso
+            </NavbarLink>
+            <NavbarLink to="/login">
+              Perfil
+            </NavbarLink>
+          </Navbar>
+        </Header>
+        <Footer>
+          <NavbarLinkButton
             onClick={(e) => logout(e)}
             to="/">
             Sair
           </NavbarLinkButton>
         </Footer>
       </Container>
-    } else if (userrole == 'user') {
+    }else if (userrole == 'user') {
       return <Container>
         <Header>
           <ContainerLogo>

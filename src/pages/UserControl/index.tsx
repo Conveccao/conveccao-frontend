@@ -96,7 +96,7 @@ export function UserControl() {
 
   return (
     <>
-      <HeaderDefault title="Usuários cadastrados" />
+      <HeaderDefault title="Usuários Cadastrados" />
       <Sidebar />
       <Main>
         <Table>

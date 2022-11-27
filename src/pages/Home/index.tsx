@@ -46,7 +46,7 @@ export function Home() {
 
   return (
     <>
-      <HeaderDefault title="Página inicial" />
+      <HeaderDefault title="Página Inicial" />
       <Sidebar />
       <StyledMapContainer>
         {isLoading ? (
