@@ -32,7 +32,7 @@ export function Sidebar() {
         <Header>
           <ContainerLogo>
             <Logo src={logo} alt="logo" />
-            <Title>Menu</Title>
+            <Title>MENU</Title>
           </ContainerLogo>
           <Navbar>
             <NavbarLink to="/home-page">
@@ -61,7 +61,7 @@ export function Sidebar() {
         <Header>
           <ContainerLogo>
             <Logo src={logo} alt="logo" />
-            <Title>Menu</Title>
+            <Title>MENU</Title>
           </ContainerLogo>
           <Navbar>
             <NavbarLink to="/home-page">
@@ -91,7 +91,7 @@ export function Sidebar() {
         <Header>
           <ContainerLogo>
             <Logo src={logo} alt="logo" />
-            <Title>Menu</Title>
+            <Title>MENU</Title>
           </ContainerLogo>
           <Navbar>
             <NavbarLink to="/home-page">
@@ -121,7 +121,7 @@ export function Sidebar() {
         <Header>
           <ContainerLogo>
             <Logo src={logo} alt="logo" />
-            <Title>Menu</Title>
+            <Title>MENU</Title>
           </ContainerLogo>
           <Navbar>
             <NavbarLink to="/home-page">
@@ -157,7 +157,7 @@ export function Sidebar() {
         <Header>
           <ContainerLogo>
             <Logo src={logo} alt="logo" />
-            <Title>Menu</Title>
+            <Title>MENU</Title>
           </ContainerLogo>
           <Navbar>
             <NavbarLink to="/home-page">

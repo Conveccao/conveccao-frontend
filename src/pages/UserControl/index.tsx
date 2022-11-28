@@ -95,6 +95,7 @@ export function UserControl({ list = [] }) {
   }, [getAllUsers]);
 
 
+
   // BUSCAR ESTAÇÕES POR NOME
   const [busca, setBusca] = useState('')
 
@@ -102,7 +103,7 @@ export function UserControl({ list = [] }) {
     const lowerBusca = busca.toLowerCase()
     return usersModerators.filter((user: any) =>
         user.email.toLowerCase().includes(lowerBusca))
-  }, [busca, users])
+  }, [busca, usersModerators])
 
   // ORDENAR CHAMADOS POR TITULO
   const [order, setOrder] = useState(1)
@@ -135,16 +136,16 @@ export function UserControl({ list = [] }) {
         <Table>
           <thead>
             <tr>
-              <TableTH onClick={() => handleOrder('name')} >Nome ⇵</TableTH>
-              <TableTH onClick={() => handleOrder('email')} >Email ⇵</TableTH>
-              <TableTH onClick={() => handleOrder('role') }>Nível de acesso ⇵</TableTH>
+              <TableTH onClick={() => handleOrder('name')}>Nome ⇵</TableTH>
+              <TableTH onClick={() => handleOrder('email')}>Email ⇵</TableTH>
+              <TableTH onClick={() => handleOrder('role')}>Nível de acesso ⇵</TableTH>
               <TableTH>Trocar nível de acesso</TableTH>
             </tr>
           </thead>
 
           <tbody>
             {usuariosFiltrados.map((user: any) => (
-              <tr key={user.id} >
+              <tr key={user.id}>
                 <TableTD>{user.name}</TableTD>
                 <TableTD>{user.email}</TableTD>
                 <TableTD>{user.role}</TableTD>
