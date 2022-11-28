@@ -34,8 +34,96 @@ export function Documentation() {
             <TitleTutorialOne id='introducao'>
               Introdução
             </TitleTutorialOne>
-            <SubtitleTutorial id='sensores' >
-              Introdução aqui
+
+
+            <SubtitleTutorial id='' >
+              A meteorologia estuda os processos físicos que governam o comportamento da atmosfera e as interações entre seus fenômenos e a superfície da Terra.
+              As pesquisas em meteorologia apresentam resultados de grande valor para a sociedade, tanto no que diz respeito à redução dos desastres naturais de origem atmosférica quanto no planejamento ambiental e socioeconômico a curto, médio e longo prazos.
+              Além da pesquisa e da previsão do tempo, outros setores importantes cotidianos necessitam das informações sobre o tempo e o clima, como as áreas de defesa civil; agricultura; aviação e navegação; setor energético e de gerenciamento de recursos hídricos; estudos de impacto ambiental e controle de poluentes; entre outros.
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+
+              As Estações Meteorológicas são ideais para quem toma decisões baseadas em dados climáticos. Com as constantes variações enfrentadas nos últimos anos, ter em mãos dados precisos pode tornar o dia a dia dos profissionais mais seguro, além de representar possíveis economias a curto e longo prazo.
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+              Vale destacar que a finalidade de uma estação meteorológica não é fazer uma previsão do tempo (apesar de algumas fazerem), e sim possibilitar um monitoramento das variáveis climáticas.
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+              Você ficou curioso para saber como funciona a estação meteorológica? Continue lendo o nosso post e tire todas as suas dúvidas!
+              Como funciona uma estação meteorológica?
+              A finalidade principal de uma estação meteorológica é realizar a coleta e a medição de dados climáticos. Com a utilização de instrumentos adequados é possível realizar uma análise que resultará em um monitoramento de variáveis climáticas. Alguns desses instrumentos são:
+
+              
+              
+              
+              
+              
+             
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+              Termômetro – temperatura do ar;
+            </SubtitleTutorial>
+           
+            <SubtitleTutorial id='' >
+            Barômetro – pressão atmosférica;
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+            Higrômetro – umidade relativa do ar;
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+            Anemômetro – velocidade e direção do vento;
+            </SubtitleTutorial>
+
+            <TitleTutorial id='vantagensestacao' >
+            Quais são as vantagens de utilizar a estação meteorológica?
+            </TitleTutorial>
+
+            <SubtitleTutorial id='' >
+            A utilização das informações das estações meteorológicas são destinadas a várias finalidades e, seu uso, se torna essencial para o sucesso e desempenho de atividades que dependem desses dados. Dentre elas:
+            </SubtitleTutorial>
+
+
+            <SubtitleTutorial id='' >
+              <b>Aeroportos:</b> As Estações Meteorológicas verificação da pressão atmosférica, condições de chuva, luminosidade, direção e velocidade do vento. Pilotos podem olhar as previsões através do aplicativo quando pousarem em áreas onde não existe uma equipe permanente à disposição para orientações.
+              O mesmo é válido para aeroportos privados em lugares remotos de difícil acesso. As informações precisas em tempo real da Estação tornam o pouso e a decolagem mais seguros para equipe e passageiros.
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+              <b>Construção Civil:</b> Se um piloto usa a Estação Meteorológica para aumentar a segurança durante o pouso e a decolagem, um trabalhador da construção civil se sentirá mais seguro para desenvolver seu serviço se estiver ciente das condições climáticas do local em que desenvolverá o trabalho.
+              Afinal, instabilidades meteorológicas podem colocar em risco a segurança dos trabalhadores de uma obra. Por outro lado, variações climáticas inesperadas impactam o cronograma e, consequentemente, seu orçamento.
+              Ainda neste tópico, poucas pessoas associam as condições meteorológicas com o aparecimento do mofo e bolor, que são facilmente encontrados em materiais usados na construção civil, como madeiras, compensados, aglomerados, gessos e placas acartonadas.
+              Excesso de umidade, baixa incidência de luz e má ventilação do ambiente são ainda mais propícias para o aparecimento desse tipo de problema. Além da desvalorização financeira deste imóvel, tais fungos e micro-organismos são bastante prejudiciais à saúde humana.
+              Portanto, saber detalhes climáticos do local da construção pode determinar o ritmo e a qualidade do empreendimento, assim como saber a direção e a intensidade do vento, calor e excesso de umidade também influenciam na eficiência e segurança da obra para contratantes e funcionários.
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+              <b>Defesa civil:</b> Aos poucos, a defesa civil dos municípios vem percebendo a importância das Estações Meteorológicas, principalmente no tocante à prevenção de acidentes. Acompanhar a incidência de chuvas e ventos intensos, principalmente em locais que historicamente sofrem com emergências climáticas, podem ajudar em deslizamentos, alagamentos, entupimentos de bueiros etc.
+              Com a aplicação, além de ter acesso aos dados históricos da Estação, também é possível ver alertas e assim alertar à sociedade em casos de perigo.
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+              <b>Rodovias:</b> Assim como descrito no tópico anterior, as estações meteorológicas são ótimas na prevenção de acidentes. Ou seja, também são muito úteis em pontos críticos das rodovias, como em áreas de possíveis alagamentos, neblina e deslizamentos.
+              Nestes casos, a estação é capaz de alertar a concessionária para deixar um veículo de segurança e sinalizar melhor o trecho para evitar acidentes em áreas de alta periculosidade.
+              Outro ponto importante do uso da Estação nas rodovias diz respeito às obras. Com o histórico da região e a previsão baseada nos sensores da Estação, é possível determinar qual o melhor momento para reformas, evitando assim transtorno com usuários da pista.
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+              <b>Marinas e portos:</b> Já em marinas e portos, as Estações Meteorológicas agem fazendo monitoramento preventivo, levantando diversos dados que são essenciais para a entrada e saída de navios, como índice pluviométrico, temperatura, umidade relativa do ar, velocidade e direção do vento e pressão atmosférica.
+              Logo, em termos de observação e estudo de avaliação de riscos, a Estação Meteorológica cumpre seu papel enquanto ferramenta necessária para, direta ou indiretamente, promover e garantir a segurança e a vigilância dos funcionários e usuários do porto.
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+              <b>Turismo:</b> Por fim, um uso relativamente novo mas surpreendentemente vantajoso das Estações Meteorológicas é no turismo. Com ela instalada em hotéis e resorts, os hóspedes poderão planejar suas viagens através dos dados climáticos fornecidos pela Estação.
+            </SubtitleTutorial>
+
+            <SubtitleTutorial id='' >
+              Surpreso com as várias aplicações de uma estação meteorológica? Para saber mais sobre o funcionamento da Estação, continue conosco.
             </SubtitleTutorial>
 
             <TitleTutorial id='termos' >
@@ -58,7 +146,7 @@ export function Documentation() {
               <b>Umidade:</b> Instrumento que mede a porcentagem de água suspensa no ar. Como o vapor no banheiro depois de um banho.
             </SubtitleTutorial>
 
-            <SubtitleTutorial id='pressao' > 
+            <SubtitleTutorial id='pressao' >
               <b>Pressão:</b> Instrumento que mede é a relação entre uma determinada força e sua área. Você pode sentir a pressão ao descer e subir a serra em que o ar exerce uma pressão em seu ouvido.
             </SubtitleTutorial>
 
@@ -78,7 +166,7 @@ export function Documentation() {
               <b>Estação Meteorológica:</b> Conjunto de Sensores.
             </SubtitleTutorial>
 
-            <SubtitleTutorial  id='latitudelongitude' >
+            <SubtitleTutorial id='latitudelongitude' >
               <b>Latitude e Longitude:</b> É o endereço geográfico de um local, são importantes para a localização e orientação no espaço, sua casa além do endereço possui uma latitude e uma longitude. É muito utilizada no GPS e no Google Maps.
             </SubtitleTutorial>
 
@@ -154,6 +242,12 @@ export function Documentation() {
             <LinkTitle>
               <a href='#introducao' style={{ textDecoration: 'none', color: '#282c34' }} >
                 Introdução
+              </a>
+            </LinkTitle>
+
+            <LinkTitle>
+              <a href='#vantagensestacao' style={{ textDecoration: 'none', color: '#282c34' }} >
+                Quais são as vantagens de utilizar a estação meteorológica?
               </a>
             </LinkTitle>
 
