@@ -18,28 +18,7 @@ import { GoogleLogout } from 'react-google-login';
 
 export function Sidebar() {
 
-  const [authenticated, setAuthenticated] = useState(true)
   const navigate = useNavigate();
-
-  useEffect(() => {
-    checkAuthentication()
-  }, [])
-
-  const checkAuthentication = async () => {
-    const token = SessionController.getToken()
-    if (token == null) {
-      setAuthenticated(false)
-    } else {
-      setAuthenticated(true)
-    }
-    return authenticated
-  }
-
-  useEffect(() => {
-    if (!authenticated) {
-      navigate('/login')
-    }
-  }, [authenticated, navigate])
 
   function logout(e: any) {
     SessionController.clear()
@@ -48,26 +27,52 @@ export function Sidebar() {
   const userrole = SessionController.getUserRole()
 
   const checkUser = () => {
-    if (userrole == 'user') {
+    if(!userrole){
       return <Container>
         <Header>
           <ContainerLogo>
             <Logo src={logo} alt="logo" />
-            <Title>Menu</Title>
+            <Title>MENU</Title>
           </ContainerLogo>
           <Navbar>
             <NavbarLink to="/home-page">
               Página inicial
             </NavbarLink>
-            {
-              /*
-              <NavbarLink to="/alertas">
-                Alertas
-              </NavbarLink>
-              */
-            }
-            
-            
+            <NavbarLink to="/alertas">
+              Alertas
+            </NavbarLink>
+            <NavbarLink to="/documentacao">
+              Guia de Uso
+            </NavbarLink>
+            <NavbarLink to="/perfil">
+              Perfil
+            </NavbarLink>
+          </Navbar>
+        </Header>
+        <Footer>
+          <NavbarLinkButton
+            to="/login">
+            Entrar
+          </NavbarLinkButton>
+        </Footer>
+      </Container>
+    }   else if (userrole == 'user') {
+      return <Container>
+        <Header>
+          <ContainerLogo>
+            <Logo src={logo} alt="logo" />
+            <Title>MENU</Title>
+          </ContainerLogo>
+          <Navbar>
+            <NavbarLink to="/home-page">
+              Página inicial
+            </NavbarLink>
+            <NavbarLink to="/alertas">
+              Alertas
+            </NavbarLink>
+            <NavbarLink to="/documentacao">
+              Guia de Uso
+            </NavbarLink>
             <NavbarLink to="/perfil">
               Perfil
             </NavbarLink>
@@ -76,7 +81,37 @@ export function Sidebar() {
         <Footer>
           <NavbarLinkButton
             onClick={(e) => logout(e)}
-            to="/login">
+            to="/">
+            Sair
+          </NavbarLinkButton>
+        </Footer>
+      </Container>
+    }else if (userrole == 'user') {
+      return <Container>
+        <Header>
+          <ContainerLogo>
+            <Logo src={logo} alt="logo" />
+            <Title>MENU</Title>
+          </ContainerLogo>
+          <Navbar>
+            <NavbarLink to="/home-page">
+              Página inicial
+            </NavbarLink>
+            <NavbarLink to="/alertas">
+              Alertas
+            </NavbarLink>
+            <NavbarLink to="/documentacao">
+              Guia de Uso
+            </NavbarLink>
+            <NavbarLink to="/perfil">
+              Perfil
+            </NavbarLink>
+          </Navbar>
+        </Header>
+        <Footer>
+          <NavbarLinkButton
+            onClick={(e) => logout(e)}
+            to="/">
             Sair
           </NavbarLinkButton>
         </Footer>
@@ -86,7 +121,7 @@ export function Sidebar() {
         <Header>
           <ContainerLogo>
             <Logo src={logo} alt="logo" />
-            <Title>Menu</Title>
+            <Title>MENU</Title>
           </ContainerLogo>
           <Navbar>
             <NavbarLink to="/home-page">
@@ -98,13 +133,12 @@ export function Sidebar() {
             <NavbarLink to="/station-register">
               Cadastro de estações
             </NavbarLink>
-            {
-              /*
-              <NavbarLink to="/alertas">
+            <NavbarLink to="/alertas">
                 Alertas
-              </NavbarLink>
-              */
-            }
+            </NavbarLink>
+            <NavbarLink to="/documentacao">
+              Guia de Uso
+            </NavbarLink>
             <NavbarLink to="/perfil">
               Perfil
             </NavbarLink>
@@ -113,7 +147,7 @@ export function Sidebar() {
         <Footer>
           <NavbarLinkButton
             onClick={(e) => logout(e)}
-            to="/login">
+            to="/">
             Sair
           </NavbarLinkButton>
         </Footer>
@@ -123,7 +157,7 @@ export function Sidebar() {
         <Header>
           <ContainerLogo>
             <Logo src={logo} alt="logo" />
-            <Title>Menu</Title>
+            <Title>MENU</Title>
           </ContainerLogo>
           <Navbar>
             <NavbarLink to="/home-page">
@@ -138,13 +172,12 @@ export function Sidebar() {
             <NavbarLink to="/station-register">
               Cadastro de estações
             </NavbarLink>
-            {
-              /*
-              <NavbarLink to="/alertas">
+            <NavbarLink to="/alertas">
                 Alertas
-              </NavbarLink>
-              */
-            }
+            </NavbarLink>
+            <NavbarLink to="/documentacao">
+              Guia de Uso
+            </NavbarLink>  
             <NavbarLink to="/perfil">
               Perfil
             </NavbarLink>
@@ -153,7 +186,7 @@ export function Sidebar() {
         <Footer>
           <NavbarLinkButton
             onClick={(e) => logout(e)}
-            to="/login">
+            to="/">
             Sair
           </NavbarLinkButton>
         </Footer>

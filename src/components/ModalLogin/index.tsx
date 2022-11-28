@@ -85,8 +85,6 @@ export default function ModalLogin() {
     provider.addScope('email');
     provider.addScope('picture{url}');
 
-    console.log("oi");
-
     signInWithPopup(auth, provider)
     .then(result => {console.log(result)}).catch(error => {console.log(error)});
   }
@@ -103,7 +101,7 @@ export default function ModalLogin() {
           photo: result.user.photoURL,
         };
         let userExists = await handleUserExists(result.user.email);
-        if (!userExists[0]) {
+        if (!userExists) {
           handleCreateUser(newUser);
         }
         await handleLogin(result.user.email)
@@ -126,7 +124,7 @@ export default function ModalLogin() {
           photo: result.user.photoURL,
         };
         let userExists = await handleUserExists(result.user.email);
-        if (!userExists[0]) {
+        if (!userExists) {
           handleCreateUser(newUser);
         }
         await handleLogin(result.user.email)

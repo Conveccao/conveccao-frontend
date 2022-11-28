@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { SetStateAction, useEffect, useMemo, useState } from "react";
 
 import { HeaderDefault } from "../../components/HeaderDefault";
 import { Sidebar } from "../../components/Sidebar";
@@ -10,10 +10,10 @@ import SessionController from '../../session/sessionController';
 import { useNavigate } from "react-router-dom";
 
 import { Select, MenuItem, FormControl, Box } from "@mui/material";
-import { Main, Table, TableTH, TableTD, TableTDButton } from "./styles";
+import { Main, Table, TableTH, TableTD, TableTDButton, SectionSearch, TextSearch } from "./styles";
 import UserHandlers from "../../integration/handlers/userHandlers";
 
-export function UserControl() {
+export function UserControl({ list = [] }) {
 
   const navigate = useNavigate();
   const [autenticado, setAutenticado] = useState(true);
@@ -94,24 +94,58 @@ export function UserControl() {
     return () => clearTimeout(timer);
   }, [getAllUsers]);
 
+
+
+  // BUSCAR ESTAÇÕES POR NOME
+  const [busca, setBusca] = useState('')
+
+  const usuariosFiltrados = useMemo(() => {
+    const lowerBusca = busca.toLowerCase()
+    return usersModerators.filter((user: any) =>
+        user.email.toLowerCase().includes(lowerBusca))
+  }, [busca, usersModerators])
+
+  // ORDENAR CHAMADOS POR TITULO
+  const [order, setOrder] = useState(1)
+  const [colunmOrder, setColunmOrder] = useState('title')
+
+  const handleOrder = (fieldName: SetStateAction<string>) => {
+      setOrder(-order)
+      setColunmOrder(fieldName)
+  }
+
+  usuariosFiltrados.sort((a, b) => {
+      return a[colunmOrder] < b[colunmOrder] ? -order : order;
+  })
+
   return (
     <>
-      <HeaderDefault title="Usuários cadastrados" />
+      <HeaderDefault title="Usuários Cadastrados" />
       <Sidebar />
       <Main>
+
+        <SectionSearch>
+          <TextSearch  
+            placeholder="Procure pelo email do usuário"
+            type="text"
+            value={busca}
+            onChange={(ev) => setBusca(ev.target.value)} 
+          />
+        </SectionSearch>
+
         <Table>
           <thead>
             <tr>
-              <TableTH>Nome</TableTH>
-              <TableTH>Email</TableTH>
-              <TableTH>Nível de acesso</TableTH>
+              <TableTH onClick={() => handleOrder('name')}>Nome ⇵</TableTH>
+              <TableTH onClick={() => handleOrder('email')}>Email ⇵</TableTH>
+              <TableTH onClick={() => handleOrder('role')}>Nível de acesso ⇵</TableTH>
               <TableTH>Trocar nível de acesso</TableTH>
             </tr>
           </thead>
 
           <tbody>
-            {usersModerators.map((user: any) => (
-              <tr key={user.id} >
+            {usuariosFiltrados.map((user: any) => (
+              <tr key={user.id}>
                 <TableTD>{user.name}</TableTD>
                 <TableTD>{user.email}</TableTD>
                 <TableTD>{user.role}</TableTD>

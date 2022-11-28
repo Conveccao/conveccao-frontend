@@ -62,3 +62,21 @@ export const TableTDButton = styled(TableTD)`
   border: none;
   max-width: 50px;
 `;
+
+export const SectionSearch = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+`;
+
+export const TextSearch = styled.input`
+  width: 40%;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid ${THEME.colors.green_100};
+  color: ${THEME.colors.green_100}; 
+  outline: none;
+  padding: 20px;
+  font-weight: bold;
+`;
+

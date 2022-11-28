@@ -23,7 +23,7 @@ export const Content = styled.div`
 
 export const Title = styled.span`
     color: ${THEME.colors.green_100};
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
 `;
 

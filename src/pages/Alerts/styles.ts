@@ -10,16 +10,16 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 55%;
-  height: 120px;
-  background: ${THEME.colors.green_100};;
+  width: 60%;
+  height: 80px;
+  
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 `;
 
-export const TitleCard = styled.h1`
+export const TitleCard = styled.h2`
   margin: 10px 0px;
 `;
 
@@ -28,9 +28,12 @@ export const InfoAlerts = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 60%;
+  height: 100%;
   justify-content: center;
-  
+  background: ${THEME.colors.red_google};
+  padding: 15px;
+  border-radius: 5px;
+  border: 3px solid ${THEME.colors.red_google};
 `;
 
 export const TypeAlert = styled.div`
@@ -43,11 +46,12 @@ export const TypeAlert = styled.div`
 `;
 
 export const TypeAlertTitle = styled.h3`
-
+  color: #ffffff;
 `;
 
 export const TypeAlertText = styled.p`
   margin-top: 2.5px;
+  color: #ffffff;
 `;
 
 export const HourAlert = styled.div`
@@ -60,11 +64,12 @@ export const HourAlert = styled.div`
 `;
 
 export const HourAlertTitle = styled.h3`
-
+  color: #ffffff;
 `;
 
 export const HourAlertText = styled.p`
   margin-top: 2.5px;
+  color: #ffffff;
 `;
 
 export const DateAlert = styled.div`
@@ -78,30 +83,14 @@ export const DateAlert = styled.div`
 `;
 
 export const DateAlertTitle = styled.h3`
-
+    color: #ffffff;
 `;
 
 export const DateAlertText = styled.p`
   margin-top: 2.5px;
+  color: #ffffff;
 `;
 
-export const DescriptionAlerts = styled.div`
-  width: 100%;
-  height: 40%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 10px;
-`;
-
-export const DescriptionAlertsTitle = styled.h3`
-  
-`;
-
-export const DescriptionAlertsText = styled.p`
-  margin-top: 2.5px;
-`;
 
 
 

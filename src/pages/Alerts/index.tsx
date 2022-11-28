@@ -6,85 +6,69 @@ import { Sidebar } from "../../components/Sidebar";
 import SessionController from '../../session/sessionController';
 import { useNavigate } from "react-router-dom";
 
-import { Container, Card, InfoAlerts, TypeAlert, TypeAlertTitle, TypeAlertText, HourAlert, HourAlertTitle, HourAlertText, DateAlert, DateAlertTitle, DateAlertText, DescriptionAlerts, DescriptionAlertsTitle, DescriptionAlertsText, TitleCard } from "./styles";
+import axios from "axios";
+import { URI } from "../../integration/uri";
+
+import { Container, Card, InfoAlerts, TypeAlert, TypeAlertTitle, TypeAlertText, HourAlert, HourAlertTitle, HourAlertText, DateAlert, DateAlertTitle, DateAlertText, TitleCard } from "./styles";
 
 export function Alerts() {
   const navigate = useNavigate();
-  const [autenticado, setAutenticado] = useState(true);
+  const [alerts, setAlerts] = useState([]);
 
+  const handleGetAll = async () => {
+    const res = await axios.get(URI.ALERTS);
+    return res.data;
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getAllAlerts = async () => {
+    const allAlerts: [] = await handleGetAll();
+    setAlerts(allAlerts);
+  };
 
   useEffect(() => {
-    checarAutenticacao()
-  }, [])
+    getAllAlerts();
+  }, [getAllAlerts]);
 
-  useEffect(() => {
-    if (!autenticado) {
-        navigate('/login')
-    } else {
-      if (!checkAuthorization()) navigate('/home-page')
-    }
-  }, [autenticado, navigate])
 
-  const checkAuthorization = () => {
-    const userRole = SessionController.getUserRole()
-    if(userRole == 'user') return false
-    return true
-  }
 
-  const checarAutenticacao = async () => {
-    const token = SessionController.getToken()
-    if (token == null) {
-        setAutenticado(false)
-    } else {
-        setAutenticado(true)
-    }
-    return autenticado
-  }
 
   return (
     <>
       <HeaderDefault title="Lista de Alertas" />
       <Sidebar />
       <Container>
-      <TitleCard>Alerta de Chuva</TitleCard>
+      {alerts.map((alert: any) => (
         <Card>
+          <TitleCard>Tipo do Alerta: {alert.occurrence}</TitleCard>
           <InfoAlerts>            
             <TypeAlert>
               <TypeAlertTitle>
-                  Tipo do Alerta:
+                  LOCAL:
               </TypeAlertTitle>
               <TypeAlertText>
-                  Deslizamento de Terra
+                  {alert.place}
               </TypeAlertText>
             </TypeAlert>
             <HourAlert>
               <HourAlertTitle>
-                Data:
+                DATA:
               </HourAlertTitle>
               <HourAlertText>
-                12/12/2022
+                {alert.date}
               </HourAlertText>
             </HourAlert>
             <DateAlert>
               <DateAlertTitle>
-                  Hora:
+                  HORA:
               </DateAlertTitle>
               <DateAlertText>
-                  13:29:58
+                  {alert.hour}
               </DateAlertText>
             </DateAlert>
           </InfoAlerts>
-
-          <DescriptionAlerts>
-            <DescriptionAlertsTitle>
-                Descrição do Alerta:
-            </DescriptionAlertsTitle>
-            <DescriptionAlertsText>
-                Atenção, deslizamento de chuva pode ocorrer a qualquer momento.
-            </DescriptionAlertsText>  
-          </DescriptionAlerts>
-        </Card>      
-
+        </Card>
+      ))} 
       </Container>
     </>
   );

@@ -1,9 +1,10 @@
 import { ButtonDefault } from "../../components/ButtonDefault";
 import THEME from "../../styles/theme";
-import { ImgHTMLAttributes } from 'react';
+import { ImgHTMLAttributes, useEffect, useState } from 'react';
 
 import {
     StationCard,
+    CardStation,
     StationCardHeader,
     StationCardTitle,
     StationCardBody,
@@ -12,41 +13,66 @@ import {
     StationCardImage,
 } from "./styles";
 
+
+import SessionController from '../../session/sessionController';
 import { useNavigate } from "react-router-dom";
-
-type StationCardProps = ImgHTMLAttributes<HTMLImageElement> & {
-    stationName: string;
-    stationImage: string;
-    stationInfo: string;
-};
+import axios from "axios";
+import { URI } from "../../integration/uri";
 
 
-
-export default function CardStation({ stationName, stationImage, stationInfo }: StationCardProps) {
+export default function CardStations() {
 
   const navigate = useNavigate()
+  const [stations, setStations] = useState([]);
+
+  const handleGetAll = async () => {
+    const res = await axios.get(URI.STATIONS_ACTIVE);
+    return res.data;
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getAllStations = async () => {
+    const allStations: [] = await handleGetAll();
+    setStations(allStations);
+  };
+
+  const setStationData = async(station: object) => {
+    SessionController.setStationData(station)
+  }
+
+  useEffect(() => {
+    getAllStations();
+  }, [getAllStations]);
+
     return (
         <StationCard>
+
+      {stations.map((station: any) => (
+        <CardStation key={station.id}>
           <StationCardHeader>
-            <StationCardTitle>{stationName}</StationCardTitle>
+            <StationCardTitle>{station.name}</StationCardTitle>
           </StationCardHeader>
           <StationCardBody>
-            <StationCardImage src={stationImage} alt={stationName}/>
+            <StationCardImage src={station.link} />
           </StationCardBody>
           <StationCardInfoContainer>
             <StationCardInfo>
-              {stationInfo}
+              {station.reference}
             </StationCardInfo>
           </StationCardInfoContainer>
-          <ButtonDefault
-            
-            onClick={() => navigate('/dashboard-fatec')}
-            title={stationName}
+          <ButtonDefault  
+            onClick={async(e) => {await setStationData(station); navigate("/dashboard")}}
+            title="Ver Dados"
             widthButton="230px"
             heightButton="48px"
             backgroundButton={THEME.colors.green_100}
             hoverBackgroundButton={THEME.colors.green_50}
-          />
-        </StationCard>
+          /> 
+        </CardStation>
+      ))}
+      
+      </StationCard>
+
+        
     );
 }
