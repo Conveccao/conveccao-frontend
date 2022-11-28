@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useMemo, useState } from "react";
 
 import { ButtonDefault } from "../../components/ButtonDefault";
 import { HeaderDefault } from "../../components/HeaderDefault";
@@ -10,11 +10,11 @@ import { URI } from "../../integration/uri";
 import SessionController from '../../session/sessionController';
 import { useNavigate } from "react-router-dom";
 
-import { Main, Table, TableTH, TableTD, TableTDButton } from "./styles";
+import { Main, Table, TableTH, TableTD, TableTDButton, SectionSearch, TextSearch } from "./styles";
 import THEME from "../../styles/theme";
 import StationHandlers from "../../integration/handlers/stationHandlers";
 
-export function StationList() {
+export function StationList({ list = [] }) {
   const navigate = useNavigate();
   const [autenticado, setAutenticado] = useState(true);
 
@@ -83,26 +83,55 @@ export function StationList() {
 
 
 
+  // BUSCAR ESTAÇÕES POR NOME
+  const [busca, setBusca] = useState('')
+
+  const estacoesFiltrados = useMemo(() => {
+    const lowerBusca = busca.toLowerCase()
+    return stations.filter((station: any) =>
+        station.name.toLowerCase().includes(lowerBusca))
+  }, [busca, stations])
+
+  // ORDENAR CHAMADOS POR TITULO
+  const [order, setOrder] = useState(1)
+  const [colunmOrder, setColunmOrder] = useState('title')
+
+  const handleOrder = (fieldName: SetStateAction<string>) => {
+      setOrder(-order)
+      setColunmOrder(fieldName)
+  }
+
+  estacoesFiltrados.sort((a, b) => {
+      return a[colunmOrder] < b[colunmOrder] ? -order : order;
+  })
 
   return (
     <>
       <HeaderDefault title="Estações Cadastradas" />
       <Sidebar />
       <Main>
-        <Table>
 
+        <SectionSearch>
+          <TextSearch  
+            placeholder="Procure pelo nome da estação"
+            type="text"
+            value={busca}
+            onChange={(ev) => setBusca(ev.target.value)} />
+        </SectionSearch>
+
+        <Table>
           <thead>
             <tr>
-              <TableTH>Código</TableTH>
+              <TableTH onClick={() => handleOrder('codigo')} >Código ⇵</TableTH>
               <TableTH>Nome da estação</TableTH>
               <TableTH>Localização</TableTH>
               <TableTH>Detalhes</TableTH>
-              <TableTH>Situação</TableTH>
+              <TableTH onClick={() => handleOrder('situacao')} >Situação ⇵</TableTH>
             </tr>
           </thead>
 
           <tbody>
-            {stations.map((station: any) => (
+            {estacoesFiltrados.map((station: any) => (
               <tr key={station.id}>
                 <TableTD>{station.id}</TableTD>
                 <TableTD>{station.name}</TableTD>
