@@ -44,7 +44,7 @@ export function Sidebar() {
             <NavbarLink to="/documentacao">
               Guia de Uso
             </NavbarLink>
-            <NavbarLink to="/perfil">
+            <NavbarLink to="/login">
               Perfil
             </NavbarLink>
           </Navbar>
